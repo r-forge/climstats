@@ -88,10 +88,13 @@ climate_to_raster=function(raster_files,raster_source,zname,zvalue,proj)
 		# Robert Hijmans cleverly figured out how to auto-populate the dates... 
 		if (input_files_N > 1)
 		{
-			print("For NARR, there should only be one input file (a .nc file), please fix...")
-			return()
+			raster_object_from_files=stack(sort(input_files))
+		#	print("For NARR, there should only be one input file (a .nc file), please fix...")
+		#	return()
+		} else
+		{
+			raster_object_from_files=brick(sort(input_files))
 		}
-		raster_object_from_files=brick(sort(input_files))
 		projection(raster_object_from_files)="+proj=lcc +lat_1=50 +lat_2=50 +lat_0=50 +lon_0=-107 +x_0=5632642 +y_0=4612546"
 	}
 	
