@@ -3,8 +3,11 @@
 # Author: jonathan
 ###############################################################################
 
-divide_by_days_in_months=function(x,dates)
+apply_gains_offsets=function(x,gains,offsets,divide_by_days_in_month=FALSE,snow_nthreads=1)
 {
+	require("chron")
+	require("raster")
+	
 	dates_to_days_in_month=function(date_vector)
 	{
 		require("chron")
@@ -15,54 +18,71 @@ divide_by_days_in_months=function(x,dates)
 		return(dates_to_days_in_month)
 	}
 	
-	if((class(x)=="RasterStack") | (class(x)=="RasterBrick") | (class(x)=="RasterLayer"))
+	if(missing(gains))
 	{
-		if(missing(dates))
-		{
-			dates=x@zvalue
-		}
-		days_in_months=dates_to_days_in_month(dates)
-		x_divided_by_days_in_months=apply_gains_offsets(x,gains=(1/days_in_months))
-		
-	} else
-	{
-		if(missing(dates))
-		{
-			print("Missing dates...")
-			return()
-		}
+		gains=1
 	}
-}
-
-apply_gains_offsets=function(x,gains,offsets)
-{
+	if(missing(offsets))
+	{
+		offsets=0
+	}
+	
 	if((class(x)=="RasterStack") | (class(x)=="RasterBrick") | (class(x)=="RasterLayer"))
 	{
+	
 		x_nlayers=nlayers(x)
-		
-		if(missing(gains))
+		if(length(gains)==1)
 		{
-			gains=rep(1,x_nlayers)
+			gains=rep(gains,x_nlayers)
 		}
-		if(missing(offsets))
+		if(length(offsets)==1)
 		{
-			offsets=rep(0,x_nlayers)
+			offsets=rep(offsets,x_nlayers)
+		}
+		if(length(gains)!=x_nlayers | length(offsets)!=x_nlayers)
+		{
+			print("gains and offsets must be of length 1 or length = nlayers(x)")
+			return(NULL)
+		}
+		if(divide_by_days_in_month)
+		{
+			dates_to_days_in_month=dates_to_days_in_month(x@zvalue)
+			gains=gains/dates_to_days_in_month
+		}
+		gains=as.list(gains)
+		offsets=as.list(offsets)
+		
+		if(class(x)=="RasterStack" | class(x)=="RasterBrick")
+		{
+			x_list=brickstack_to_raster_list(x)
+		} else
+		{
+			x_list=list(x)
 		}
 		
-		x_list=brickstack_to_raster_list(x)
-		
-		x_gains_offsets=stack(mapply(function(x,gains,offsets)
-			{ x*gains+offsets },x_list,gains,offsets,SIMPLIFY=FALSE))
-
-		x_gains_offsets@zvalue=x@zvalue
-		x_gains_offsets@zname=x@zname
+		if((snow_nthreads) > 1)
+		{
+			require("snow")
+			cl <- makeCluster(snow_nthreads, type = "MPI") 
+			x_list_gain_offset=clusterMap(cl,function(r,g,o) { r*g+o },r=x_list,g=gains,o=offsets)
+			stopCluster(cl)
+		} else
+		{
+			x_list_gain_offset=mapply(function(r,g,o) { r*g+o },r=x_list,g=gains,o=offsets)
+		}
+		if(x_nlayers>1)
+		{
+			x_gain_offset=stack(x_list_gain_offset)
+		} else
+		{
+			x_gain_offset=x_list_gain_offset[[1]]
+		}
+		x_gain_offset@zvalue=x@zvalue
 		
 	} else
 	{
-		x_gains_offsets=x*gains+offsets
+		# Nothing yet
 	}
+	return(x_gain_offset)
 	
-
-	
-	return(x_gains_offsets)
 }
