@@ -19,6 +19,7 @@ A datasource to fetch climate data from.  The following datasources are currentl
 	"PRISM-800m-tmax":		PRISM 800m monthly maximum temperature grids
 	"PRISM-800m-spi":		PRISM 800m monthly standardized precipitation index grids
 	"PRISM-800m-tdmean":	PRISM 800m monthly dewpoint grids
+	"NARR-monthlymean-wnd":	North American Regional Reanalysis longterm monthly mean wind velocity
 }
   \item{dates}{
 A vector of dates to download.
@@ -39,19 +40,25 @@ The final directory to store the preprocessed grd files.
 standardize=TRUE converts the downloaded dataset to standard units used by climstats (e.g. for precipitation: mm H20 per day, temperature: deg C).
 }
   \item{snow_nthreads}{
-The number of threads (CPUs) to use when processing.  If snow_nthreads>1, the algorithm will attempt to use the multiple processing package snow via MPI.  
+The number of threads (CPUs) to use when processing.  If snow_nthreads>1, the algorithm will attempt to use the multiple processing package snow via MPI.  CURRENTLY UNSUPPORTED.
 }
   \item{overwrite}{
-overwrite=TRUE will allow overwriting of downloaded and preprocessed files.
+overwrite=TRUE will allow overwriting of downloaded and preprocessed files.  Setting overwrite=FALSE (default) lets the process pick up where it left off if interrupted.
+}
+  \item{wnd_speed_height_correction}{
+wnd_speed_height_correction=TRUE (default) corrects wind speed data to wind speed at 2m above the terrain using the wind profile relationship described in http://www.fao.org/docrep/x0490e/x0490e07.htm equation 47.
 }
 
+  \item{verbose}{
+verbose=TRUE will print process information.
+}
 
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-A list of rasterLayers.
+Returns a RasterLayer, RasterBrick or RasterStack object, as well as saving the objects to disk.
 }
 \references{
 %% ~put references to the literature/web site here ~
