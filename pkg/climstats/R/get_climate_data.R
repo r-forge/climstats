@@ -4,92 +4,19 @@
 ###############################################################################
 
 
-get_climate_data <- function(climate_source,dates,startdate,enddate,download_folder,final_folder,standardize=TRUE,snow_nthreads=1,overwrite=FALSE)
+get_climate_data <- function(
+		climate_source,
+		dates,
+		startdate,
+		enddate,
+		download_folder,
+		final_folder,
+		standardize=TRUE,
+		snow_nthreads=1,
+		overwrite=FALSE,
+		wnd_speed_height_correction=TRUE,
+		verbose=FALSE)
 {	
-	apply_gains_offsets=function(x,gains,offsets,divide_by_days_in_month=FALSE,snow_nthreads=1)
-	{
-		require("chron")
-		require("raster")
-		
-		dates_to_days_in_month=function(date_vector)
-		{
-			require("chron")
-			days_in_months=c(31,28,31,30,31,30,31,31,30,31,30,31)
-			date_vector_chron=as.chron(as.POSIXct(date_vector,origin="1970-01-01"))
-			dates_to_days_in_month=days_in_months[unclass(months(date_vector_chron))]
-			dates_to_days_in_month[leap.year(date_vector_chron) & months(date_vector_chron)=="Feb"]<-29
-			return(dates_to_days_in_month)
-		}
-		
-		if(missing(gains))
-		{
-			gains=1
-		}
-		if(missing(offsets))
-		{
-			offsets=0
-		}
-		
-		if((class(x)=="RasterStack") | (class(x)=="RasterBrick") | (class(x)=="RasterLayer"))
-		{
-			
-			x_nlayers=nlayers(x)
-			if(length(gains)==1)
-			{
-				gains=rep(gains,x_nlayers)
-			}
-			if(length(offsets)==1)
-			{
-				offsets=rep(offsets,x_nlayers)
-			}
-			if(length(gains)!=x_nlayers | length(offsets)!=x_nlayers)
-			{
-				print("gains and offsets must be of length 1 or length = nlayers(x)")
-				return(NULL)
-			}
-			if(divide_by_days_in_month)
-			{
-				dates_to_days_in_month=dates_to_days_in_month(x@zvalue)
-				gains=gains/dates_to_days_in_month
-			}
-			gains=as.list(gains)
-			offsets=as.list(offsets)
-			
-			if(class(x)=="RasterStack" | class(x)=="RasterBrick")
-			{
-				x_list=brickstack_to_raster_list(x)
-			} else
-			{
-				x_list=list(x)
-			}
-			
-			if((snow_nthreads) > 1)
-			{
-				require("snow")
-				cl <- makeCluster(snow_nthreads, type = "MPI") 
-				x_list_gain_offset=clusterMap(cl,function(r,g,o) { r*g+o },r=x_list,g=gains,o=offsets)
-				stopCluster(cl)
-			} else
-			{
-				x_list_gain_offset=mapply(function(r,g,o) { r*g+o },r=x_list,g=gains,o=offsets)
-			}
-			if(x_nlayers>1)
-			{
-				x_gain_offset=stack(x_list_gain_offset)
-			} else
-			{
-				x_gain_offset=x_list_gain_offset[[1]]
-			}
-			x_gain_offset@zvalue=x@zvalue
-			
-		} else
-		{
-			# Nothing yet
-		}
-		return(x_gain_offset)
-		
-	}
-	
 
 	# climate_source:
 	#	PRISM-800m-ppt: 	PRISM 800m monthly precipitation grids
@@ -105,6 +32,18 @@ get_climate_data <- function(climate_source,dates,startdate,enddate,download_fol
 	#	data out as a raster or brick in the native raster format (grd).
 	# stanardize=FALSE only downloads the data.
 	
+	if(missing(download_folder))
+	{
+		download_folder=getwd()
+	}
+
+	setwd(download_folder)
+	
+	if(missing(final_folder))
+	{
+		final_folder=getwd()
+	}
+
 	if(	climate_source=="PRISM-800m-ppt" |
 		climate_source=="PRISM-800m-tmin" |
 		climate_source=="PRISM-800m-tmax" |
@@ -146,39 +85,59 @@ get_climate_data <- function(climate_source,dates,startdate,enddate,download_fol
 			prism_path[i]=paste(basepath,prism_type,temp_yearfolder,prism_filenames[i],sep="/")
 			
 		}
+		
+		prism_filenames_gunzipped=paste(paste("us",prism_type,years_text,sep="_"),months_text,sep=".")
+		raster_names_list=as.list(prism_filenames_gunzipped)
+		
 		# Download and extract the files
-		if(!missing(download_folder))
-		{
-			setwd(download_folder)
-		}
+
 		
 		for(i in 1:dates_N)
 		{
-			download.file(prism_path[i],destfile=basename(prism_path[i]))
-			
+			if(
+				# If overwrites are allowed...
+				overwrite | 
+				# If overwrites are disabled but the gunzipped or decompressed file is not present...
+				(!overwrite & !file.exists(prism_filenames_gunzipped[[i]]) & !file.exists(prism_filenames[[i]]))
+			)
+			{
+				download.file(prism_path[i],destfile=basename(prism_path[i]))
+			}
 		}
 		for(i in 1:dates_N)
 		{
-			gunzip(prism_filenames[i],remove=TRUE)
+			if(overwrite | (!overwrite & !file.exists(prism_filenames_gunzipped[[i]])))
+			{
+				gunzip(prism_filenames[i],remove=TRUE)
+			}
 		}
 		
 		if(standardize)
 		{
 			require("raster")			
 			# Set up each file as a raster.
-			prism_filenames_gunzipped=paste(paste("us",prism_type,years_text,sep="_"),months_text,sep=".")
-			raster_names_list=as.list(prism_filenames_gunzipped)
-			raster_list=sapply(raster_names_list,raster,simplify=FALSE)
+		#	prism_filenames_gunzipped=paste(paste("us",prism_type,years_text,sep="_"),months_text,sep=".")
+		#	raster_names_list=as.list(prism_filenames_gunzipped)
+		#	raster_list=sapply(raster_names_list,raster,simplify=FALSE)
 			
 			# For PRISM ASCIIs, its faster if we pre-convert them before we tweak them any further.
 			setOptions(setfileext=FALSE)
 			for (i in (1:dates_N))
 			{
-				writeRaster(raster_list[[i]],paste(prism_filenames_gunzipped[i],"grd",sep="."),format="raster",overwrite=TRUE)	
+				if(overwrite |
+						(!overwrite & !file.exists(paste(prism_filenames_gunzipped[i],"_raw.grd",sep="")))
+				)
+				{
+					temp_raster=raster(raster_names_list[[i]])
+					writeRaster(temp_raster,paste(prism_filenames_gunzipped[i],"_raw.grd",sep=""),format="raster",overwrite=TRUE)	
+				}
 			}
 			setOptions(setfileext=TRUE)
 			
-			raster_list=sapply(paste(raster_names_list,"grd",sep="."),raster,simplify=FALSE)
+#			raster_list=sapply(paste(raster_names_list,"_raw.grd",sep=""),raster,simplify=FALSE)
+			
+			raster_raw_list=as.list(paste(raster_names_list,"_raw.gri",sep=""))
+#			stack_raw=stack(raster_raw_list)
 			
 			
 			# Now assign the proper dates.
@@ -197,54 +156,153 @@ get_climate_data <- function(climate_source,dates,startdate,enddate,download_fol
 				}
 			}
 			dates_raster=as.Date(dates_raster)
-			for (i in (1:dates_N))
-			{
-				raster_list[[i]]@zvalue=as.character(dates_raster[i])
-			}
+#			for (i in (1:dates_N))
+#			{
+#				raster_list[[i]]@zvalue=as.character(dates_raster[i])
+#			}
 		
+			climstats_filenames=vector(mode="character",length=dates_N)
+			for(i in (1:dates_N))
+			{
+				climstats_filenames[i]=paste(prism_filenames_gunzipped[i],"_climstats.grd",sep="")
+			}
+
 			if(prism_type=="ppt")
 			{
-				if((snow_nthreads) > 1)
+#				if((snow_nthreads) > 1)
+#				{
+#					require("snow")
+#					cl <- makeCluster(snow_nthreads, type = "MPI") 
+#					final_raster_list=clusterMap(cl,apply_gains_offsets,raster_list,MoreArgs=list(gains=(1/100),divide_by_days_in_month=TRUE))
+#					stopCluster(cl)
+#				} else
+#					final_raster_list=mapply(apply_gains_offsets,raster_list,MoreArgs=list(gains=(1/100),divide_by_days_in_month=TRUE))
+#				}
+	
+				setOptions(setfileext=FALSE)
+				for (i in (1:dates_N))
 				{
-					require("snow")
-					cl <- makeCluster(snow_nthreads, type = "MPI") 
-					final_raster_list=clusterMap(cl,apply_gains_offsets,raster_list,MoreArgs=list(gains=(1/100),divide_by_days_in_month=TRUE))
-					stopCluster(cl)
-				} else
-					final_raster_list=mapply(apply_gains_offsets,raster_list,MoreArgs=list(gains=(1/100),divide_by_days_in_month=TRUE))
+					if(overwrite |
+							(!overwrite & !file.exists(climstats_filenames[i]))
+							)
+					{
+						setwd(download_folder)
+						temp_raster=raster(raster_raw_list[[i]])
+						temp_raster@zvalue=as.character(dates_raster[i])
+						temp_raster@zname="Date/time"
+						temp_raster_standardized=apply_gains_offsets(temp_raster,gains=(1/100),divide_by_days_in_month=TRUE)
+						setwd(final_folder)
+						writeRaster(temp_raster_standardized,climstats_filenames[i],format="raster",overwrite=TRUE)	
+					}
 				}
+				setOptions(setfileext=TRUE)
 			}
+			
 			if(prism_type=="tmin" | prism_type=="tmax")
 			{
-				if((snow_nthreads) > 1)
+				setOptions(setfileext=FALSE)
+				for (i in (1:dates_N))
 				{
-					require("snow")
-					cl <- makeCluster(snow_nthreads, type = "MPI") 
-					final_raster_list=clusterMap(cl,apply_gains_offsets,raster_list,MoreArgs=list(gains=(1/100),divide_by_days_in_month=FALSE))
-					stopCluster(cl)
-				} else
-				{
-					final_raster_list=mapply(apply_gains_offsets,raster_list,MoreArgs=list(gains=(1/100),divide_by_days_in_month=FALSE))
+					if(overwrite |
+							(!overwrite & !file.exists(paste(prism_filenames_gunzipped[i],"_climstats.grd",sep="")))
+							)
+					{
+						setwd(download_folder)
+						temp_raster=raster(raster_raw_list[[i]])
+						temp_raster@zvalue=as.character(dates_raster[i])
+						temp_raster@zname="Date/time"
+						temp_raster_standardized=apply_gains_offsets(temp_raster,gains=(1/100),divide_by_days_in_month=FALSE)
+						setwd(final_folder)
+						writeRaster(temp_raster_standardized,climstats_filenames[i],format="raster",overwrite=TRUE)	
+					}
 				}
-				
-		#		if(!missing(final_folder))
-		#		{
-		#			setwd(final_folder)
-		#		}
-				
-				# Write out final files.
-		#		setOptions(setfileext=FALSE)
-		#		for (i in (1:dates_N))
-		#		{
-		#			writeRaster(final_raster_list[[i]],paste(final_folder,paste(prism_filenames_gunzipped[i],"grd",sep="."),sep="/"),format="raster",overwrite=TRUE)	
-		#		}
-		#		setOptions(setfileext=TRUE)
-				
+				setOptions(setfileext=TRUE)
+			}	
+			
+			setwd(final_folder)
+			climstats_stack=stack(as.list(climstats_filenames))
+			climstats_stack@zvalue=as.character(dates_raster)
+			climstats_stack@zname="Date/time"
+					
+			return(climstats_stack)
 			}
 			
 		} # End PRISM
 		
+		# North American Regional Reanalysis data (monthly mean)
+		# http://www.esrl.noaa.gov/psd/data/gridded/data.narr.html
+		if(climate_source=="NARR-monthlymean-wnd")
+		{
+			require("ncdf")
+			basepath="ftp://ftp.cdc.noaa.gov/Datasets/NARR/Derived/monolevel"
+
+	#		if(missing(dates))
+	#		{
+	#			dates=seq.Date(startdate,enddate,by="month")
+	#		}
+			
+	#		dates_N=length(dates)
+			
+			if(!missing(download_folder))
+			{
+				setwd(download_folder)
+			}
+			
+			# Set up filenames to download.
+			if(climate_source=="NARR-monthlymean-wnd")
+			{
+				download_filenames=c("uwnd.10m.mon.ltm.nc","vwnd.10m.mon.ltm.nc")
+				download_path=paste(basepath,download_filenames,sep="/")
+			}	
+			for(i in 1:length(download_filenames))
+			{
+				if(
+						# If overwrites are allowed...
+						overwrite | 
+						# If overwrites are disabled but the file is not present...
+						(!overwrite & !file.exists(download_filenames[i]))
+						)
+				{
+					download.file(download_path[i],destfile=download_filenames[i])
+				}
+			}
+			
+			# Preprocess the data if requested.
+			if(standardize)
+			{
+				narr_brick_list=vector(mode="list",length=length(download_filenames))
+				for(i in 1:length(download_filenames))
+				{
+					narr_brick_list[[i]]=brick(download_filenames)
+				}
+				
+				if(climate_source=="NARR-monthlymean-wnd")
+				{				
+					if(!wnd_speed_height_correction)
+					{
+						wnd=windvectors_to_wind(uwnd,vwnd)
+					} else
+					{
+						wnd=windvectors_to_wind(narr_brick_list[[1]],narr_brick_list[[2]],10)
+					}
+					
+					
+					if(!missing(final_folder))
+					{
+						setwd(final_folder)
+					}
+					
+					setOptions(setfileext=FALSE)
+					writeRaster(wnd,"wnd.10m.mon.ltm.grd",format="raster",overwrite=TRUE)	
+					setOptions(setfileext=TRUE)
+					
+					return(wnd)
+				}
+			}
+			
+		}
+		
 	
-	return(final_raster_list)
+#	return(final_raster_list)
 	
 }
