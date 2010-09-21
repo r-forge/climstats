@@ -6,6 +6,7 @@ Date: 2010-09-19
 Author: Jonathan Asher Greenberg
 Maintainer: Jonathan Asher Greenberg <climstats@estarcion.net>
 Depends: R (>= 2.11.0), raster, chron
+Suggests: ncdf
 Description: Functions for the preparation and summarization of climate data.
 License: GPL (>= 2)
 LazyLoad: yes
