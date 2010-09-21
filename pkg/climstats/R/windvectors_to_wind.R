@@ -29,13 +29,10 @@ windvectors_to_wind=function(uwnd,vwnd,wnd_height)
 	# 	Brick and stack math doesn't work yet, so let's use a workaround...	
 	#	wnd=wnd_2m_conversion_factor*sqrt(uwnd^2+vwnd^2)
 
-	uwnd_list=brickstack_to_raster_list(uwnd)
-	vwnd_list=brickstack_to_raster_list(vwnd)
+#	uwnd_list=brickstack_to_raster_list(uwnd)
+#	vwnd_list=brickstack_to_raster_list(vwnd)
 	
-	wnd=stack(mapply(function(uwnd,vwnd,wnd_2m_conversion_factor)
-			{ ((uwnd^2+vwnd^2)^(0.5))*wnd_2m_conversion_factor },
-			uwnd_list,vwnd_list,MoreArgs=list(wnd_2m_conversion_factor=wnd_2m_conversion_factor),
-			SIMPLIFY=FALSE))
+	wnd=((uwnd^2+vwnd^2)^(0.5))*wnd_2m_conversion_factor
 
 	wnd@zvalue=uwnd@zvalue
 	wnd@zname=uwnd@zname
