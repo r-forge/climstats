@@ -212,6 +212,7 @@ get_climate_data <- function(
 						temp_raster@zvalue=as.character(dates_raster[i])
 						temp_raster@zname="Date/time"
 						temp_raster_standardized=apply_gains_offsets(temp_raster,gains=(1/100),divide_by_days_in_month=FALSE)
+						projection(temp_raster_standardized)="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 						setwd(final_folder)
 						writeRaster(temp_raster_standardized,climstats_filenames[i],format="raster",overwrite=TRUE)	
 					}
@@ -223,7 +224,7 @@ get_climate_data <- function(
 			climstats_stack=stack(as.list(climstats_filenames))
 			climstats_stack@zvalue=as.character(dates_raster)
 			climstats_stack@zname="Date/time"
-					
+			projection(climstats_stack)="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 			return(climstats_stack)
 			}
 			
@@ -293,6 +294,7 @@ get_climate_data <- function(
 					}
 					
 					setOptions(setfileext=FALSE)
+					projection(wnd)="+proj=lcc +lat_1=50 +lat_2=50 +lat_0=50 +lon_0=-107 +x_0=5632642 +y_0=4612546"
 					writeRaster(wnd,"wnd.10m.mon.ltm.grd",format="raster",overwrite=TRUE)	
 					setOptions(setfileext=TRUE)
 					
