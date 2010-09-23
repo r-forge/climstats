@@ -24,11 +24,8 @@ A datasource to fetch climate data from.  The following datasources are currentl
   \item{dates}{
 A vector of dates to download.
 }
-  \item{startdate}{
-The starting date of the range of climate data to download.
-}
-  \item{enddate}{
-The ending date of the range of climate data to download.
+  \item{daterange}{
+A vector of length 2 containing the starting date and ending date of a range of climate data to download.
 }
   \item{download_folder}{
 The target download directory of the raw data.
