@@ -62,9 +62,15 @@ get_climate_data <- function(
 		# PRISM is monthly data, so we figure the range based on months.
 		if(missing(dates))
 		{
-			startdate=as.Date(daterange[1])
-			enddate=as.Date(daterange[1])
+			startdate=as.Date(date_range[1])
+			enddate=as.Date(date_range[2])
 			dates=seq.Date(startdate,enddate,by="month")
+			if(verbose)
+			{
+				print("Downloading/preparing the following dates...")
+				print(dates)
+			}
+
 		}
 		
 		years_text=format(dates,"%Y")
