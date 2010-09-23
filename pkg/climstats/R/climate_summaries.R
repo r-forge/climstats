@@ -7,17 +7,27 @@
 climate_summaries <- function(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin)
 {
 	# This works on rasters only.
-	startdate=as.Date(date_range[1])
-	enddate=as.Date(date_range[2])
-	
-	climate_data_dates=as.Date(climate_data@zvalue)
 	
 	climate_data_dates_idx=1:nlayers(climate_data)
-	climate_data_dates_idx_subset=climate_data_dates_idx[(climate_data_dates >= startdate & climate_data_dates <= enddate)]
-	climate_data_dates_subset=climate_data_dates[climate_data_dates_idx_subset]
 	
-	# Create a new stack which is the temporal subset of the original.
-	climate_data_subset=subset(climate_data,climate_data_dates_idx_subset)
+	if(!missing(date_range))
+	{
+		climate_data_dates=as.Date(climate_data@zvalue)
+		if(length(date_range)==2)
+		{
+			startdate=as.Date(date_range[1])
+			enddate=as.Date(date_range[2])
+			
+			climate_data_dates_idx_subset=climate_data_dates_idx[(climate_data_dates >= startdate & climate_data_dates <= enddate)]
+			climate_data_dates_subset=climate_data_dates[climate_data_dates_idx_subset]
+			climate_data_subset=subset(climate_data,climate_data_dates_idx_subset)
+		}
+	} else
+	{
+		climate_data_dates_idx_subset=climate_data_dates_idx
+		climate_data_dates_subset=climate_data_dates
+		climate_data_subset=climate_data
+	}	
 	
 	# Set up intervals
 	if(summary_interval=="all")
