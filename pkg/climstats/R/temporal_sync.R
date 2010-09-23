@@ -69,10 +69,10 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 			synced_bands_list=vector(mode="list",length=length(reference_months))
 			for(i in 1:length(reference_months))
 			{
-				synced_list[[i]]=unsynced
+				synced_fname_list[[i]]=unsynced
 				synced_bands_list[[i]]=reference_unsynced_idx[i]
 			}
-			synced_stack=stack(synced_list,bands=synced_bands_list)
+			synced_stack=stack(synced_fname_list,bands=synced_bands_list)
 			synced_stack@zvalue=reference@zvalue
 			
 			return(synced_stack)
