@@ -71,7 +71,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 		climate_summary=stackApply(climate_data_subset, summary_interval_idx, which.max.simple)
 		if(!missing(apply_maxmin))
 		{
-			climate_summary_maxmin_mask=index_raster_to_mask(climate_summary)
+			climate_summary_maxmin_mask=index_raster_to_mask(climate_summary,nlayers=nlayers(climate_data))
 			climate_summary=calc((climate_summary_maxmin_mask*apply_maxmin),sum)
 		}
 	}
