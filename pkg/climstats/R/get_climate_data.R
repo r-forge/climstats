@@ -7,8 +7,7 @@
 get_climate_data <- function(
 		climate_source,
 		dates,
-		startdate,
-		enddate,
+		date_range,
 		download_folder,
 		final_folder,
 		standardize=TRUE,
@@ -31,6 +30,8 @@ get_climate_data <- function(
 	# standardize=TRUE downloads the data, converts the units to climstats standards, and saves the
 	#	data out as a raster or brick in the native raster format (grd).
 	# stanardize=FALSE only downloads the data.
+	
+
 	
 	if(missing(download_folder))
 	{
@@ -61,6 +62,8 @@ get_climate_data <- function(
 		# PRISM is monthly data, so we figure the range based on months.
 		if(missing(dates))
 		{
+			startdate=as.Date(daterange[1])
+			enddate=as.Date(daterange[1])
 			dates=seq.Date(startdate,enddate,by="month")
 		}
 		
@@ -138,7 +141,6 @@ get_climate_data <- function(
 			
 			raster_raw_list=as.list(paste(raster_names_list,"_raw.gri",sep=""))
 #			stack_raw=stack(raster_raw_list)
-			
 			
 			# Now assign the proper dates.
 			days_in_months=c(31,28,31,30,31,30,31,31,30,31,30,31)
