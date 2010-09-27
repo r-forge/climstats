@@ -10,9 +10,51 @@
 ###############################################################################
 
 
+eto_save <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm",basename="eto_pm_climstats_",index_format="%Y-%m-%d",
+		output_format="raster") 
+{
+	if(!missing(tavg))
+	{
+		tavg_list=brickstack_to_raster_list(tavg)
+	}
+	tmin_list=brickstack_to_raster_list(tmin)
+	tmax_list=brickstack_to_raster_list(tmax)
+	rad_list=brickstack_to_raster_list(rad)
+	wnd_list=brickstack_to_raster_list(wnd)
+	dates_N=length(tmin_list)
+	
+	output_basenames=rep(basename,dates_N)
+	output_dates=as.Date(tmin@zvalue,format=index_format)
+	output_names=paste(output_basenames,output_dates,".grd",sep="")
+	
+	for(i in 1:dates_N)
+	{
+		if(verbose)
+		{
+			
+		}
+		if(!missing(tavg))
+		{
+			temp_eto=eto(tmin=tmin_list[[i]],tmax=tmax_list[[i]],rad=rad_list[[i]],wnd=wnd_list[[i]],elev=elev,G=G,a=a,model=model)
+		} else
+		{
+			temp_eto=eto(tavg=tavg_list[[i]],tmin=tmin_list[[i]],tmax=tmax_list[[i]],rad=rad_list[[i]],wnd=wnd_list[[i]],elev=elev,G=G,a=a,model=model)
+		}
+#		setOptions(setfileext=FALSE)
+		writeRaster(temp_eto,output_names[i],format=output_format,overwrite=TRUE)	
+#		setOptions(setfileext=TRUE)
+	}
+	
+
+	
+}
+	
+	
 eto <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm") 
 {
 	# From http://www.fao.org/docrep/x0490e/x0490e00.htm	
+	
+	# Should do some checks here (nlayers(input))
 	
 	# ETO inputs
 	# tavg
@@ -45,7 +87,7 @@ eto <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm")
 		# Actual vapour pressure (ea) derived from dewpoint temperature with missing humidity data
 		ea = (.6108*exp(17.27*(tmin-2)/((tmin-2)+237.3)))	#(48)
 		
-		Rns=(1-a)*rad
+		Rns=rad*(1-a)
 		Rnl=(4.903*10^(-9)*(((tmax+273.16)^(4)+(tmin+273.16)^(4))/2))*(0.34-0.14*sqrt(ea))*(1.35*1-0.35)
 		
 		Rn=Rns-Rnl

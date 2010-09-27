@@ -6,7 +6,7 @@
 
 # These functions are designed to convert widely available climate data to raster objects.
 
-climate_to_raster=function(raster_files,raster_source,zname,zvalue,proj)
+prepare_climate_data=function(raster_files,raster_source,zname,zvalue,proj)
 {
 	# Usage:
 	#	raster_files (currently) needs to be a properly formatted search string (?regex) to be used with dir().
@@ -55,7 +55,7 @@ climate_to_raster=function(raster_files,raster_source,zname,zvalue,proj)
 	
 	if (raster_source=="prism_dem")
 	{
-		raster_object_from_files=stack(sort(input_files))
+		raster_object_from_files=raster(sort(input_files))
 		projection(raster_object_from_files)="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 		raster_object_from_files@zname="elev"
 	}
