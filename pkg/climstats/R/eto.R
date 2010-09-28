@@ -13,14 +13,38 @@
 eto_save <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm",basename="eto_pm_climstats_",index_format="%Y-%m-%d",
 		output_format="raster") 
 {
-	if(!missing(tavg))
+#	if(!missing(tavg))
+#	{
+#		if(verbose)
+#		{
+#			print("Prepping tavg...")
+#		}
+#		tavg_list=brickstack_to_raster_list(tavg)
+#	}
+	if(verbose)
 	{
-		tavg_list=brickstack_to_raster_list(tavg)
+		print("Prepping tmin...")
 	}
 	tmin_list=brickstack_to_raster_list(tmin)
+	if(verbose)
+	{
+		print("Prepping tmax...")
+	}
 	tmax_list=brickstack_to_raster_list(tmax)
+	if(verbose)
+	{
+		print("Prepping rad...")
+	}
 	rad_list=brickstack_to_raster_list(rad)
+	if(verbose)
+	{
+		print("Prepping wnd...")
+	}
 	wnd_list=brickstack_to_raster_list(wnd)
+	if(verbose)
+	{
+		print("Prepping tmin...")
+	}
 	dates_N=length(tmin_list)
 	
 	output_basenames=rep(basename,dates_N)
@@ -31,18 +55,18 @@ eto_save <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm",basenam
 	{
 		if(verbose)
 		{
-			
+			print(output_dates[i])
 		}
-		if(!missing(tavg))
-		{
+#		if(!missing(tavg))
+#		{
 			temp_eto=eto(tmin=tmin_list[[i]],tmax=tmax_list[[i]],rad=rad_list[[i]],wnd=wnd_list[[i]],elev=elev,G=G,a=a,model=model)
-		} else
-		{
-			temp_eto=eto(tavg=tavg_list[[i]],tmin=tmin_list[[i]],tmax=tmax_list[[i]],rad=rad_list[[i]],wnd=wnd_list[[i]],elev=elev,G=G,a=a,model=model)
-		}
-#		setOptions(setfileext=FALSE)
+#		} else
+#		{
+#			temp_eto=eto(tavg=tavg_list[[i]],tmin=tmin_list[[i]],tmax=tmax_list[[i]],rad=rad_list[[i]],wnd=wnd_list[[i]],elev=elev,G=G,a=a,model=model)
+#		}
+		setOptions(setfileext=FALSE)
 		writeRaster(temp_eto,output_names[i],format=output_format,overwrite=TRUE)	
-#		setOptions(setfileext=TRUE)
+		setOptions(setfileext=TRUE)
 	}
 	
 
