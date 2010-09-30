@@ -1,17 +1,17 @@
-\name{climate_to_raster}
+\name{prepare_climate_data}
 
-\alias{climate_to_raster}
+\alias{prepare_climate_data}
 
 
 \title{
 This is the tile
 }
 \description{
-This is what this function does
+TBD
 }
 
 \usage{
-climate_to_raster(raster_files, raster_source, zname, zvalue, proj)
+prepare_climate_data(raster_files, raster_source, zname, zvalue, proj)
 }
 
 

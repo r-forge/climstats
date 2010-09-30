@@ -1,16 +1,40 @@
-\name{brickstack_to_raster_list}
-\alias{brickstack_to_raster_list}
+\name{eto}
+\alias{eto}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
-Converts a raster stack or a brick into a list of individual RasterLayers.
+TBD
 }
 \usage{
-brickstack_to_raster_list(brickstack)
+eto(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{brickstack}{
+  \item{tavg}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{tmin}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{tmax}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{rad}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{elev}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{wnd}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{G}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{a}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{model}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }

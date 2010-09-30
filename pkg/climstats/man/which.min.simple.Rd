@@ -1,16 +1,19 @@
-\name{brickstack_to_raster_list}
-\alias{brickstack_to_raster_list}
+\name{which.min.simple}
+\alias{which.min.simple}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
-Converts a raster stack or a brick into a list of individual RasterLayers.
+TBD.
 }
 \usage{
-brickstack_to_raster_list(brickstack)
+which.min.simple(x,na.rm=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{brickstack}{
+  \item{x}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{na.rm}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }

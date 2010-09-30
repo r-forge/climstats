@@ -1,16 +1,16 @@
-\name{brickstack_to_raster_list}
-\alias{brickstack_to_raster_list}
+\name{list_to_data.frame}
+\alias{list_to_data.frame}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
-Converts a raster stack or a brick into a list of individual RasterLayers.
+Takes a list of equal sized objects and returns a data.frame.
 }
 \usage{
-brickstack_to_raster_list(brickstack)
+list_to_data.frame(x)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{brickstack}{
+  \item{x}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }

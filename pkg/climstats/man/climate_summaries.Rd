@@ -1,16 +1,28 @@
-\name{brickstack_to_raster_list}
-\alias{brickstack_to_raster_list}
+\name{climate_summaries}
+\alias{climate_summaries}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
-Converts a raster stack or a brick into a list of individual RasterLayers.
+Summarizes climate data.
 }
 \usage{
-brickstack_to_raster_list(brickstack)
+climate_summaries(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{brickstack}{
+  \item{climate_data}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{date_range}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{summary_type}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{summary_interval}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{apply_maxmin}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }

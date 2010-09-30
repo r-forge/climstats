@@ -1,16 +1,22 @@
-\name{brickstack_to_raster_list}
-\alias{brickstack_to_raster_list}
+\name{brickstack_to_saved_rasters}
+\alias{brickstack_to_saved_rasters}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
-Converts a raster stack or a brick into a list of individual RasterLayers.
+Saves a raster stack or a brick as individual RasterLayers.
 }
 \usage{
-brickstack_to_raster_list(brickstack)
+brickstack_to_saved_rasters(brickstack,output_basename,use_layernames=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{brickstack}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{output_basename}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{use_layernames}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }

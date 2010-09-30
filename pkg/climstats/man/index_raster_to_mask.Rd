@@ -1,16 +1,19 @@
-\name{brickstack_to_raster_list}
-\alias{brickstack_to_raster_list}
+\name{index_raster_to_mask}
+\alias{index_raster_to_mask}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
-Converts a raster stack or a brick into a list of individual RasterLayers.
+TBD
 }
 \usage{
-brickstack_to_raster_list(brickstack)
+index_raster_to_mask(index_raster,nlayers)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{brickstack}{
+  \item{index_raster}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{nlayers}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }

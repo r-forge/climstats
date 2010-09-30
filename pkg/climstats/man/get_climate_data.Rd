@@ -8,7 +8,7 @@
 This function downloads and preprocesses climate data from a variety of sources.
 }
 \usage{
-get_climate_data(climate_source,dates,startdate,enddate,download_folder,final_folder,standardize=TRUE,snow_nthreads=1,overwrite=FALSE)
+get_climate_data(climate_source,date_range,download_folder,final_folder,standardize=TRUE,snow_nthreads=1,overwrite=FALSE,wnd_speed_height_correction=TRUE,verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,10 +21,7 @@ A datasource to fetch climate data from.  The following datasources are currentl
 	"PRISM-800m-tdmean":	PRISM 800m monthly dewpoint grids
 	"NARR-monthlymean-wnd":	North American Regional Reanalysis longterm monthly mean wind velocity
 }
-  \item{dates}{
-A vector of dates to download.
-}
-  \item{daterange}{
+  \item{date_range}{
 A vector of length 2 containing the starting date and ending date of a range of climate data to download.
 }
   \item{download_folder}{

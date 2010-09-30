@@ -6,7 +6,6 @@
 
 get_climate_data <- function(
 		climate_source,
-		dates,
 		date_range,
 		download_folder,
 		final_folder,
@@ -289,7 +288,7 @@ get_climate_data <- function(
 				{				
 					if(!wnd_speed_height_correction)
 					{
-						wnd=windvectors_to_wind(uwnd,vwnd)
+						wnd=windvectors_to_wind(narr_brick_list[[1]],narr_brick_list[[2]])
 					} else
 					{
 						wnd=windvectors_to_wind(narr_brick_list[[1]],narr_brick_list[[2]],10)

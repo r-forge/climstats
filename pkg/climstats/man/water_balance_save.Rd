@@ -1,16 +1,38 @@
-\name{brickstack_to_raster_list}
-\alias{brickstack_to_raster_list}
+\name{water_balance_save}
+\alias{water_balance_save}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
-Converts a raster stack or a brick into a list of individual RasterLayers.
+TBD
 }
 \usage{
-brickstack_to_raster_list(brickstack)
+water_balance_save(ppt,eto,model="stephenson",basename="water_balance_climstats_",index_format,
+		output_format="raster",verbose=FALSE,overwrite=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{brickstack}{
+  \item{ppt}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{eto}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{model}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{basename}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{index_format}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{output_format}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{verbose}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{overwrite}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }

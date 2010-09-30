@@ -5,7 +5,7 @@
 \title{ the title }
 
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Takes two wind vectors and returns wind speed, correcting to 2m above the terrain if requested.
 }
 \usage{
 windvectors_to_wind(uwnd, vwnd, wnd_height)

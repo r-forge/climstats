@@ -1,16 +1,31 @@
-\name{brickstack_to_raster_list}
-\alias{brickstack_to_raster_list}
+\name{temporal_sync_raster}
+\alias{temporal_sync_raster}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
-Converts a raster stack or a brick into a list of individual RasterLayers.
+TBD
 }
 \usage{
-brickstack_to_raster_list(brickstack)
+temporal_sync_raster(unsynced,reference,synctype="by.month",unsynced_dates,reference_dates,verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{brickstack}{
+  \item{unsynced}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{reference}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{synctype}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{unsynced_dates}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{reference_dates}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{verbose}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }

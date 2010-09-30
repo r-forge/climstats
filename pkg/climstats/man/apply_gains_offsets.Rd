@@ -6,10 +6,10 @@
 
 
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Applies linear gains and offsets to input data following output = gains * x + offset.
 }
 \usage{
-apply_gains_offsets(x, gains, offsets)
+apply_gains_offsets(x, gains, offsets, divide_by_days_in_month=FALSE,snow_nthreads=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +20,10 @@ apply_gains_offsets(x, gains, offsets)
 %%     ~~Describe \code{gains} here~~
 }
   \item{offsets}{
+%%     ~~Describe \code{offsets} here~~
+}  \item{divide_by_days_in_month}{
+%%     ~~Describe \code{offsets} here~~
+}  \item{snow_nthreads}{
 %%     ~~Describe \code{offsets} here~~
 }
 }
@@ -39,9 +43,4 @@ apply_gains_offsets(x, gains, offsets)
 \author{
 %%  ~~who you are~~
 }
-
-
-
-
-keyword{ spatial }
 
