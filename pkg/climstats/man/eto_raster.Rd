@@ -1,0 +1,90 @@
+\name{eto_raster}
+\alias{eto_raster}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{ the title }
+\description{
+Calculate reference evapotranspiration (ETO) using raster inputs.
+}
+\usage{
+eto_raster(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao",basename="eto_pm_climstats_",index_format,
+		output_format="raster",overwrite=FALSE,verbose=FALSE)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{tavg}{
+Average temperature (deg C).  If not assigned, tavg will be calculated as the median of tmax and tmin.
+}
+  \item{tmin}{
+Minimum temperature (deg C).
+}
+  \item{tmax}{
+Maximum temperature (deg C).
+}
+  \item{rad}{
+Net radiation (MJ m-2 day-1).
+}
+  \item{elev}{
+Elevation (m above sea level).
+}
+  \item{wnd}{
+Windspeed (m/s at 2m above terrain).
+}
+  \item{G}{
+Soil heat flux density [MJ m-2 day-1]. By default equals 0.0.
+}
+  \item{a}{
+Reference albedo (unitless, ranges between 0 and 1).  By default equals 0.23.
+}
+  \item{model}{
+Evapotranspiration model to use:
+\itemize{
+	\item "pm-fao": FAO Penman-Monteith
+}
+}
+  \item{basename}{
+Prefix of the output files.  By default equals "eto_pm_climstats_".
+}
+  \item{index_format}{
+Format of the unique file index for the output files (refer to as.Date for how to describe this).  Defaults to "YYYY-MM-DD".
+}
+  \item{output_format}{
+Output format of the ETO files.  Defaults to "raster".  Other formats aren't currently supported.
+}
+  \item{overwrite}{
+overwrite=TRUE will overwrite any existing files.  overwrite=FALSE skips existing files.
+}
+  \item{verbose}{
+verbose=TRUE will print progress information on the processing.
+}
+}
+\details{
+%%  ~~ If necessary, more details than the description above ~~
+}
+\value{
+eto_raster returns a RasterStack object of the ETO calculations.  It also saves the ETO calculations to disk, one file per interval.  
+}
+\references{
+\url{http://www.fao.org/docrep/x0490e/x0490e00.htm}
+}
+\author{
+Jonathan A. Greenberg
+}
+\note{
+%%  ~~further notes~~
+}
+
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\seealso{
+%% ~~objects to See Also as \code{\link{help}}, ~~~
+}
+\examples{
+# Download and prepare all required inputs.
+
+
+
+}
+% Add one or more standard keywords, see file 'KEYWORDS' in the
+% R documentation directory.
+\keyword{ ~kwd1 }
+\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

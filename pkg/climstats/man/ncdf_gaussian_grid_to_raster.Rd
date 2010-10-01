@@ -1,56 +1,19 @@
-\name{eto_save}
-\alias{eto_save}
+\name{ncdf_gaussian_grid_to_raster}
+\alias{ncdf_gaussian_grid_to_raster}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
 TBD
 }
 \usage{
-eto_save(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm",basename="eto_pm_climstats_",index_format,
-		output_format="raster",overwrite=FALSE,verbose=FALSE)
+ncdf_gaussian_grid_to_raster(ncdf_gaussian_grid_fname,reference)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{tavg}{
+  \item{ncdf_gaussian_grid_fname}{
 %%     ~~Describe \code{brickstack} here~~
 }
-  \item{tmin}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{tmax}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{rad}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{elev}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{wnd}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{G}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{a}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{model}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{basename}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{index_format}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{output_format}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{overwrite}{
-%%     ~~Describe \code{brickstack} here~~
-}
-  \item{verbose}{
+  \item{reference}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }

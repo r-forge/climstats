@@ -10,7 +10,7 @@
 ###############################################################################
 
 
-eto_save <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm",basename="eto_pm_climstats_",index_format="%Y-%m-%d",
+eto_raster <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao",basename="eto_pm_climstats_",index_format="%Y-%m-%d",
 		output_format="raster",overwrite=FALSE,verbose=FALSE) 
 {
 #	if(!missing(tavg))
@@ -79,7 +79,7 @@ eto_save <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm",basenam
 }
 	
 	
-eto <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm") 
+eto <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao") 
 {
 	# From http://www.fao.org/docrep/x0490e/x0490e00.htm	
 	
@@ -95,7 +95,7 @@ eto <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm")
 	# G: Soil flux (MJ/m2/day)
 	# a: albedo
 	
-	if(model=="pm")
+	if(model=="pm-fao")
 	{
 		if(missing(tavg))
 		{

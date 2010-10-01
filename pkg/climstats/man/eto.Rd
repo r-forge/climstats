@@ -6,7 +6,7 @@
 TBD
 }
 \usage{
-eto(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm")
+eto(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

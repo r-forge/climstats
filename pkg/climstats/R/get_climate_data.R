@@ -7,6 +7,7 @@
 get_climate_data <- function(
 		climate_source,
 		date_range,
+		dates,
 		download_folder,
 		final_folder,
 		standardize=TRUE,
@@ -44,6 +45,48 @@ get_climate_data <- function(
 		final_folder=getwd()
 	}
 
+	if(	climate_source=="PRISM-800m-elev")
+	{
+		require("R.utils")
+		basepath="ftp://prism.oregonstate.edu/pub/prism/us/grids"
+		prism_filenames="us_25m_dem.asc.gz"
+		prism_filenames_gunzipped="us_25m_dem.asc"
+		prism_path=paste(basepath,prism_filenames,sep="/")
+
+		if(
+				# If overwrites are allowed...
+				overwrite | 
+				# If overwrites are disabled but the gunzipped or decompressed file is not present...
+				(!overwrite & !file.exists(prism_filenames_gunzipped) & !file.exists(prism_filenames))
+				)
+		{
+			download.file(prism_path,destfile=basename(prism_path))
+		}
+		
+		if(overwrite | (!overwrite & !file.exists(prism_filenames_gunzipped)))
+		{
+			gunzip(prism_filenames,remove=TRUE,overwrite=TRUE)
+		}
+		
+		if(standardize)
+		{
+			require("raster")	
+			setOptions(setfileext=FALSE)
+			if(overwrite |
+				(!overwrite & !file.exists(paste(prism_filenames_gunzipped,"_climstats.grd",sep=""))))
+			{
+					temp_raster=raster(prism_filenames_gunzipped)
+					writeRaster(temp_raster,paste(prism_filenames_gunzipped,"_climstats.grd",sep=""),format="raster",overwrite=TRUE)	
+			}
+			setOptions(setfileext=TRUE)
+			elev=raster(paste(prism_filenames_gunzipped,"_climstats.grd",sep=""))
+			projection(elev)="+proj=longlat +ellps=WGS84 +datum=WGS84 +lon_wrap"
+			return(elev)
+		}
+			
+	} # END PRISM-800m-elev
+	
+	
 	if(	climate_source=="PRISM-800m-ppt" |
 		climate_source=="PRISM-800m-tmin" |
 		climate_source=="PRISM-800m-tmax" |
@@ -239,6 +282,47 @@ get_climate_data <- function(
 		
 		# North American Regional Reanalysis data (monthly mean)
 		# http://www.esrl.noaa.gov/psd/data/gridded/data.narr.html
+		# This isn't working right now, don't use.
+		if(climate_source=="NARR-monthlymean-rad_sw" | climate_source=="NARR-monthlymean-rad_lw")
+		{
+			require("ncdf")
+			basepath="ftp://ftp.cdc.noaa.gov/Datasets/ncep.reanalysis.derived/surface_gauss"
+
+			if(climate_source=="NARR-monthlymean-rad_sw")
+			{
+				download_filenames="nswrs.mon.mean.nc"
+				download_path=paste(basepath,download_filenames,sep="/")
+			}
+			
+			if(climate_source=="NARR-monthlymean-rad_sw")
+			{
+				download_filenames="nlwrs.mon.mean.nc"
+				download_path=paste(basepath,download_filenames,sep="/")
+			}
+			
+			if(
+					# If overwrites are allowed...
+					overwrite | 
+					# If overwrites are disabled but the file is not present...
+					(!overwrite & !file.exists(download_filenames[i]))
+					)
+			{
+				download.file(download_path[i],destfile=download_filenames[i])
+			}
+			
+			if(standardize)
+			{
+				narr_brick_list=vector(mode="list",length=length(download_filenames))
+				for(i in 1:length(download_filenames))
+				{
+					narr_brick_list[[i]]=brick(download_filenames)
+				}
+			}
+			
+		}
+
+
+
 		if(climate_source=="NARR-monthlymean-wnd")
 		{
 			require("ncdf")
@@ -261,7 +345,8 @@ get_climate_data <- function(
 			{
 				download_filenames=c("uwnd.10m.mon.ltm.nc","vwnd.10m.mon.ltm.nc")
 				download_path=paste(basepath,download_filenames,sep="/")
-			}	
+			}
+			
 			for(i in 1:length(download_filenames))
 			{
 				if(
@@ -311,7 +396,50 @@ get_climate_data <- function(
 			
 		}
 		
-	
+		# Needs passwords, boo.  Not pursuing this...
+		if(climate_source=="PGF-daily-rad_sw" | climate_source=="PGF-daily-rad_lw")
+		{
+			
+			if(climate_source=="PGF-daily-rad_sw")
+			{
+				basepath="http://dss.ucar.edu/datazone/dsszone/ds314.0/daily/"
+				pgf_prefix="dlwrf_daily_"
+			}
+			#dlwrf_daily_1948-1948.nc
+			if(missing(dates))
+			{
+				startdate=as.Date(date_range[1])
+				enddate=as.Date(date_range[2])
+				dates=seq.Date(startdate,enddate,by="year")
+				if(verbose)
+				{
+					print("Downloading/preparing the following dates...")
+					print(dates)
+				}
+			}
+			years=format(dates,"%Y")
+			pgf_filenames=paste(pgf_prefix,years,"-",years,".nc",sep="")
+			dates_N=length(pgf_filenames)
+			pgf_path=paste(basepath,pgf_filenames,sep="")
+			
+			for(i in 1:dates_N)
+			{
+				if(
+						# If overwrites are allowed...
+						overwrite | 
+						# If overwrites are disabled but the gunzipped or decompressed file is not present...
+						(!overwrite & !file.exists(pgf_filenames[[i]]))
+						)
+				{
+					download.file(pgf_path[i],destfile=basename(pgf_path[i]))
+				}
+			}
+			
+			
+			
+		}
+		
+		
 #	return(final_raster_list)
 	
 }

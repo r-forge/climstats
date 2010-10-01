@@ -8,21 +8,28 @@
 This function downloads and preprocesses climate data from a variety of sources.
 }
 \usage{
-get_climate_data(climate_source,date_range,download_folder,final_folder,standardize=TRUE,snow_nthreads=1,overwrite=FALSE,wnd_speed_height_correction=TRUE,verbose=FALSE)
+get_climate_data(climate_source,date_range,dates,download_folder,final_folder,standardize=TRUE,snow_nthreads=1,overwrite=FALSE,wnd_speed_height_correction=TRUE,verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{climate_source}{
 A datasource to fetch climate data from.  The following datasources are currently supported:
-	"PRISM-800m-ppt": 		PRISM 800m monthly precipitation grids
-	"PRISM-800m-tmin":		PRISM 800m monthly minimum temperature grids
-	"PRISM-800m-tmax":		PRISM 800m monthly maximum temperature grids
-	"PRISM-800m-spi":		PRISM 800m monthly standardized precipitation index grids
-	"PRISM-800m-tdmean":	PRISM 800m monthly dewpoint grids
-	"NARR-monthlymean-wnd":	North American Regional Reanalysis longterm monthly mean wind velocity
+\itemize{	
+	\item "PRISM-800m-ppt": 		PRISM 800m monthly precipitation grids
+	\item "PRISM-800m-tmin":		PRISM 800m monthly minimum temperature grids
+	\item "PRISM-800m-tmax":		PRISM 800m monthly maximum temperature grids
+	\item "PRISM-800m-spi":		PRISM 800m monthly standardized precipitation index grids
+	\item "PRISM-800m-tdmean":	PRISM 800m monthly dewpoint grids
+	\item "PRISM-800m-elev":	PRISM 800m elevation data
+	\item "NARR-monthlymean-wnd":	North American Regional Reanalysis longterm monthly mean wind velocity
+}
+
 }
   \item{date_range}{
 A vector of length 2 containing the starting date and ending date of a range of climate data to download.
+}
+  \item{dates}{
+Unused at present.
 }
   \item{download_folder}{
 The target download directory of the raw data.
@@ -31,7 +38,11 @@ The target download directory of the raw data.
 The final directory to store the preprocessed grd files.
 }
   \item{standardize}{
-standardize=TRUE converts the downloaded dataset to standard units used by climstats (e.g. for precipitation: mm H20 per day, temperature: deg C).
+standardize=TRUE converts the downloaded dataset to standard units used by climstats 
+\itemize{
+	\item precipitation: mm H20 per day
+	\item temperature: deg C
+}
 }
   \item{snow_nthreads}{
 The number of threads (CPUs) to use when processing.  If snow_nthreads>1, the algorithm will attempt to use the multiple processing package snow via MPI.  CURRENTLY UNSUPPORTED.
@@ -55,7 +66,10 @@ verbose=TRUE will print process information.
 Returns a RasterLayer, RasterBrick or RasterStack object, as well as saving the objects to disk.
 }
 \references{
-%% ~put references to the literature/web site here ~
+\itemize{
+\item PRISM data: \url{http://www.prism.oregonstate.edu/}
+\item NCEP North American Regional Reanalysis: \url{http://www.esrl.noaa.gov/psd/data/gridded/data.narr.html}
+}
 }
 \author{
 Jonathan A. Greenberg
@@ -71,7 +85,17 @@ Jonathan A. Greenberg
 }
 
 \examples{
-%% TBD
+# Download and decompress PRISM monthly precipitation data but do not post-process it.
+ppt=get_climate_data("PRISM-800m-ppt",date_range=c("2000/1/1","2001/12/31"),standardize=FALSE)
+# Note the raw, decompressed downloaded data.
+dir()
+# Download and post-process PRISM monthly precipitation data (note that as long as overwrite=FALSE, it will not
+#	redownload the files, just post-process the files already aquired during the previous step.
+ppt=get_climate_data("PRISM-800m-ppt",date_range=c("2000/1/1","2001/12/31"),standardize=TRUE,overwrite=FALSE)
+# Note the raw raster format files (*_raw.grd), and the corrected raster format data (*_climstats.grd).
+dir()
+summary(ppt)
+ppt@zvalue
 
 }
 
