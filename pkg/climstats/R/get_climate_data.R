@@ -15,7 +15,12 @@ get_climate_data <- function(
 		overwrite=FALSE,
 		wnd_speed_height_correction=TRUE,
 		verbose=FALSE,
-		enable_download=FALSE)
+		enable_download=FALSE,
+		local_files,
+		preconvert=TRUE,
+		output_basename="climstats_data",
+		proj,
+		zvalue)
 {	
 
 	# climate_source:
@@ -284,7 +289,7 @@ get_climate_data <- function(
 			return(climstats_stack)
 			}
 			
-		} # End PRISM
+		} # End PRISM monthly climate data
 		
 		# North American Regional Reanalysis data (monthly mean)
 		# http://www.esrl.noaa.gov/psd/data/gridded/data.narr.html
@@ -403,7 +408,7 @@ get_climate_data <- function(
 				}
 			}
 			
-		}
+		} # END NARR-monthlymean-wnd
 		
 		# Needs passwords, boo.  Not pursuing this...
 		if(climate_source=="PGF-daily-rad_sw" | climate_source=="PGF-daily-rad_lw")
@@ -443,10 +448,58 @@ get_climate_data <- function(
 					download.file(pgf_path[i],destfile=basename(pgf_path[i]))
 				}
 			}
-			
-			
-			
 		}
+		
+		if(climate_source=="generic")
+		{
+			# Search for the local files
+			input_files=dir(dirname(local_files),
+					pattern=basename(local_files),
+					full.names=TRUE)
+			input_files_N=length(input_files)
+			
+			if (input_files_N==0)
+			{
+				print("No files found, exiting")
+				return()
+			}
+			# TODO: add preconversion here.
+	
+			raster_object_from_files=stack(sort(input_files))
+			
+			if(!missing(proj))
+			{
+				projection(raster_object_from_files)=proj
+			}
+			
+			if(missing(zname))
+			{
+				raster_object_from_files@zname="NA"
+			} else
+			{
+				raster_object_from_files@zname=zname
+				if(zvalue=="months")
+				{
+					if (nlayers(raster_object_from_files)!=12)
+					# || length(zvalue) != 12
+					{
+						print("zname=months requires exactly 12 layers in the files and zvalue to be of length 12...")
+						return()
+					}
+					if(missing(zvalue))
+					{
+						raster_object_from_files@zvalue=seq.Date(as.Date("9999-01-01"),as.Date("9999-12-31"),by="month")
+					} else
+					{
+						raster_object_from_files@zvalue=zvalue
+					}
+				} else
+				{
+					raster_object_from_files@zvalue=zvalue	
+				}
+			}
+			return(raster_object_from_files)
+		} # END generic
 		
 		
 #	return(final_raster_list)
