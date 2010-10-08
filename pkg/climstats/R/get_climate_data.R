@@ -14,7 +14,8 @@ get_climate_data <- function(
 		snow_nthreads=1,
 		overwrite=FALSE,
 		wnd_speed_height_correction=TRUE,
-		verbose=FALSE)
+		verbose=FALSE,
+		enable_download=FALSE)
 {	
 
 	# climate_source:
@@ -52,15 +53,18 @@ get_climate_data <- function(
 		prism_filenames="us_25m_dem.asc.gz"
 		prism_filenames_gunzipped="us_25m_dem.asc"
 		prism_path=paste(basepath,prism_filenames,sep="/")
-
-		if(
-				# If overwrites are allowed...
-				overwrite | 
-				# If overwrites are disabled but the gunzipped or decompressed file is not present...
-				(!overwrite & !file.exists(prism_filenames_gunzipped) & !file.exists(prism_filenames))
-				)
+	
+		if(enable_download)
 		{
-			download.file(prism_path,destfile=basename(prism_path))
+			if(
+					# If overwrites are allowed...
+					overwrite | 
+					# If overwrites are disabled but the gunzipped or decompressed file is not present...
+					(!overwrite & !file.exists(prism_filenames_gunzipped) & !file.exists(prism_filenames))
+					)
+			{
+				download.file(prism_path,destfile=basename(prism_path))
+			}
 		}
 		
 		if(overwrite | (!overwrite & !file.exists(prism_filenames_gunzipped)))
@@ -142,17 +146,19 @@ get_climate_data <- function(
 		
 		# Download and extract the files
 
-		
-		for(i in 1:dates_N)
+		if(enable_download)
 		{
-			if(
-				# If overwrites are allowed...
-				overwrite | 
-				# If overwrites are disabled but the gunzipped or decompressed file is not present...
-				(!overwrite & !file.exists(prism_filenames_gunzipped[[i]]) & !file.exists(prism_filenames[[i]]))
-			)
+			for(i in 1:dates_N)
 			{
-				download.file(prism_path[i],destfile=basename(prism_path[i]))
+				if(
+					# If overwrites are allowed...
+					overwrite | 
+					# If overwrites are disabled but the gunzipped or decompressed file is not present...
+					(!overwrite & !file.exists(prism_filenames_gunzipped[[i]]) & !file.exists(prism_filenames[[i]]))
+				)
+				{
+					download.file(prism_path[i],destfile=basename(prism_path[i]))
+				}
 			}
 		}
 		for(i in 1:dates_N)
@@ -349,14 +355,17 @@ get_climate_data <- function(
 			
 			for(i in 1:length(download_filenames))
 			{
-				if(
-						# If overwrites are allowed...
-						overwrite | 
-						# If overwrites are disabled but the file is not present...
-						(!overwrite & !file.exists(download_filenames[i]))
-						)
-				{
-					download.file(download_path[i],destfile=download_filenames[i])
+				if(enable_download)
+					{
+					if(
+							# If overwrites are allowed...
+							overwrite | 
+							# If overwrites are disabled but the file is not present...
+							(!overwrite & !file.exists(download_filenames[i]))
+							)
+					{
+						download.file(download_path[i],destfile=download_filenames[i])
+					}
 				}
 			}
 			

@@ -8,7 +8,7 @@
 This function downloads and preprocesses climate data from a variety of sources.
 }
 \usage{
-get_climate_data(climate_source,date_range,dates,download_folder,final_folder,standardize=TRUE,snow_nthreads=1,overwrite=FALSE,wnd_speed_height_correction=TRUE,verbose=FALSE)
+get_climate_data(climate_source,date_range,dates,download_folder,final_folder,standardize=TRUE,snow_nthreads=1,overwrite=FALSE,wnd_speed_height_correction=TRUE,verbose=FALSE,enable_download=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -34,6 +34,7 @@ Unused at present.
   \item{download_folder}{
 The target download directory of the raw data.
 }
+
   \item{final_folder}{
 The final directory to store the preprocessed grd files.
 }
@@ -56,6 +57,9 @@ wnd_speed_height_correction=TRUE (default) corrects wind speed data to wind spee
 
   \item{verbose}{
 verbose=TRUE will print process information.
+}
+  \item{enable_download}{
+If enable_download=TRUE (default), data will be downloaded, otherwise download will be skipped.
 }
 
 }
