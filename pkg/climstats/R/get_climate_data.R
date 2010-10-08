@@ -483,7 +483,7 @@ get_climate_data <- function(
 						print("zvalue=months requires exactly 12 layers in the files and zvalue to be of length 12...")
 						return()
 					}
-					raster_object_from_files@zvalue=seq.Date(as.Date("9999-01-01"),as.Date("9999-12-31"),by="month")
+					raster_object_from_files@zvalue=as.character(seq.Date(as.Date("9999-01-01"),as.Date("9999-12-31"),by="month"))
 				} else
 				{
 					raster_object_from_files@zvalue=zvalue	
