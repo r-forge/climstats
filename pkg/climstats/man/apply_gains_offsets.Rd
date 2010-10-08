@@ -2,7 +2,7 @@
 \alias{apply_gains_offsets}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
-\title{ the title }
+\title{ Apply gains and offsets }
 
 
 \description{
@@ -14,17 +14,17 @@ apply_gains_offsets(x, gains, offsets, divide_by_days_in_month=FALSE,snow_nthrea
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-%%     ~~Describe \code{x} here~~
+An input, such as a numeric vector (UNSUPPORTED) or a raster object. 
 }
   \item{gains}{
-%%     ~~Describe \code{gains} here~~
+The gain to apply to the input.  gain should be either a numeric vector equal to the nlayers(x) (if x is a raster) or a single value which will be applied to all layers.
 }
   \item{offsets}{
-%%     ~~Describe \code{offsets} here~~
+The offset to apply to the input.  gain should be either a numeric vector equal to the nlayers(x) (if x is a raster) or a single value which will be applied to all layers.
 }  \item{divide_by_days_in_month}{
-%%     ~~Describe \code{offsets} here~~
+IF x is a raster, and has a Date-coercible zvalue set, setting divide_by_days_in_month=TRUE will divide a layer by the numbers of days in the month.
 }  \item{snow_nthreads}{
-%%     ~~Describe \code{offsets} here~~
+UNUSED AT PRESENT.
 }
 }
 \details{
@@ -41,6 +41,6 @@ apply_gains_offsets(x, gains, offsets, divide_by_days_in_month=FALSE,snow_nthrea
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg
 }
 

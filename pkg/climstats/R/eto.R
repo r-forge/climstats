@@ -10,7 +10,7 @@
 ###############################################################################
 
 
-eto_raster <- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao",basename="eto_pm_climstats_",index_format="%Y-%m-%d",
+eto_save<- function(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao",basename="eto_pm_climstats_",index_format="%Y-%m-%d",
 		output_format="raster",overwrite=FALSE,verbose=FALSE) 
 {
 #	if(!missing(tavg))

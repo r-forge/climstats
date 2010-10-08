@@ -1,12 +1,12 @@
-\name{eto_raster}
-\alias{eto_raster}
+\name{eto_save}
+\alias{eto_save}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
 Calculate reference evapotranspiration (ETO) using raster inputs.
 }
 \usage{
-eto_raster(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao",basename="eto_pm_climstats_",index_format,
+eto_save(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao",basename="eto_pm_climstats_",index_format,
 		output_format="raster",overwrite=FALSE,verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.

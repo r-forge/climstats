@@ -3,7 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ the title }
 \description{
-TBD
+Aligns ("syncs") a Raster to a reference Raster. 
 }
 \usage{
 spatial_sync_raster(unsynced,reference,method="ngb",verbose=FALSE)
@@ -11,16 +11,16 @@ spatial_sync_raster(unsynced,reference,method="ngb",verbose=FALSE)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{unsynced}{
-%%     ~~Describe \code{brickstack} here~~
+A Raster object to be aligned to the reference raster.
 }
   \item{reference}{
-%%     ~~Describe \code{brickstack} here~~
+A Raster object to be used as the reference for syncing.  Syncing will use the reference's projection, resolution, and extent.
 }
   \item{method}{
-%%     ~~Describe \code{brickstack} here~~
+method used to compute values for the new RasterLayer. Either 'ngb' (nearest neighbor) or 'bilinear' (bilinear interpolation).
 }
   \item{verbose}{
-%%     ~~Describe \code{brickstack} here~~
+verbose=TRUE gives feedback on the process (UNSUPPORTED AT PRESENT).
 }
 }
 \details{
@@ -37,7 +37,7 @@ spatial_sync_raster(unsynced,reference,method="ngb",verbose=FALSE)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg
 }
 \note{
 %%  ~~further notes~~
@@ -49,27 +49,7 @@ spatial_sync_raster(unsynced,reference,method="ngb",verbose=FALSE)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (brickstack) 
-{
-    if ((class(brickstack) != "RasterStack") & (class(brickstack) != 
-        "RasterBrick")) {
-        print("Input must be a RasterStack or RasterBrick")
-        return()
-    }
-    brickstack_nlayers = nlayers(brickstack)
-    brickstack_pos = 1:brickstack_nlayers
-    raster_list = mapply(function(brickstack, layer) {
-        raster(brickstack, layer = layer)
-    }, brickstack_pos, MoreArgs = list(brickstack = brickstack), 
-        SIMPLIFY = FALSE)
-    return(raster_list)
-  }
-}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }
