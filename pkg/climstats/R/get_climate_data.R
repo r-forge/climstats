@@ -472,18 +472,15 @@ get_climate_data <- function(
 				projection(raster_object_from_files)=proj
 			}
 			
-			if(missing(zname))
+			if(!missing(zvalue))
 			{
-				raster_object_from_files@zname="NA"
-			} else
-			{
-				raster_object_from_files@zname=zname
+			#	raster_object_from_files@zname=zname
 				if(zvalue=="months")
 				{
 					if (nlayers(raster_object_from_files)!=12)
 					# || length(zvalue) != 12
 					{
-						print("zname=months requires exactly 12 layers in the files and zvalue to be of length 12...")
+						print("zvalue=months requires exactly 12 layers in the files and zvalue to be of length 12...")
 						return()
 					}
 					if(missing(zvalue))
