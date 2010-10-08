@@ -40,6 +40,11 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 		summary_interval_idx=as.numeric(format(climate_data_dates_subset,"%m"))
 	}
 	
+	if(summary_interval=="yearly")
+	{
+		summary_interval_idx=as.numeric(format(climate_data_dates_subset,"%Y"))
+	}
+	
 	# Perform
 	if(summary_type=="mean")
 	{
