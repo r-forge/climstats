@@ -33,20 +33,26 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	if(summary_interval=="all")
 	{
 		summary_interval_idx=rep(1,length(climate_data_dates_idx_subset))
+		zvalue_final="9999-01-01"
 	}
 	
 	if(summary_interval=="monthly")
 	{
 		summary_interval_idx=as.factor(as.numeric(format(climate_data_dates_subset,"%m")))
+		zvalue_final=as.character(as.Date(paste("9999",unique(as.numeric(format(climate_data_dates_subset,"%m"))),1,sep="-")))
+		
 		# TO DO, FIX ZVALUE
 	}
 	
 	if(summary_interval=="yearly")
 	{
 		summary_interval_idx=as.factor(as.numeric(format(climate_data_dates_subset,"%Y")))
+
+		zvalue_final=as.character(as.Date(paste(unique(as.numeric(format(climate_data_dates_subset,"%Y"))),1,1,sep="-")))
 		if(verbose)
 		{
 			print(summary_interval_idx)
+			print(zvalue_final)
 		}
 	}
 	
@@ -90,5 +96,6 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	{
 		climate_summary=stackApply(climate_data_subset, summary_interval_idx, which.min.simple)
 	}
+	climate_summary@zvalue=zvalue_final
 	return(climate_summary)
 }
