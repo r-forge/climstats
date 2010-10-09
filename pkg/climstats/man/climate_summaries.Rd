@@ -6,7 +6,7 @@
 Summarizes climate data.
 }
 \usage{
-climate_summaries(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin)
+climate_summaries(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin,verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -23,6 +23,9 @@ climate_summaries(climate_data,date_range,summary_type,summary_interval="all",ap
 %%     ~~Describe \code{brickstack} here~~
 }
   \item{apply_maxmin}{
+%%     ~~Describe \code{brickstack} here~~
+}
+  \item{verbose}{
 %%     ~~Describe \code{brickstack} here~~
 }
 }
@@ -52,26 +55,6 @@ climate_summaries(climate_data,date_range,summary_type,summary_interval="all",ap
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (brickstack) 
-{
-    if ((class(brickstack) != "RasterStack") & (class(brickstack) != 
-        "RasterBrick")) {
-        print("Input must be a RasterStack or RasterBrick")
-        return()
-    }
-    brickstack_nlayers = nlayers(brickstack)
-    brickstack_pos = 1:brickstack_nlayers
-    raster_list = mapply(function(brickstack, layer) {
-        raster(brickstack, layer = layer)
-    }, brickstack_pos, MoreArgs = list(brickstack = brickstack), 
-        SIMPLIFY = FALSE)
-    return(raster_list)
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
