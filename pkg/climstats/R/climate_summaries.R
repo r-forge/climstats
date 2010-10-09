@@ -4,7 +4,7 @@
 ###############################################################################
 
 
-climate_summaries <- function(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin)
+climate_summaries <- function(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin,verbose=FALSE)
 {
 	# This works on rasters only.
 	
@@ -37,13 +37,17 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	
 	if(summary_interval=="monthly")
 	{
-		summary_interval_idx=as.numeric(format(climate_data_dates_subset,"%m"))
+		summary_interval_idx=as.factor(as.numeric(format(climate_data_dates_subset,"%m")))
 		# TO DO, FIX ZVALUE
 	}
 	
 	if(summary_interval=="yearly")
 	{
-		summary_interval_idx=as.numeric(format(climate_data_dates_subset,"%Y"))
+		summary_interval_idx=as.factor(as.numeric(format(climate_data_dates_subset,"%Y")))
+		if(verbose)
+		{
+			print(summary_interval_idx)
+		}
 	}
 	
 	# Perform
