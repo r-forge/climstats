@@ -38,6 +38,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	if(summary_interval=="monthly")
 	{
 		summary_interval_idx=as.numeric(format(climate_data_dates_subset,"%m"))
+		# TO DO, FIX ZVALUE
 	}
 	
 	if(summary_interval=="yearly")
