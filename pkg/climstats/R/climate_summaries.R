@@ -82,6 +82,11 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 		climate_summary=stackApply(climate_data_subset, summary_interval_idx, cv)
 	}
 	
+	if(summary_type=="spi")
+	{
+		climate_summary=stackApply(climate_data_subset, summary_interval_idx, spi)
+	}
+	
 	if(summary_type=="which.max.simple")
 	{
 		climate_summary=stackApply(climate_data_subset, summary_interval_idx, which.max.simple)
