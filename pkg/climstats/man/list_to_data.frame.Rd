@@ -1,9 +1,9 @@
 \name{list_to_data.frame}
 \alias{list_to_data.frame}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Convert a List to a Data Frame }
 \description{
-Takes a list of equal sized objects and returns a data.frame.
+Takes a list of equal-sized objects and returns a data frame.
 }
 \usage{
 list_to_data.frame(x)
@@ -11,18 +11,14 @@ list_to_data.frame(x)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-%%     ~~Describe \code{brickstack} here~~
+a list of vectors of equal length
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+A data frame with listed vectors as rows.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -40,26 +36,10 @@ list_to_data.frame(x)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (brickstack) 
-{
-    if ((class(brickstack) != "RasterStack") & (class(brickstack) != 
-        "RasterBrick")) {
-        print("Input must be a RasterStack or RasterBrick")
-        return()
-    }
-    brickstack_nlayers = nlayers(brickstack)
-    brickstack_pos = 1:brickstack_nlayers
-    raster_list = mapply(function(brickstack, layer) {
-        raster(brickstack, layer = layer)
-    }, brickstack_pos, MoreArgs = list(brickstack = brickstack), 
-        SIMPLIFY = FALSE)
-    return(raster_list)
-  }
+x<-c(4,1:3,NA,4)
+y<-c(2:4,1,1,NA)
+length(x)==length(y)
+list_to_data.frame(list(x,y))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

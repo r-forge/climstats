@@ -1,9 +1,9 @@
 \name{which.min.simple}
 \alias{which.min.simple}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Location of Minimum Value }
 \description{
-TBD.
+Locates the smallest value of the input object.
 }
 \usage{
 which.min.simple(x,na.rm=TRUE)
@@ -11,21 +11,18 @@ which.min.simple(x,na.rm=TRUE)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-%%     ~~Describe \code{brickstack} here~~
+a numeric object
 }
   \item{na.rm}{
-%%     ~~Describe \code{brickstack} here~~
+a logical indicating whether missing values should be removed.
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+An integer of length 1 giving the index of the minimum of x 
+or NA if the minimum of x is not unique, x has no non-NAs, or na.rm=F.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -40,29 +37,18 @@ which.min.simple(x,na.rm=TRUE)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\base{which.min}}
+\code{\base{which}}
+\code{\base{min}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (brickstack) 
-{
-    if ((class(brickstack) != "RasterStack") & (class(brickstack) != 
-        "RasterBrick")) {
-        print("Input must be a RasterStack or RasterBrick")
-        return()
-    }
-    brickstack_nlayers = nlayers(brickstack)
-    brickstack_pos = 1:brickstack_nlayers
-    raster_list = mapply(function(brickstack, layer) {
-        raster(brickstack, layer = layer)
-    }, brickstack_pos, MoreArgs = list(brickstack = brickstack), 
-        SIMPLIFY = FALSE)
-    return(raster_list)
-  }
+x<-c(4,1:3,NA,4)
+y<-c(2:4,1,1,NA)
+## The index is only calculated for a unique minimum
+which.min.simple(x)
+which.min.simple(y)
+which.min.simple(y,na.rm=F)
+which.min.simple(x,na.rm=F)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

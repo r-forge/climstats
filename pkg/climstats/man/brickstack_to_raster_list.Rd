@@ -1,7 +1,7 @@
 \name{brickstack_to_raster_list}
 \alias{brickstack_to_raster_list}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Create a list of climate rasters }
 \description{
 Converts a raster stack or a brick into a list of individual RasterLayers.
 }
@@ -38,6 +38,7 @@ brickstack_to_raster_list(brickstack)
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link[raster]{stack}},\code{\link[raster]{brick}} 
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
