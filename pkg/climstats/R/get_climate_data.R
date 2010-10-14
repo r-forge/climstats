@@ -353,7 +353,7 @@ get_climate_data <- function(
 			}
 			
 			# Set up filenames to download.
-			if(climate_source=="NARR-monthlymean-wnd")
+			if(climate_source=="NARR-longtermmonthlymean-wnd")
 			{
 				download_filenames=c("uwnd.10m.mon.ltm.nc","vwnd.10m.mon.ltm.nc")
 				download_path=paste(basepath,download_filenames,sep="/")
@@ -384,7 +384,7 @@ get_climate_data <- function(
 					narr_brick_list[[i]]=brick(download_filenames)
 				}
 				
-				if(climate_source=="NARR-monthlymean-wnd")
+				if(climate_source=="NARR-longtermmonthlymean-wnd")
 				{				
 					if(!wnd_speed_height_correction)
 					{
