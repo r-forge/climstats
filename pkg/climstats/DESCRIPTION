@@ -1,12 +1,12 @@
 Package: climstats
 Type: Package
-Title: Functions for the preparation and summarization of climate data. 
+Title: Functions for working with station and gridded climate data. 
 Version: 0.3
 Date: 2010-10-11
 Author: Jonathan Asher Greenberg, Solomon Z. Dobrowski, Quinn Hart, Alison Mynsberge  
 Maintainer: Jonathan Asher Greenberg <climstats@estarcion.net>
 Depends: R (>= 2.11.0), raster (>= 1.6), rgdal, chron, zoo, sp
 Suggests: ncdf, snow, R.utils, lmom
-Description: Functions for the preparation and summarization of climate data.
+Description: Functions for working with station and gridded climate data.
 License: GPL (>= 2)
 LazyLoad: yes
