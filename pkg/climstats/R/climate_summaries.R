@@ -84,7 +84,9 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	
 	if(summary_type=="spi")
 	{
-		climate_summary=stackApply(climate_data_subset, summary_interval_idx, spi)
+	# Indices are not working right now, so we are going to ignore the indices
+	#	climate_summary=stackApply(climate_data_subset, summary_interval_idx, spi)
+		climate_summary=calc(climate_data_subset,fun=spi.matrix,na.rm=TRUE)
 	}
 	
 	if(summary_type=="which.max.simple")
