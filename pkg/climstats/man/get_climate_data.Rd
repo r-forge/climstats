@@ -23,7 +23,8 @@ A datasource to fetch climate data from.  The following datasources are currentl
 	\item "PRISM-800m-spi":		PRISM 800m monthly standardized precipitation index grids
 	\item "PRISM-800m-tdmean":	PRISM 800m monthly dewpoint grids
 	\item "PRISM-800m-elev":	PRISM 800m elevation data
-	\item "NARR-monthlymean-wnd":	North American Regional Reanalysis longterm monthly mean wind velocity
+	\item "NARR-monthlymean-wnd":	North American Regional Reanalysis monthly mean wind velocity
+	\item "NARR-longtermmonthlymean-wnd":	North American Regional Reanalysis long-term monthly mean wind velocity
 	\item "generic": arbitrary local files.  local_files must be set if this is used.
 }
 

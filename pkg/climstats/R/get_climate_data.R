@@ -334,7 +334,8 @@ get_climate_data <- function(
 
 
 
-		if(climate_source=="NARR-monthlymean-wnd")
+		# BEGIN NARR-longtermmonthlymean-wnd
+		if(climate_source=="NARR-longtermmonthlymean-wnd")
 		{
 			require("ncdf")
 			basepath="ftp://ftp.cdc.noaa.gov/Datasets/NARR/Derived/monolevel"
@@ -362,6 +363,83 @@ get_climate_data <- function(
 			{
 				if(enable_download)
 					{
+					if(
+							# If overwrites are allowed...
+							overwrite | 
+							# If overwrites are disabled but the file is not present...
+							(!overwrite & !file.exists(download_filenames[i]))
+							)
+					{
+						download.file(download_path[i],destfile=download_filenames[i])
+					}
+				}
+			}
+			
+			# Preprocess the data if requested.
+			if(standardize)
+			{
+				narr_brick_list=vector(mode="list",length=length(download_filenames))
+				for(i in 1:length(download_filenames))
+				{
+					narr_brick_list[[i]]=brick(download_filenames)
+				}
+				
+				if(climate_source=="NARR-monthlymean-wnd")
+				{				
+					if(!wnd_speed_height_correction)
+					{
+						wnd=windvectors_to_wind(narr_brick_list[[1]],narr_brick_list[[2]])
+					} else
+					{
+						wnd=windvectors_to_wind(narr_brick_list[[1]],narr_brick_list[[2]],10)
+					}
+					
+					
+					if(!missing(final_folder))
+					{
+						setwd(final_folder)
+					}
+					
+					setOptions(setfileext=FALSE)
+					projection(wnd)="+proj=lcc +lat_1=50 +lat_2=50 +lat_0=50 +lon_0=-107 +x_0=5632642 +y_0=4612546"
+					writeRaster(wnd,"wnd.10m.mon.ltm.grd",format="raster",overwrite=TRUE)	
+					setOptions(setfileext=TRUE)
+					
+					return(wnd)
+				}
+			}
+			
+		} # END NARR-longtermmonthlymean-wnd
+		
+		# BEGIN NARR-monthlymean-wnd
+		if(climate_source=="NARR-monthlymean-wnd")
+		{
+			require("ncdf")
+			basepath="ftp://ftp.cdc.noaa.gov/Datasets/ncep.reanalysis.derived/surface"
+			
+			#		if(missing(dates))
+			#		{
+			#			dates=seq.Date(startdate,enddate,by="month")
+			#		}
+			
+			#		dates_N=length(dates)
+			
+			if(!missing(download_folder))
+			{
+				setwd(download_folder)
+			}
+			
+			# Set up filenames to download.
+			if(climate_source=="NARR-monthlymean-wnd")
+			{
+				download_filenames=c("uwnd.mon.mean.nc","vwnd.mon.mean.nc")
+				download_path=paste(basepath,download_filenames,sep="/")
+			}
+			
+			for(i in 1:length(download_filenames))
+			{
+				if(enable_download)
+				{
 					if(
 							# If overwrites are allowed...
 							overwrite | 
