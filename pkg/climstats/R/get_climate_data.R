@@ -411,11 +411,11 @@ get_climate_data <- function(
 			
 		} # END NARR-longtermmonthlymean-wnd
 		
-		# BEGIN NCEP-monthlymean-wnd
-		if(climate_source=="NCEP-monthlymean-wnd")
+		# BEGIN NARR-monthlymean-wnd
+		if(climate_source=="NARR-monthlymean-wnd")
 		{
 			require("ncdf")
-			basepath="ftp://ftp.cdc.noaa.gov/Datasets/ncep.reanalysis.derived/surface"
+			basepath="ftp://ftp.cdc.noaa.gov/Datasets/NARR/Monthlies/monolevel"
 			
 			#		if(missing(dates))
 			#		{
@@ -430,9 +430,9 @@ get_climate_data <- function(
 			}
 			
 			# Set up filenames to download.
-			if(climate_source=="NCEP-monthlymean-wnd")
+			if(climate_source=="NARR-monthlymean-wnd")
 			{
-				download_filenames=c("uwnd.mon.mean.nc","vwnd.mon.mean.nc")
+				download_filenames=c("uwnd.10m.mon.mean.nc","vwnd.10m.mon.mean.nc")
 				download_path=paste(basepath,download_filenames,sep="/")
 			}
 			
@@ -461,7 +461,7 @@ get_climate_data <- function(
 					narr_brick_list[[i]]=brick(download_filenames)
 				}
 				
-				if(climate_source=="NCEP-monthlymean-wnd")
+				if(climate_source=="NARR-monthlymean-wnd")
 				{				
 					if(!wnd_speed_height_correction)
 					{
@@ -478,7 +478,7 @@ get_climate_data <- function(
 					}
 					
 					setOptions(setfileext=FALSE)
-		#			projection(wnd)="+proj=lcc +lat_1=50 +lat_2=50 +lat_0=50 +lon_0=-107 +x_0=5632642 +y_0=4612546"
+					projection(wnd)="+proj=lcc +lat_1=50 +lat_2=50 +lat_0=50 +lon_0=-107 +x_0=5632642 +y_0=4612546"
 					writeRaster(wnd,"wnd.10m.mon.ltm.grd",format="raster",overwrite=TRUE)	
 					setOptions(setfileext=TRUE)
 					
