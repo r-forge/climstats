@@ -24,7 +24,7 @@ A data frame with listed vectors as rows.
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg, Alison R. Mynsberge
 }
 \note{
 %%  ~~further notes~~

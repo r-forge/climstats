@@ -28,7 +28,7 @@ or NA if the maximum of x is not unique, x has no non-NAs, or na.rm=F.
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg, Alison R. Mynsberge
 }
 \note{
 %%  ~~further notes~~

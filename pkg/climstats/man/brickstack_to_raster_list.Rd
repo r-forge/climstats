@@ -28,7 +28,7 @@ brickstack_to_raster_list(brickstack)
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg, Alison R. Mynsberge
 }
 \note{
 %%  ~~further notes~~
