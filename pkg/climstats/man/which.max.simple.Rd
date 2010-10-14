@@ -37,9 +37,9 @@ Jonathan A. Greenberg, Alison R. Mynsberge
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\base{which.max}}
-\code{\base{which}}
-\code{\base{max}}
+\code{\link[base]{which.max}}, 
+\code{\link[base]{which}}, 
+\code{\link[base]{max}}
 }
 \examples{
 x<-c(2:4,1,1,NA)

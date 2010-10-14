@@ -37,9 +37,9 @@ Jonathan A. Greenberg, Alison R. Mynsberge
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\base{which.min}}
-\code{\base{which}}
-\code{\base{min}}
+\code{\link[base]{which.min}}, 
+\code{\link[base]{which}}, 
+\code{\link[base]{min}}
 }
 \examples{
 x<-c(4,1:3,NA,4)

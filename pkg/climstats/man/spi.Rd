@@ -9,14 +9,16 @@
 Calculates the standardized precipitation index (SPI).
 }
 \usage{
-spi(ppt)
+spi(ppt, na.rm = TRUE) 
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{ppt}{
 Precipitation amounts. 
 }
- 
+  \item{na.rm}{
+a logical indicating whether missing values should be removed.
+}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -32,6 +34,6 @@ Precipitation amounts.
 %% ~put references to the literature/web site here ~
 }
 \author{
-Jonathan A. Greenberg
+Jonathan A. Greenberg, Alison R. Mynsberge
 }
 
