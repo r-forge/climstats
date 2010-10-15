@@ -1,4 +1,5 @@
 \name{spi}
+\alias{spi.matrix}
 \alias{spi}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
@@ -9,12 +10,14 @@
 Calculates the standardized precipitation index (SPI).
 }
 \usage{
-spi(ppt, na.rm = TRUE) 
+spi(ppt, na.rm = TRUE)
+spi.matrix(ppt, na.rm=TRUE) 
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{ppt}{
-Precipitation amounts. 
+A time series of precipitation amounts in a vector or a matrix with precipitation time series in
+each column. 
 }
   \item{na.rm}{
 a logical indicating whether missing values should be removed.
@@ -24,11 +27,10 @@ a logical indicating whether missing values should be removed.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item{spi}{returns the SPI value for a precipitation vector.}
+  \item{spi.matrix}{returns a vector of
+standardized precipitation indices for a precipitation matrix or the SPI value for
+a precipitation vector.}
 }
 \references{
 %% ~put references to the literature/web site here ~
