@@ -41,7 +41,7 @@ Jonathan A. Greenberg
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link[climstats]{brickstack_to_saved_rasters}}
 }
 
 \examples{
