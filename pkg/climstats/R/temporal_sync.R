@@ -76,8 +76,16 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 			synced_stack@zvalue=reference@zvalue
 			
 			return(synced_stack)
-		}	
+		}	else
+		{
+			# If unsynced is a raster* object
+			unsynced_stack_list=brickstack_to_raster_list(unsynced_stack)
+			synced_stack=stack(unsynced_stack_list[reference_unsynced_idx])
+			synced_stack@zvalue=reference@zvalue
+			return(synced_stack)
+		}
 	}
+	
 	if(synctype=="by.year.month")
 	{
 		if(verbose)
@@ -120,6 +128,13 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 			synced_stack@zvalue=reference@zvalue
 			
 			return(synced_stack)
-		}	
+		}	else
+		{
+			# If unsynced is a raster* object
+			unsynced_stack_list=brickstack_to_raster_list(unsynced_stack)
+			synced_stack=stack(unsynced_stack_list[reference_unsynced_idx])
+			synced_stack@zvalue=reference@zvalue
+			return(synced_stack)
+		}
 	}
 }
