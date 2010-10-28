@@ -117,9 +117,9 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 		}
 		if(class(unsynced)=="character")
 		{
-			synced_fname_list=vector(mode="list",length=length(reference_months))
-			synced_bands_list=vector(mode="list",length=length(reference_months))
-			for(i in 1:length(reference_months))
+			synced_fname_list=vector(mode="list",length=length(reference_mo_yr))
+			synced_bands_list=vector(mode="list",length=length(reference_mo_yr))
+			for(i in 1:length(reference_mo_yr))
 			{
 				synced_fname_list[[i]]=unsynced
 				synced_bands_list[[i]]=reference_unsynced_idx[i]
