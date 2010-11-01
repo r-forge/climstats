@@ -4,7 +4,8 @@
 ###############################################################################
 
 
-climate_summaries <- function(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin,verbose=FALSE)
+climate_summaries <- function(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin,verbose=FALSE,
+		probs)
 {
 	# This works on rasters only.
 	
@@ -108,6 +109,15 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 			climate_summary=calc((climate_summary_maxmin_mask*apply_maxmin),sum)
 		}
 	}
+	
+	if(summary_type=="quantile")
+	{
+		# We should probably check to make sure the probs are within 0 to 1.
+		quantile_function=function(x, na.rm){  probs = probs; quantile(x, probs =
+							probs, na.rm=na.rm ) }	
+		climate_summary=stackApply(climate_data_subset, summary_interval_idx, quantile_function)
+	}
+	
 	climate_summary@zvalue=zvalue_final
 	return(climate_summary)
 }

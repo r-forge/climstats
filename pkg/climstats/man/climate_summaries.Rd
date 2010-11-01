@@ -6,7 +6,7 @@
 Summarizes climate data.
 }
 \usage{
-climate_summaries(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin,verbose=FALSE)
+climate_summaries(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin,verbose=FALSE,probs)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -27,6 +27,9 @@ climate_summaries(climate_data,date_range,summary_type,summary_interval="all",ap
 }
   \item{verbose}{
 %%     ~~Describe \code{brickstack} here~~
+}
+  \item{probs}{
+numeric vector of probabilities with values in [0,1] used by summary_type=quantile.
 }
 }
 \details{

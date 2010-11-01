@@ -51,7 +51,7 @@ get_climate_data <- function(
 		final_folder=getwd()
 	}
 
-	if(	climate_source=="PRISM-800m-elev")
+	if(	climate_source=="PRISM-4km-elev")
 	{
 		require("R.utils")
 		basepath="ftp://prism.oregonstate.edu/pub/prism/us/grids"
@@ -93,14 +93,14 @@ get_climate_data <- function(
 			return(elev)
 		}
 			
-	} # END PRISM-800m-elev
+	} # END PRISM-4km-elev
 	
 	
-	if(	climate_source=="PRISM-800m-ppt" |
-		climate_source=="PRISM-800m-tmin" |
-		climate_source=="PRISM-800m-tmax" |
-		climate_source=="PRISM-800m-spi" |
-		climate_source=="PRISM-800m-tdmean")
+	if(	climate_source=="PRISM-4km-ppt" |
+		climate_source=="PRISM-4km-tmin" |
+		climate_source=="PRISM-4km-tmax" |
+		climate_source=="PRISM-4km-spi" |
+		climate_source=="PRISM-4km-tdmean")
 	{
 		require("R.utils")
 		

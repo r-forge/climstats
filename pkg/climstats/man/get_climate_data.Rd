@@ -17,12 +17,12 @@ get_climate_data(climate_source,date_range,dates,download_folder,final_folder,st
   \item{climate_source}{
 A datasource to fetch climate data from.  The following datasources are currently supported:
 \itemize{	
-	\item "PRISM-800m-ppt": 		PRISM 800m monthly precipitation grids
-	\item "PRISM-800m-tmin":		PRISM 800m monthly minimum temperature grids
-	\item "PRISM-800m-tmax":		PRISM 800m monthly maximum temperature grids
-	\item "PRISM-800m-spi":		PRISM 800m monthly standardized precipitation index grids
-	\item "PRISM-800m-tdmean":	PRISM 800m monthly dewpoint grids
-	\item "PRISM-800m-elev":	PRISM 800m elevation data
+	\item "PRISM-4km-ppt": 		PRISM 800m monthly precipitation grids
+	\item "PRISM-4km-tmin":		PRISM 800m monthly minimum temperature grids
+	\item "PRISM-4km-tmax":		PRISM 800m monthly maximum temperature grids
+	\item "PRISM-4km-spi":		PRISM 800m monthly standardized precipitation index grids
+	\item "PRISM-4km-tdmean":	PRISM 800m monthly dewpoint grids
+	\item "PRISM-4km-elev":	PRISM 800m elevation data
 	\item "NARR-monthlymean-wnd":	North American Regional Reanalysis monthly mean wind velocity
 	\item "NARR-longtermmonthlymean-wnd":	North American Regional Reanalysis long-term monthly mean wind velocity
 	\item "generic": arbitrary local files.  local_files must be set if this is used.
