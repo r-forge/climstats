@@ -3,7 +3,7 @@
 # Author: jonathan
 ###############################################################################
 
-spatial_sync_raster <- function(unsynced,reference,method="ngb",verbose=FALSE)
+spatial_sync_raster <- function(unsynced,reference,method="ngb",verbose=FALSE,crop_only=FALSE)
 {
 	new_projection=projection(reference)
 	old_projection=projection(unsynced)
@@ -18,7 +18,14 @@ spatial_sync_raster <- function(unsynced,reference,method="ngb",verbose=FALSE)
 		pr <- projectRaster(unsynced, pr_extent,method=method)
 	}
 	
-	synced_raster=crop(expand(pr,reference),reference)
+	if(crop_only)
+	{
+		synced_raster=crop(pr,reference)
+    } else
+	{
+		synced_raster=crop(expand(pr,reference),reference)
+	}
+
 	# This in theory shouldn't be neccessary...
 	extent(synced_raster)=extent(reference)
 	

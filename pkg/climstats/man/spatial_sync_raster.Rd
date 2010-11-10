@@ -6,7 +6,7 @@
 Aligns ("syncs") a Raster to a reference Raster. 
 }
 \usage{
-spatial_sync_raster(unsynced,reference,method="ngb",verbose=FALSE)
+spatial_sync_raster(unsynced,reference,method="ngb",verbose=FALSE,crop_only=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -22,6 +22,11 @@ method used to compute values for the new RasterLayer. Either 'ngb' (nearest nei
   \item{verbose}{
 verbose=TRUE gives feedback on the process (UNSUPPORTED AT PRESENT).
 }
+  \item{crop_only}{
+crop_only=TRUE will not attempt to expand images, but will only crop them.  If you know your unsynced is fully contained within the reference, use this to speed up the process.
+}
+
+
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
