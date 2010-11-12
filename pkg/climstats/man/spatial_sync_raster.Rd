@@ -22,9 +22,9 @@ method used to compute values for the new RasterLayer. Either 'ngb' (nearest nei
   \item{verbose}{
 verbose=TRUE gives feedback on the process (UNSUPPORTED AT PRESENT).
 }
-  \item{crop_only}{
-crop_only=TRUE will not attempt to expand images, but will only crop them.  If you know your unsynced is fully contained within the reference, use this to speed up the process.
-}
+%%  \item{crop_only}{
+%%crop_only=TRUE will not attempt to expand images, but will only crop them.  If you know your unsynced is fully contained within the reference, use this to speed up the process.
+%%}
 
 
 }
