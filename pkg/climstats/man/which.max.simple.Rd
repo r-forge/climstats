@@ -6,7 +6,7 @@
 Locates the largest value of the input object.
 }
 \usage{
-which.max.simple(x,na.rm=TRUE)
+which.max.simple(x,na.rm=TRUE,tie_value="NA")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -15,6 +15,9 @@ a numeric object
 }
   \item{na.rm}{
 a logical indicating whether missing values should be removed.
+}
+  \item{tie_value}{
+A character indicating how to deal with ties.  Can be "NA" (returns an NA if a tie is found) or "random" (returns a single randomly chosen member of the ties if a tie is found).
 }
 }
 \details{

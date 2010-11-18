@@ -4,7 +4,7 @@
 ###############################################################################
 
 
-which.max.simple=function(x,na.rm=TRUE)
+which.max.simple=function(x,na.rm=TRUE,tie_value="NA")
 {
 	if(na.rm)
 	{
@@ -21,14 +21,25 @@ which.max.simple=function(x,na.rm=TRUE)
 	}
 	if(sum(x %in% maxval) > 1)
 	{
-		return(NA)
+		# Ties exist, figure out what to do with them.
+		if(tie_value=="NA")
+		{
+			return(NA)
+		}
+		
+		if(tie_value=="random")
+		{
+			tie_postions=which(x==maxval)
+			return(sample(tie_postions,size=1))
+		}
+		
 	} else
 	{
 		return(which.max(x))
 	}
 }
 
-which.min.simple=function(x,na.rm=TRUE)
+which.min.simple=function(x,na.rm=TRUE,tie_value="NA")
 {
 	if(na.rm)
 	{
@@ -45,7 +56,18 @@ which.min.simple=function(x,na.rm=TRUE)
 	}
 	if(sum(x %in% minval) > 1)
 	{
-		return(NA)
+		# Ties exist, figure out what to do with them.
+		if(tie_value=="NA")
+		{
+			return(NA)
+		}
+		
+		if(tie_value=="random")
+		{
+			tie_postions=which(x==minval)
+			return(sample(tie_postions,size=1))
+		}
+		
 	} else
 	{
 		return(which.min(x))
