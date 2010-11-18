@@ -25,7 +25,7 @@ spatial_sync_raster <- function(unsynced,reference,method="ngb",verbose=FALSE)
 
 
 	# This in theory shouldn't be neccessary...
-#	extent(synced_raster)=extent(reference)
+	extent(synced_raster)=extent(reference)
 	
 	return(synced_raster)
 	
