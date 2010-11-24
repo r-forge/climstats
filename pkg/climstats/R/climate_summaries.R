@@ -5,7 +5,10 @@
 
 
 climate_summaries <- function(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin,verbose=FALSE,
-		probs)
+		probs,
+		# For which.max/min.simple
+		tie_value="random"
+		)
 {
 	# This works on rasters only.
 	
@@ -92,7 +95,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	
 	if(summary_type=="which.max.simple")
 	{
-		climate_summary=stackApply(climate_data_subset, summary_interval_idx, which.max.simple)
+		climate_summary=stackApply(climate_data_subset, summary_interval_idx, which.max.simple, tie_value=tie_value)
 		if(!missing(apply_maxmin))
 		{
 			climate_summary_maxmin_mask=index_raster_to_mask(climate_summary,nlayers=nlayers(climate_data))
@@ -102,7 +105,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	
 	if(summary_type=="which.min.simple")
 	{
-		climate_summary=stackApply(climate_data_subset, summary_interval_idx, which.min.simple)
+		climate_summary=stackApply(climate_data_subset, summary_interval_idx, which.min.simple, tie_value=tie_value)
 		if(!missing(apply_maxmin))
 		{
 			climate_summary_maxmin_mask=index_raster_to_mask(climate_summary,nlayers=nlayers(climate_data))
