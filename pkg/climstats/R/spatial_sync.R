@@ -17,7 +17,13 @@ spatial_sync_raster <- function(unsynced,reference,method="ngb",verbose=FALSE)
 		# We need to fix the extent
 		pr_extent <- setExtent(pr_extent,extent(reference))
 		res(pr_extent)=res(reference)
-		pr <- projectRaster(unsynced, pr_extent,method=method)
+		if(new_projection!=old_projection)
+		{
+			pr <- projectRaster(unsynced, pr_extent,method=method)
+		} else
+		{
+			pr <- resample(unsynced, pr_extent,method=method)
+		}
 	}
 	
 	expanded_raster=expand(pr,reference)
