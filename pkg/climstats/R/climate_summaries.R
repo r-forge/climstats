@@ -117,7 +117,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	{
 		# We should probably check to make sure the probs are within 0 to 1.
 		quantile_function=function(x, na.rm){  probs = probs; quantile(x, probs =
-							probs, na.rm=na.rm ) }	
+							probs, na.rm=na.rm, type=8 ) }	
 		climate_summary=stackApply(climate_data_subset, summary_interval_idx, quantile_function)
 	}
 	
