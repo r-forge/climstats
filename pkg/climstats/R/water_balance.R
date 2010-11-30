@@ -42,8 +42,9 @@ water_balance_save <- function(ppt,eto,model="stephenson",basename="water_balanc
 			if(overwrite | (!overwrite & (!file.exists(output_names_wdf[i]) | !file.exists(output_names_aet[i]))))
 			{
 				temp_eto_ppt_diff=eto_list[[i]]-ppt_list[[i]]
-				temp_wdf=temp_eto_ppt_diff
-				temp_wdf[temp_eto_ppt_diff < 0]=0
+			#	temp_wdf=temp_eto_ppt_diff
+				temp_wdf_mask=(temp_eto_ppt_diff > 0)
+				temp_wdf=temp_wdf_mask*temp_eto_ppt_diff
 				temp_surplus_idx=temp_eto_ppt_diff < 0
 				temp_deficit_idx=temp_eto_ppt_diff > 0
 				temp_aet=(ppt_list[[i]]*temp_deficit_idx)+(eto_list[[i]]*temp_surplus_idx)
