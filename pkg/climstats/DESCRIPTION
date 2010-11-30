@@ -1,11 +1,11 @@
 Package: climstats
 Type: Package
 Title: R functions for working with station and gridded climate data. 
-Version: 0.4
-Date: 2010-10-14
+Version: 0.5
+Date: 2010-11-30
 Author: Jonathan Asher Greenberg, Solomon Z. Dobrowski, Quinn Hart, Robert J. Hijmans, Alison Mynsberge  
 Maintainer: Jonathan Asher Greenberg <climstats@estarcion.net>
-Depends: R (>= 2.11.0), raster (>= 1.6), rgdal, chron, zoo, sp
+Depends: R (>= 2.11.0), raster (>= 1.7), rgdal, chron, zoo, sp
 Suggests: ncdf, snow, R.utils, lmom
 Description: R functions for working with station and gridded climate data.
 License: GPL (>= 2)
