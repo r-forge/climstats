@@ -4,7 +4,7 @@
 ###############################################################################
 
 
-which.max.simple=function(x,na.rm=TRUE,tie_value="NA")
+which.max.simple=function(x,na.rm=TRUE,tie_value="random")
 {
 	if(na.rm)
 	{
@@ -39,7 +39,7 @@ which.max.simple=function(x,na.rm=TRUE,tie_value="NA")
 	}
 }
 
-which.min.simple=function(x,na.rm=TRUE,tie_value="NA")
+which.min.simple=function(x,na.rm=TRUE,tie_value="random")
 {
 	if(na.rm)
 	{

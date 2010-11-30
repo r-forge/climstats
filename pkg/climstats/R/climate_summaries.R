@@ -90,6 +90,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	{
 	# Indices are not working right now, so we are going to ignore the indices
 	#	climate_summary=stackApply(climate_data_subset, summary_interval_idx, spi)
+	#	print(climate_data_subset)
 		climate_summary=calc(climate_data_subset,fun=spi.matrix,na.rm=TRUE)
 	}
 	

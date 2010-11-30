@@ -6,6 +6,8 @@
 
 spi.matrix <- function(ppt,na.rm=TRUE)
 {
+#	print(ppt)
+#	print(dim(ppt))
 	if(class(ppt)=="matrix")
 	{
 		spi_output=apply(ppt,2,spi)
@@ -18,6 +20,7 @@ spi.matrix <- function(ppt,na.rm=TRUE)
 
 spi <- function(ppt,na.rm=TRUE)
 {
+#	print(na.rm)
 	require("lmom")
 	ppt_N=length(ppt)
 #	print(ppt_N)
@@ -31,7 +34,9 @@ spi <- function(ppt,na.rm=TRUE)
 	}
 	# Compute the sample L-moments of the time series and then computes
 	# 	the parameters of the PDF based on these.
-	ppt_pe3_params=pelpe3(samlmu(ppt))
+	ppt_pe3_samlmu=samlmu(ppt)
+#	print(ppt_pe3_samlmu)
+	ppt_pe3_params=pelpe3(ppt_pe3_samlmu)
 	# Compute the CDF of this PDF for each measured sample in the time series. 
 	ppt_pe3_cdf=cdfpe3(ppt,ppt_pe3_params)
 	# We have to fix the 0s following http://ccc.atmos.colostate.edu/pub/spi.pdf page 4
