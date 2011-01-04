@@ -63,27 +63,11 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 		}
 		
 		
-		if(class(unsynced)=="character")
-		{
-			synced_fname_list=vector(mode="list",length=length(reference_months))
-			synced_bands_list=vector(mode="list",length=length(reference_months))
-			for(i in 1:length(reference_months))
-			{
-				synced_fname_list[[i]]=unsynced
-				synced_bands_list[[i]]=reference_unsynced_idx[i]
-			}
-			synced_stack=stack(synced_fname_list,bands=synced_bands_list)
-			synced_stack@zvalue=reference@zvalue
-			
-			return(synced_stack)
-		}	else
-		{
-			# If unsynced is a raster* object
+		# If unsynced is a raster* object
 			unsynced_stack_list=brickstack_to_raster_list(unsynced_stack)
 			synced_stack=stack(unsynced_stack_list[reference_unsynced_idx])
 			synced_stack@zvalue=reference@zvalue
 			return(synced_stack)
-		}
 	}
 	
 	if(synctype=="by.year.month")
@@ -115,26 +99,12 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 		{
 			reference_unsynced_idx[i]=unsynced_idx[unsynced_mo_yr %in% reference_mo_yr[i]]		
 		}
-		if(class(unsynced)=="character")
-		{
-			synced_fname_list=vector(mode="list",length=length(reference_mo_yr))
-			synced_bands_list=vector(mode="list",length=length(reference_mo_yr))
-			for(i in 1:length(reference_mo_yr))
-			{
-				synced_fname_list[[i]]=unsynced
-				synced_bands_list[[i]]=reference_unsynced_idx[i]
-			}
-			synced_stack=stack(synced_fname_list,bands=synced_bands_list)
-			synced_stack@zvalue=reference@zvalue
-			
-			return(synced_stack)
-		}	else
-		{
-			# If unsynced is a raster* object
+		
+		# If unsynced is a raster* object
 			unsynced_stack_list=brickstack_to_raster_list(unsynced_stack)
 			synced_stack=stack(unsynced_stack_list[reference_unsynced_idx])
 			synced_stack@zvalue=reference@zvalue
 			return(synced_stack)
-		}
+		
 	}
 }
