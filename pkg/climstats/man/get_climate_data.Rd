@@ -17,12 +17,12 @@ get_climate_data(climate_source,date_range,dates,download_folder,final_folder,st
   \item{climate_source}{
 A datasource to fetch climate data from.  The following datasources are currently supported:
 \itemize{	
-	\item "PRISM-4km-ppt": 		PRISM 800m monthly precipitation grids
-	\item "PRISM-4km-tmin":		PRISM 800m monthly minimum temperature grids
-	\item "PRISM-4km-tmax":		PRISM 800m monthly maximum temperature grids
-	\item "PRISM-4km-spi":		PRISM 800m monthly standardized precipitation index grids
-	\item "PRISM-4km-tdmean":	PRISM 800m monthly dewpoint grids
-	\item "PRISM-4km-elev":	PRISM 800m elevation data
+	\item "PRISM-4km-ppt": 		PRISM 4km monthly precipitation grids
+	\item "PRISM-4km-tmin":		PRISM 4km monthly minimum temperature grids
+	\item "PRISM-4km-tmax":		PRISM 4km monthly maximum temperature grids
+	\item "PRISM-4km-spi":		PRISM 4km monthly standardized precipitation index grids
+	\item "PRISM-4km-tdmean":	PRISM 4km monthly dewpoint grids
+	\item "PRISM-4km-elev":	PRISM 4km elevation data
 	\item "NARR-monthlymean-wnd":	North American Regional Reanalysis monthly mean wind velocity
 	\item "NARR-longtermmonthlymean-wnd":	North American Regional Reanalysis long-term monthly mean wind velocity
 	\item "generic": arbitrary local files.  local_files must be set if this is used.
@@ -92,7 +92,12 @@ Returns a RasterLayer, RasterBrick or RasterStack object, as well as saving the 
 \references{
 \itemize{
 \item PRISM data: \url{http://www.prism.oregonstate.edu/}
+\item 	PRISM terms of use: \url{http://www.prism.oregonstate.edu/terms.phtml}
+\item	PRISM metadata: \url{http://www.prism.oregonstate.edu/docs/meta}
+}
+\itemize{ 
 \item NCEP North American Regional Reanalysis: \url{http://www.esrl.noaa.gov/psd/data/gridded/data.narr.html}
+\item 	NCEP NARR Data Description: \url{ftp://ftp.cdc.noaa.gov/Datasets/NARR/README} 
 }
 }
 \author{
@@ -110,12 +115,13 @@ Jonathan A. Greenberg
 
 \examples{
 # Download and decompress PRISM monthly precipitation data but do not post-process it.
-ppt=get_climate_data("PRISM-800m-ppt",date_range=c("2000/1/1","2001/12/31"),standardize=FALSE)
+ppt=get_climate_data("PRISM-4km-ppt",date_range=c("1999/1/1","1999/12/31"),standardize=FALSE,
+	enable_download=TRUE)
 # Note the raw, decompressed downloaded data.
 dir()
 # Download and post-process PRISM monthly precipitation data (note that as long as overwrite=FALSE, it will not
-#	redownload the files, just post-process the files already aquired during the previous step.
-ppt=get_climate_data("PRISM-800m-ppt",date_range=c("2000/1/1","2001/12/31"),standardize=TRUE,overwrite=FALSE)
+#	redownload the files, just post-process the files already acquired during the previous step.
+ppt=get_climate_data("PRISM-4km-ppt",date_range=c("1999/1/1","1999/12/31"),standardize=TRUE,overwrite=FALSE)
 # Note the raw raster format files (*_raw.grd), and the corrected raster format data (*_climstats.grd).
 dir()
 summary(ppt)

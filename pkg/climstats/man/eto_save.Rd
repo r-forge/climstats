@@ -1,7 +1,7 @@
 \name{eto_save}
 \alias{eto_save}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Calculate evapotranspiration }
 \description{
 Calculate reference evapotranspiration (ETO) using raster inputs.
 }

@@ -1,7 +1,7 @@
 \name{eto}
 \alias{eto}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Evapotranspiration }
 \description{
 TBD
 }
@@ -11,31 +11,34 @@ eto(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao")
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{tavg}{
-%%     ~~Describe \code{brickstack} here~~
+Average temperature (deg C).  If not assigned, tavg will be calculated as the median of tmax and tmin.
 }
   \item{tmin}{
-%%     ~~Describe \code{brickstack} here~~
+Minimum temperature (deg C).
 }
   \item{tmax}{
-%%     ~~Describe \code{brickstack} here~~
+Maximum temperature (deg C).
 }
   \item{rad}{
-%%     ~~Describe \code{brickstack} here~~
+Net radiation (MJ m-2 day-1).
 }
   \item{elev}{
-%%     ~~Describe \code{brickstack} here~~
+Elevation (m above sea level).
 }
   \item{wnd}{
-%%     ~~Describe \code{brickstack} here~~
+Windspeed (m/s at 2m above terrain).
 }
   \item{G}{
-%%     ~~Describe \code{brickstack} here~~
+Soil heat flux density [MJ m-2 day-1]. By default equals 0.0.
 }
   \item{a}{
-%%     ~~Describe \code{brickstack} here~~
+Reference albedo (unitless, ranges between 0 and 1).  By default equals 0.23.
 }
   \item{model}{
-%%     ~~Describe \code{brickstack} here~~
+Evapotranspiration model to use:
+\itemize{
+	\item "pm-fao": FAO Penman-Monteith
+}
 }
 }
 \details{
@@ -67,23 +70,6 @@ eto(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao")
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (brickstack) 
-{
-    if ((class(brickstack) != "RasterStack") & (class(brickstack) != 
-        "RasterBrick")) {
-        print("Input must be a RasterStack or RasterBrick")
-        return()
-    }
-    brickstack_nlayers = nlayers(brickstack)
-    brickstack_pos = 1:brickstack_nlayers
-    raster_list = mapply(function(brickstack, layer) {
-        raster(brickstack, layer = layer)
-    }, brickstack_pos, MoreArgs = list(brickstack = brickstack), 
-        SIMPLIFY = FALSE)
-    return(raster_list)
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

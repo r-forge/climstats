@@ -6,7 +6,8 @@
 Aligns ("syncs") a Raster to a reference Raster. 
 }
 \usage{
-spatial_sync_raster(unsynced,reference,method="ngb",verbose=FALSE,crop_only=FALSE)
+spatial_sync_raster(unsynced,reference,method="ngb",verbose=FALSE)
+%,crop_only=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

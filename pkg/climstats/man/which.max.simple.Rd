@@ -6,7 +6,7 @@
 Locates the largest value of the input object.
 }
 \usage{
-which.max.simple(x,na.rm=TRUE,tie_value="NA")
+which.max.simple(x,na.rm=TRUE,tie_value="random")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -50,8 +50,8 @@ y<-c(4,1:3,NA,4)
 ## The index is only calculated for a unique maximum
 which.max.simple(x)
 which.max.simple(y)
-which.max.simple(y,na.rm=F)
-which.max.simple(x,na.rm=F)
+which.max.simple(y,na.rm=FALSE)
+which.max.simple(x,na.rm=FALSE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

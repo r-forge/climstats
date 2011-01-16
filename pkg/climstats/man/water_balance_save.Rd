@@ -1,9 +1,9 @@
 \name{water_balance_save}
 \alias{water_balance_save}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Calculate and save water balance }
 \description{
-TBD
+Calculates water balance and saves new raster to a file
 }
 \usage{
 water_balance_save(ppt,eto,model="stephenson",basename="water_balance_climstats_",index_format,
@@ -12,16 +12,16 @@ water_balance_save(ppt,eto,model="stephenson",basename="water_balance_climstats_
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{ppt}{
-%%     ~~Describe \code{brickstack} here~~
+A time series of precipitation amounts (mm H20 per day) in raster format.
 }
   \item{eto}{
-%%     ~~Describe \code{brickstack} here~~
+Evapotranspiration raster
 }
   \item{model}{
-%%     ~~Describe \code{brickstack} here~~
+Currently only supports the Stephenson method for calculating water balance
 }
   \item{basename}{
-%%     ~~Describe \code{brickstack} here~~
+Basename for saved raster
 }
   \item{index_format}{
 %%     ~~Describe \code{brickstack} here~~
@@ -30,10 +30,10 @@ water_balance_save(ppt,eto,model="stephenson",basename="water_balance_climstats_
 %%     ~~Describe \code{brickstack} here~~
 }
   \item{verbose}{
-%%     ~~Describe \code{brickstack} here~~
+verbose=TRUE will print process information.
 }
   \item{overwrite}{
-%%     ~~Describe \code{brickstack} here~~
+overwrite=TRUE will overwrite raster if already present.
 }
 }
 \details{

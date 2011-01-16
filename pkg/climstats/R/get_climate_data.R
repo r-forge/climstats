@@ -35,7 +35,7 @@ get_climate_data <- function(
 	
 	# standardize=TRUE downloads the data, converts the units to climstats standards, and saves the
 	#	data out as a raster or brick in the native raster format (grd).
-	# stanardize=FALSE only downloads the data.
+	# standardize=FALSE only downloads the data.
 	
 
 	

@@ -6,7 +6,7 @@
 Locates the smallest value of the input object.
 }
 \usage{
-which.min.simple(x,na.rm=TRUE,tie_value="NA")
+which.min.simple(x,na.rm=TRUE,tie_value="random")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -50,8 +50,8 @@ y<-c(2:4,1,1,NA)
 ## The index is only calculated for a unique minimum
 which.min.simple(x)
 which.min.simple(y)
-which.min.simple(y,na.rm=F)
-which.min.simple(x,na.rm=F)
+which.min.simple(y,na.rm=FALSE)
+which.min.simple(x,na.rm=FALSE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,12 +1,13 @@
 \name{climate_summaries}
 \alias{climate_summaries}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Climate Summaries }
+\title{ Summarize climate data }
 \description{
-Summarizes climate data.
+Summarizes climate data over desired date ranges, across monthly, annual, or full time intervals, and
+(optionally) across periods defined by other climate variables.
 }
 \usage{
-climate_summaries(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin,verbose=FALSE,probs)
+climate_summaries(climate_data,date_range,summary_type,summary_interval="all",apply_maxmin,verbose=FALSE,probs,tie_value="random")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -27,7 +28,7 @@ climate_summaries(climate_data,date_range,summary_type,summary_interval="all",ap
 	A climate data raster containing values to be summarized and returned if which.min.simple or which.max.simple is summary method. 
 }
   \item{verbose}{
-	Logical controlling display of output.
+	verbose=TRUE will print process information.
 }
   \item{probs}{
 	Numeric vector of probabilities with values in [0,1] used by summary_type=quantile.
@@ -46,7 +47,7 @@ climate_summaries(climate_data,date_range,summary_type,summary_interval="all",ap
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg
 }
 \note{
 %%  ~~further notes~~
