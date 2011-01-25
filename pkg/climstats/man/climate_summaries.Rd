@@ -60,6 +60,36 @@ Jonathan A. Greenberg
 \code{\link{which.max.simple}}
 }
 \examples{
+\donotrun{
+# Download and post-process PRISM monthly precipitation data
+		ppt = get_climate_data("PRISM-4km-ppt", date_range = c("1999/1/1", "2000/12/31"),
+			standardize = TRUE, overwrite = FALSE, enable_download = T, verbose = T)
+		summary(ppt)
+		ppt@zvalue
+# Annual Precipitation		
+		date_range=c("1999-01-01","2000-12-31")
+		ppt_mean_all=climate_summaries(climate_data=get(final.main.vars[grep("ppt",final.main.vars)]),date_range=date_range,summary_type="mean",summary_interval="all")
+		
+# Precipitation of Wettest Month
+		monthly_date_range=c("9999-01-01","9999-12-31")
+		ppt_of_max_ppt_mean_monthly=climate_summaries(climate_data=ppt_mean_monthly,date_range=monthly_date_range,
+				summary_type="which.max.simple",summary_interval="all",apply_maxmin=ppt_mean_monthly)
+		
+# Precipitation of Driest Month			
+		ppt_of_min_ppt_mean_monthly=climate_summaries(climate_data=ppt_mean_monthly,date_range=monthly_date_range,
+			summary_type="which.min.simple",summary_interval="all",apply_maxmin=ppt_mean_monthly)
+		
+# Precipitation Seasonality (Coefficient of Variation)
+		ppt_mean_monthly_cv_all=climate_summaries(climate_data=ppt_mean_monthly,date_range=monthly_date_range,summary_type="cv",summary_interval="all")
+	
+# Min standard precipitation index (SPI)
+		ppt_spi_all=climate_summaries(climate_data=ppt,date_range=date_range,summary_type="spi",summary_interval="all")
+		ppt_spi_all@zvalue=ref@zvalue
+		ppt_spi_all_min=climate_summaries(climate_data=ppt_spi_all,date_range=date_range,summary_type="min",summary_interval="all")
+		
+# Max standard precipitation index (SPI)
+		ppt_spi_all_max=climate_summaries(climate_data=ppt_spi_all,date_range=date_range,summary_type="max",summary_interval="all")
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

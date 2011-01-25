@@ -114,19 +114,20 @@ Jonathan A. Greenberg
 }
 
 \examples{
+\donotrun{
 # Download and decompress PRISM monthly precipitation data but do not post-process it.
-ppt=get_climate_data("PRISM-4km-ppt",date_range=c("1999/1/1","1999/12/31"),standardize=FALSE,
+ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), standardize=FALSE,
 	enable_download=TRUE)
 # Note the raw, decompressed downloaded data.
 dir()
 # Download and post-process PRISM monthly precipitation data (note that as long as overwrite=FALSE, it will not
 #	redownload the files, just post-process the files already acquired during the previous step.
-ppt=get_climate_data("PRISM-4km-ppt",date_range=c("1999/1/1","1999/12/31"),standardize=TRUE,overwrite=FALSE)
+ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), standardize=TRUE, overwrite=FALSE)
 # Note the raw raster format files (*_raw.grd), and the corrected raster format data (*_climstats.grd).
 dir()
 summary(ppt)
 ppt@zvalue
-
+}
 }
 
 \keyword{ spatial }

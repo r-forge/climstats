@@ -43,4 +43,12 @@ UNUSED AT PRESENT.
 \author{
 Jonathan A. Greenberg
 }
-
+\seealso{
+\code{\link[climstats]{get_climate_data}}
+}
+\examples{
+#Divide all precipitation values by 100
+ppt_raster<-raster(system.file("extdata/tahoe_ppt.grd",package="raster"))
+ppt_standardized=apply_gains_offsets(ppt_raster,gains=(1/100),
+	divide_by_days_in_month=FALSE)
+}

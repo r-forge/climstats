@@ -67,9 +67,17 @@ Evapotranspiration model to use:
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+\donotrun{
+# Requires first downloading and preparing all required inputs using 
+#	get_climate_data, spatial_sync_raster, and temporal_sync_raster.
+			eto = eto_save(tmin=standardized_tmin,
+						tmax=standardized_tmax,
+						rad=standardized_rad,
+						elev=standardized_elev,
+						wnd=standardized_wnd,
+						"eto_pm_climstats_",index_format="\%Y-\%m-\%d"
+						output_format="raster",verbose=TRUE)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

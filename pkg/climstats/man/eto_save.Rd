@@ -76,15 +76,23 @@ Jonathan A. Greenberg
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{get_climate_data}}
+\code{\link{spatial_sync_raster}}
+\code{\link{temporal_sync_raster}}
 }
 \examples{
-# Download and prepare all required inputs.
-
-
-
+\donotrun{
+# Requires first downloading and preparing all required inputs using 
+#	get_climate_data, spatial_sync_raster, and temporal_sync_raster.
+			eto = eto_save(tmin=standardized_tmin,
+						tmax=standardized_tmax,
+						rad=standardized_rad,
+						elev=standardized_elev,
+						wnd=standardized_wnd,
+						"eto_pm_climstats_",index_format="\%Y-\%m-\%d"
+						output_format="raster",verbose=TRUE)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ climate }

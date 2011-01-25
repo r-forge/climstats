@@ -11,30 +11,26 @@ brickstack_to_saved_rasters(brickstack,output_basename,use_layernames=FALSE)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{brickstack}{
-%%     ~~Describe \code{brickstack} here~~
+A raster brick or raster stack object.
 }
   \item{output_basename}{
-%%     ~~Describe \code{brickstack} here~~
+A character string for naming the objects.
 }
   \item{use_layernames}{
-%%     ~~Describe \code{brickstack} here~~
+If TRUE, filenames (from disk) are appended to output_basename to designate individual layers.
+If FALSE, layers are distinguished on disk based on their order in the RasterBrick or RasterStack.
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
+Saves rasters to the working directory.}
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg
 }
 \note{
 %%  ~~further notes~~
@@ -43,30 +39,18 @@ brickstack_to_saved_rasters(brickstack,output_basename,use_layernames=FALSE)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link[raster]{stack}},\code{\link[raster]{brick}} 
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+\dontrun{r <- raster(nrows=10,ncols=10)
+r <- setValues(r,1:ncell(r))
+#Stack
+temp_stack <- stack(r, r/2, r*10)
+brickstack_to_saved_rasters(temp_brick,output_basename="temp")
+#Brick
+temp_brick <- brick(r, r/2, r*10)
+brickstack_to_saved_rasters(temp_brick,output_basename="bricklayers")}
 
-## The function is currently defined as
-function (brickstack) 
-{
-    if ((class(brickstack) != "RasterStack") & (class(brickstack) != 
-        "RasterBrick")) {
-        print("Input must be a RasterStack or RasterBrick")
-        return()
-    }
-    brickstack_nlayers = nlayers(brickstack)
-    brickstack_pos = 1:brickstack_nlayers
-    raster_list = mapply(function(brickstack, layer) {
-        raster(brickstack, layer = layer)
-    }, brickstack_pos, MoreArgs = list(brickstack = brickstack), 
-        SIMPLIFY = FALSE)
-    return(raster_list)
-  }
-}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }
