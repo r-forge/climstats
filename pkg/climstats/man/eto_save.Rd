@@ -6,7 +6,7 @@
 Calculate reference evapotranspiration (ETO) using raster inputs.
 }
 \usage{
-eto_save(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao",basename="eto_pm_climstats_",index_format,
+eto_save(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao",basename="eto_pm_climstats_",index_format="\%Y-\%m-\%d",
 		output_format="raster",overwrite=FALSE,verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -89,7 +89,7 @@ Jonathan A. Greenberg
 						rad=standardized_rad,
 						elev=standardized_elev,
 						wnd=standardized_wnd,
-						"eto_pm_climstats_",index_format="\%Y-\%m-\%d"
+						"eto_pm_climstats_",
 						output_format="raster",verbose=TRUE)
 }
 }
