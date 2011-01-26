@@ -50,7 +50,7 @@ brickstack_to_saved_rasters(temp_brick,output_basename="temp")
 #Brick
 temp_brick <- brick(r, r/2, r*10)
 brickstack_to_saved_rasters(temp_brick,output_basename="bricklayers")}
-
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ ~kwd1 }

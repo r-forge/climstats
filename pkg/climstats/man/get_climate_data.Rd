@@ -114,7 +114,7 @@ Jonathan A. Greenberg
 }
 
 \examples{
-\donotrun{
+\dontrun{
 # Download and decompress PRISM monthly precipitation data but do not post-process it.
 ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), standardize=FALSE,
 	enable_download=TRUE)

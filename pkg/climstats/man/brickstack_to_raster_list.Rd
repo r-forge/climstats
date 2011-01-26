@@ -45,6 +45,7 @@ brickstack_to_raster_list(temp_stack)
 #Brick
 temp_brick <- brick(r, r/2, r*10)
 brickstack_to_raster_list(temp_brick)
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ stack }

@@ -60,7 +60,7 @@ Jonathan A. Greenberg
 \code{\link{which.max.simple}}
 }
 \examples{
-\donotrun{
+\dontrun{
 # Download and post-process PRISM monthly precipitation data
 		ppt = get_climate_data("PRISM-4km-ppt", date_range = c("1999/1/1", "2000/12/31"),
 			standardize = TRUE, overwrite = FALSE, enable_download = T, verbose = T)

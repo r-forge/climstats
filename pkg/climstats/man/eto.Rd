@@ -67,7 +67,7 @@ Evapotranspiration model to use:
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-\donotrun{
+\dontrun{
 # Requires first downloading and preparing all required inputs using 
 #	get_climate_data, spatial_sync_raster, and temporal_sync_raster.
 			eto = eto_save(tmin=standardized_tmin,
