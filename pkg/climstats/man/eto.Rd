@@ -1,9 +1,9 @@
 \name{eto}
 \alias{eto}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Evapotranspiration }
+\title{ Calculate Evapotranspiration }
 \description{
-TBD
+Calculate reference evapotranspiration (ETO) using raster inputs.
 }
 \usage{
 eto(tavg,tmin,tmax,rad,elev,wnd,G=0.0,a=0.23,model="pm-fao")

@@ -2,7 +2,7 @@
 \alias{windvectors_to_wind}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
-\title{ the title }
+\title{ Calculate Wind Speed }
 
 \description{
 Takes two wind vectors and returns wind speed, correcting to 2m above the terrain if requested.

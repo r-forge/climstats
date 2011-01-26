@@ -3,7 +3,7 @@
 \alias{spi}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
-\title{ Calculates the standardized precipitation index (SPI) }
+\title{ Calculates the Standardized Precipitation Index (SPI) }
 
 
 \description{

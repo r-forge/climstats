@@ -1,7 +1,7 @@
 \name{climate_summaries}
 \alias{climate_summaries}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Summarize climate data }
+\title{ Summarize Climate Data }
 \description{
 Summarizes climate data over desired date ranges, across monthly, annual, or full time intervals, and
 (optionally) across periods defined by other climate variables.

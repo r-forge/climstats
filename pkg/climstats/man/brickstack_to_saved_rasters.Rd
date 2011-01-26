@@ -1,7 +1,7 @@
 \name{brickstack_to_saved_rasters}
 \alias{brickstack_to_saved_rasters}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Save a RasterStack or RasterBrick }
 \description{
 Saves a raster stack or a brick as individual RasterLayers.
 }

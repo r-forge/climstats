@@ -1,9 +1,9 @@
 \name{ncdf_gaussian_grid_to_raster}
 \alias{ncdf_gaussian_grid_to_raster}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Create Raster from NCDF }
 \description{
-TBD
+Creates a raster from an NCDF file
 }
 \usage{
 ncdf_gaussian_grid_to_raster(ncdf_gaussian_grid_fname,reference)

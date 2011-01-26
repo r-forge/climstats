@@ -3,9 +3,8 @@
 \alias{prepare_climate_data}
 
 
-\title{
-Preprocesses climate data
-}
+\title{Preprocess Climate Data}
+
 \description{
 Assigns zname and zvalues and manages raster projection.}
 

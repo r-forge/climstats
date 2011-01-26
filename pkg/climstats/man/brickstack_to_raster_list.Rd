@@ -1,7 +1,7 @@
 \name{brickstack_to_raster_list}
 \alias{brickstack_to_raster_list}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Create a list of climate rasters }
+\title{ Create a List of Rasters }
 \description{
 Converts a raster stack or a brick into a list of individual RasterLayers.
 }

@@ -2,7 +2,7 @@
 \alias{apply_gains_offsets}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
-\title{ Apply gains and offsets }
+\title{ Apply Gains and Offsets }
 
 
 \description{

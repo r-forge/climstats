@@ -2,7 +2,7 @@
 \alias{get_climate_data}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
-\title{ Get/preprocess climate data from remote sources }
+\title{ Get/Preprocess Climate Data from Remote Sources }
 
 \description{
 This function downloads and preprocesses climate data from a variety of sources.

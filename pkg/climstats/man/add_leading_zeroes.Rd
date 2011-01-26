@@ -2,7 +2,7 @@
 \alias{add_leading_zeroes}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
-\title{ Add leading zeroes to a numeric vector }
+\title{ Add Leading Zeroes to a Numeric Vector }
 
 \description{
 Appends leading zeroes to a vector of numbers based on a string length or a maximum number.

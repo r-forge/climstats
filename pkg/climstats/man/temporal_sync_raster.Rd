@@ -1,9 +1,9 @@
 \name{temporal_sync_raster}
 \alias{temporal_sync_raster}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Temporally Sync Rasters }
 \description{
-TBD
+Aligns ("syncs") a Raster to a reference Raster.
 }
 \usage{
 temporal_sync_raster(unsynced,reference,synctype="by.month",unsynced_dates,reference_dates,verbose=FALSE)

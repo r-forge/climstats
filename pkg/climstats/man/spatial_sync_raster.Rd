@@ -1,7 +1,7 @@
 \name{spatial_sync_raster}
 \alias{spatial_sync_raster}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Spatially Sync Rasters }
 \description{
 Aligns ("syncs") a Raster to a reference Raster. 
 }

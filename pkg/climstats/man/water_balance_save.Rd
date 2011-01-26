@@ -1,7 +1,7 @@
 \name{water_balance_save}
 \alias{water_balance_save}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Calculate and save water balance }
+\title{ Calculate and Save Water Balance }
 \description{
 Calculates water balance and saves new raster to a file
 }
