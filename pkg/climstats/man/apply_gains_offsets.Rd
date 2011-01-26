@@ -47,9 +47,8 @@ Jonathan A. Greenberg
 \code{\link[climstats]{get_climate_data}}
 }
 \examples{
-\dontrun{
 #Divide all precipitation values by 100
-ppt_raster<-system.file("extdata/tahoe_ppt.RData")
-ppt_standardized=apply_gains_offsets(ppt_raster,gains=(1/100),
+load(system.file("extdata/pptTahoe.RData",package="climstats"))
+ppt_standardized=apply_gains_offsets(pptTahoe,gains=(1/100),
 	divide_by_days_in_month=FALSE)
-}}
+}
