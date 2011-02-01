@@ -52,7 +52,8 @@ Evapotranspiration model to use:
 %% ...
 }
 \references{
-%% ~put references to the literature/web site here ~
+Allen, R.G., L.S. Pereira, D. Raes, and M. Smith. 1998. Crop evapotranspiration: guidelines for computing crop water requirements. Food and Agriculture Organization of the United Nations, Rome, Italy.
+\url{http://www.fao.org/docrep/x0490e/x0490e00.htm}
 }
 \author{
 %%  ~~who you are~~
