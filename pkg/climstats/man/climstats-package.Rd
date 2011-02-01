@@ -17,8 +17,29 @@ Date: \tab 2010-10-13\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 }
-%~~ An overview of how to use the package, including the most important ~~
-%~~ functions ~~
+}
+
+\section{I. Downloading climate data}{
+  \tabular{ll}{
+    \code{\link{get_climate_data}}\tab Download or import climate datasets \cr
+	}
+}
+
+\section{II. Standardizing climate data}{
+  \tabular{ll}{
+  	\code{\link{temporal_sync_raster}}\tab Synchronize temporal grain and extent of data \cr 
+  }
+  \tabular{ll}{
+  	\code{\link{temporal_sync_raster}}\tab Synchronize spatial grain and extent of data \cr
+  }
+}
+\section{III. Calculate climate metrics}{
+  \tabular{ll}{
+  	\code{\link{eto}}\tab Calculate evapotranspiration \cr
+  	\code{\link{eto_save}}\tab Calculate and save evapotranspiration \cr
+  	\code{\link{water_balance_save}}\tab Calculate and save water balance \cr
+  	\code{\link{climate_summaries}}\tab Summarize climate variables across time periods \cr
+  	}
 }
 \author{
 Jonathan Asher Greenberg
