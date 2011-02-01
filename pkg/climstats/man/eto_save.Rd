@@ -64,6 +64,7 @@ verbose=TRUE will print progress information on the processing.
 eto_raster returns a RasterStack object of the ETO calculations.  It also saves the ETO calculations to disk, one file per interval.  
 }
 \references{
+Allen, R.G., L.S. Pereira, D. Raes, and M. Smith. 1998. Crop evapotranspiration: guidelines for computing crop water requirements. Food and Agriculture Organization of the United Nations, Rome, Italy.
 \url{http://www.fao.org/docrep/x0490e/x0490e00.htm}
 }
 \author{
