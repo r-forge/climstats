@@ -28,8 +28,6 @@ LazyLoad: \tab yes\cr
 \section{II. Standardizing climate data}{
   \tabular{ll}{
   	\code{\link{temporal_sync_raster}}\tab Synchronize temporal grain and extent of data \cr 
-  }
-  \tabular{ll}{
   	\code{\link{temporal_sync_raster}}\tab Synchronize spatial grain and extent of data \cr
   }
 }
