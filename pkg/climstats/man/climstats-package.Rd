@@ -3,7 +3,7 @@
 \alias{climstats}
 \docType{package}
 
-\title{ climstats }
+\title{ An overview of functions in climstats }
 
 \description{
 These functions are designed to prepare and summarize climate data time series (point based or raster) for use in, for instance, species distribution models.
@@ -17,17 +17,16 @@ Date: \tab 2010-10-13\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 }
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
+%~~ An overview of how to use the package, including the most important ~~
+%~~ functions ~~
 }
 \author{
 Jonathan Asher Greenberg
 
 Maintainer: Jonathan Asher Greenberg <climstats@estarcion.net>
-~~ The author and/or maintainer of the package ~~
 }
 \references{
-~~ Literature or other references for background information ~~
+%~~ Literature or other references for background information ~~
 }
 
 
