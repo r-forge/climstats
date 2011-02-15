@@ -11,39 +11,35 @@ temporal_sync_raster(unsynced,reference,synctype="by.month",unsynced_dates,refer
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{unsynced}{
-%%     ~~Describe \code{brickstack} here~~
+A raster object or a string pointing to a raster on disk to be temporally synced to a reference file. 
 }
   \item{reference}{
-%%     ~~Describe \code{brickstack} here~~
+A raster object with reference zvalue dates.
 }
   \item{synctype}{
-%%     ~~Describe \code{brickstack} here~~
+Type of temporal sync; options are "by.month" or "by.year.month".
 }
   \item{unsynced_dates}{
-%%     ~~Describe \code{brickstack} here~~
+Required if unsynced@zvalue does not provide dates for unsynced raster.
 }
   \item{reference_dates}{
-%%     ~~Describe \code{brickstack} here~~
+Required if reference@zvalue does not provide reference dates for reference raster.
 }
   \item{verbose}{
-%%     ~~Describe \code{brickstack} here~~
+verbose=TRUE will print process information.
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Returns a RasterLayer, RasterBrick or RasterStack object.
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg
 }
 \note{
 %%  ~~further notes~~
@@ -52,12 +48,22 @@ temporal_sync_raster(unsynced,reference,synctype="by.month",unsynced_dates,refer
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link[climstats]{spatial_sync_raster}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+\dontrun{
+require(climstats)
+load(system.file("extdata/pptTahoe.RData",package="climstats"))
+pptTahoe@zvalue
+
+#Download and standardize 2 large monthly wind vector files
+wnd=get_climate_data("NARR-monthlymean-wnd",
+		date_range=c("1992-01-01","1993-12-31"),
+		standardize=TRUE,enable_download=TRUE,verbose=TRUE)
+wnd@zvalue
+wnd_synced=temporal_sync_raster(wnd,pptTahoe,synctype="by.year.month",verbose=TRUE)
+wnd_synced@zvalue
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

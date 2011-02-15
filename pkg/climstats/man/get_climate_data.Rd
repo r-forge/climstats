@@ -122,7 +122,8 @@ ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), sta
 dir()
 # Download and post-process PRISM monthly precipitation data (note that as long as overwrite=FALSE, it will not
 #	redownload the files, just post-process the files already acquired during the previous step.
-ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), standardize=TRUE, overwrite=FALSE)
+ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), standardize=TRUE, 
+	enable_download=TRUE, overwrite=TRUE)
 # Note the raw raster format files (*_raw.grd), and the corrected raster format data (*_climstats.grd).
 dir()
 summary(ppt)

@@ -52,9 +52,20 @@ Jonathan A. Greenberg
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link[climstats]{temporal_sync_raster}}
 }
 \examples{
+\dontrun{
+require(R.utils) #Can't be loaded after raster
+require(climstats)
+load(system.file("extdata/elevTahoe.RData",package="climstats"))
+ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), standardize=TRUE, 
+		enable_download=TRUE, overwrite=TRUE)
+pptTahoe99=spatial_sync_raster(ppt,elevTahoe,method="bilinear")
+pptTahoe99
+ppt99jan<-raster(pptTahoe99,layer=1)
+plot(ppt99jan)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

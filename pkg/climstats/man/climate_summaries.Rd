@@ -60,6 +60,21 @@ Jonathan A. Greenberg
 \code{\link{which.max.simple}}
 }
 \examples{
+#Use example file for Tahoe, California, USA
+require(R.utils)
+require(climstats)
+
+load(system.file("extdata/pptTahoe.RData",package="climstats"))
+pptTahoe@zvalue
+#Average precipitation for 1992
+date_range_92=c("1992-01-01","1992-12-31")
+ppt_mean_92=climate_summaries(climate_data=pptTahoe,date_range=date_range_92,
+	summary_type="mean",summary_interval="all")
+date_range_9293=c("1992-01-01","1993-12-31")
+ppt_mean_9293=climate_summaries(climate_data=pptTahoe,date_range=date_range_9293,
+	summary_type="mean",summary_interval="yearly")
+#Average monthly rainfall was lower in 1992 than in 1993
+
 \dontrun{
 # Download and post-process PRISM monthly precipitation data
 		ppt = get_climate_data("PRISM-4km-ppt", date_range = c("1999/1/1", "2000/12/31"),
@@ -68,7 +83,10 @@ Jonathan A. Greenberg
 		ppt@zvalue
 # Annual Precipitation		
 		date_range=c("1999-01-01","2000-12-31")
-		ppt_mean_all=climate_summaries(climate_data=get(final.main.vars[grep("ppt",final.main.vars)]),date_range=date_range,summary_type="mean",summary_interval="all")
+		ppt_mean_all=climate_summaries(climate_data=ppt,date_range=date_range,summary_type="mean",summary_interval="all")
+
+# Monthly Precipitation
+		ppt_mean_monthly=climate_summaries(ppt,date_range=date_range,summary_type="mean",summary_interval="monthly")
 		
 # Precipitation of Wettest Month
 		monthly_date_range=c("9999-01-01","9999-12-31")

@@ -12,23 +12,23 @@ These functions are designed to prepare and summarize climate data time series (
 \tabular{ll}{
 Package: \tab climstats\cr
 Type: \tab Package\cr
-Version: \tab 0.3\cr
+Version: \tab 0.6\cr
 Date: \tab 2010-10-13\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes\cr
 }
 }
 
-\section{I. Downloading climate data}{
+\section{I. Download climate data}{
   \tabular{ll}{
     \code{\link{get_climate_data}}\tab Download or import climate datasets \cr
 	}
 }
 
-\section{II. Standardizing climate data}{
+\section{II. Standardize climate data}{
   \tabular{ll}{
   	\code{\link{temporal_sync_raster}}\tab Synchronize temporal grain and extent of data \cr 
-  	\code{\link{temporal_sync_raster}}\tab Synchronize spatial grain and extent of data \cr
+  	\code{\link{spatial_sync_raster}}\tab Synchronize spatial grain and extent of data \cr
   }
 }
 \section{III. Calculate climate metrics}{
