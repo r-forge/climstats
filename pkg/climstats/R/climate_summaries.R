@@ -61,6 +61,11 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	}
 	
 	# Perform
+	if(summary_type=="sum")
+	{
+		climate_summary=stackApply(climate_data_subset, summary_interval_idx, sum)
+	}
+	
 	if(summary_type=="mean")
 	{
 		climate_summary=stackApply(climate_data_subset, summary_interval_idx, mean)

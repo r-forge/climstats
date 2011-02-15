@@ -19,7 +19,7 @@ climate_summaries(climate_data,date_range,summary_type,summary_interval="all",ap
 }
   \item{summary_type}{
 	The type of summary applied to climate_data (options are "which.min.simple", "which.max.simple",
-		"mean","min","max","sd","cv","spi","quantile").
+		"min","max","sum","mean","sd","cv","spi","quantile").
 }
   \item{summary_interval}{
 	The interval over which values are returned (options are "all", "monthly", "yearly")
@@ -66,14 +66,19 @@ require(climstats)
 
 load(system.file("extdata/pptTahoe.RData",package="climstats"))
 pptTahoe@zvalue
-#Average precipitation for 1992
+#Total precipitation for 1992
 date_range_92=c("1992-01-01","1992-12-31")
-ppt_mean_92=climate_summaries(climate_data=pptTahoe,date_range=date_range_92,
-	summary_type="mean",summary_interval="all")
+ppt_92=climate_summaries(climate_data=pptTahoe,date_range=date_range_92,
+	summary_type="sum",summary_interval="yearly")
 date_range_9293=c("1992-01-01","1993-12-31")
-ppt_mean_9293=climate_summaries(climate_data=pptTahoe,date_range=date_range_9293,
-	summary_type="mean",summary_interval="yearly")
-#Average monthly rainfall was lower in 1992 than in 1993
+ppt_9293=climate_summaries(climate_data=pptTahoe,date_range=date_range_9293,
+	summary_type="sum",summary_interval="yearly")
+ppt_9293
+#Total precipitation was lower in 1992 than in 1993
+
+#Now get average annual precipitation totals
+ppt_mean_all=climate_summaries(climate_data=ppt_9293,date_range=date_range_9293,
+	summary_type="mean",summary_interval="all")	
 
 \dontrun{
 # Download and post-process PRISM monthly precipitation data
@@ -83,8 +88,9 @@ ppt_mean_9293=climate_summaries(climate_data=pptTahoe,date_range=date_range_9293
 		ppt@zvalue
 # Annual Precipitation		
 		date_range=c("1999-01-01","2000-12-31")
-		ppt_mean_all=climate_summaries(climate_data=ppt,date_range=date_range,summary_type="mean",summary_interval="all")
-
+		ppt_month_mean=climate_summaries(climate_data=ppt,date_range=date_range,summary_type="mean",summary_interval="all")
+		ppt_mean_all=12*ppt_month_mean	#This is an alternative to using the "sum" function
+		
 # Monthly Precipitation
 		ppt_mean_monthly=climate_summaries(ppt,date_range=date_range,summary_type="mean",summary_interval="monthly")
 		
