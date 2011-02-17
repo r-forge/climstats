@@ -38,4 +38,4 @@ a precipitation vector.}
 \author{
 Jonathan A. Greenberg, Alison R. Mynsberge
 }
-
+\keyword{climate}

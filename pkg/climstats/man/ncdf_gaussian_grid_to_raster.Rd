@@ -43,28 +43,6 @@ ncdf_gaussian_grid_to_raster(ncdf_gaussian_grid_fname,reference)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (brickstack) 
-{
-    if ((class(brickstack) != "RasterStack") & (class(brickstack) != 
-        "RasterBrick")) {
-        print("Input must be a RasterStack or RasterBrick")
-        return()
-    }
-    brickstack_nlayers = nlayers(brickstack)
-    brickstack_pos = 1:brickstack_nlayers
-    raster_list = mapply(function(brickstack, layer) {
-        raster(brickstack, layer = layer)
-    }, brickstack_pos, MoreArgs = list(brickstack = brickstack), 
-        SIMPLIFY = FALSE)
-    return(raster_list)
-  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{format}
+\keyword{brick/stack}

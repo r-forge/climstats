@@ -6,7 +6,8 @@
 Aligns ("syncs") a Raster to a reference Raster.
 }
 \usage{
-temporal_sync_raster(unsynced,reference,synctype="by.month",unsynced_dates,reference_dates,verbose=FALSE)
+temporal_sync_raster(unsynced,reference,synctype="by.month",
+	unsynced_dates,reference_dates,verbose=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -53,6 +54,7 @@ Jonathan A. Greenberg
 \examples{
 \dontrun{
 require(climstats)
+
 load(system.file("extdata/pptTahoe.RData",package="climstats"))
 pptTahoe@zvalue
 
@@ -61,11 +63,11 @@ wnd=get_climate_data("NARR-monthlymean-wnd",
 		date_range=c("1992-01-01","1993-12-31"),
 		standardize=TRUE,enable_download=TRUE,verbose=TRUE)
 wnd@zvalue
-wnd_synced=temporal_sync_raster(wnd,pptTahoe,synctype="by.year.month",verbose=TRUE)
+
+wnd_synced=temporal_sync_raster(wnd,pptTahoe,synctype="by.year.month",
+	verbose=TRUE)
 wnd_synced@zvalue
 }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{calculate}
+\keyword{brick/stack}

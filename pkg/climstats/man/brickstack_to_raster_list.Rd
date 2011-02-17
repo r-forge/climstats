@@ -34,7 +34,7 @@ Jonathan A. Greenberg, Alison R. Mynsberge
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-\code{\link[raster]{stack}},\code{\link[raster]{brick}} 
+\code{\link[raster]{stack}}, \code{\link[raster]{brick}} 
 }
 \examples{
 r <- raster(nrows=10,ncols=10)
@@ -48,5 +48,4 @@ brickstack_to_raster_list(temp_brick)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ stack }
-\keyword{ brick }
+\keyword{brick/stack}

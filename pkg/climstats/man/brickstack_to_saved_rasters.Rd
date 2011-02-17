@@ -6,7 +6,8 @@
 Saves a raster stack or a brick as individual RasterLayers.
 }
 \usage{
-brickstack_to_saved_rasters(brickstack,output_basename,use_layernames=FALSE)
+brickstack_to_saved_rasters(brickstack,output_basename,
+	use_layernames=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -53,5 +54,4 @@ brickstack_to_saved_rasters(temp_brick,output_basename="bricklayers")}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{brick/stack}

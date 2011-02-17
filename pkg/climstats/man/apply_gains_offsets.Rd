@@ -9,7 +9,8 @@
 Applies linear gains and offsets to input data following output = gains * x + offset.
 }
 \usage{
-apply_gains_offsets(x, gains, offsets, divide_by_days_in_month=FALSE,snow_nthreads=1)
+apply_gains_offsets(x, gains, offsets, 
+	divide_by_days_in_month=FALSE,snow_nthreads=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -22,7 +23,8 @@ The gain to apply to the input.  gain should be either a numeric vector equal to
   \item{offsets}{
 The offset to apply to the input.  gain should be either a numeric vector equal to the nlayers(x) (if x is a raster) or a single value which will be applied to all layers.
 }  \item{divide_by_days_in_month}{
-IF x is a raster, and has a Date-coercible zvalue set, setting divide_by_days_in_month=TRUE will divide a layer by the numbers of days in the month.
+IF x is a raster, and has a Date-coercible zvalue set, setting 
+\cr divide_by_days_in_month=TRUE will divide a layer by the numbers of days in the month.
 }  \item{snow_nthreads}{
 UNUSED AT PRESENT.
 }
@@ -52,3 +54,5 @@ load(system.file("extdata/pptTahoe.RData",package="climstats"))
 ppt_standardized=apply_gains_offsets(pptTahoe,gains=(1/100),
 	divide_by_days_in_month=FALSE)
 }
+\keyword{calculate}
+\keyword{format}

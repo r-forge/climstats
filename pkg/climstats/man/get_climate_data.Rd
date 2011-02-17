@@ -8,9 +8,12 @@
 This function downloads and preprocesses climate data from a variety of sources.
 }
 \usage{
-get_climate_data(climate_source,date_range,dates,download_folder,final_folder,standardize=TRUE,
-	snow_nthreads=1,overwrite=FALSE,wnd_speed_height_correction=TRUE,verbose=FALSE,enable_download=FALSE,
-	local_files,preconvert=TRUE,output_basename="climstats_data",proj,zvalue)
+get_climate_data(climate_source, date_range, dates, 
+	download_folder, final_folder, standardize=TRUE, 
+	snow_nthreads=1, overwrite=FALSE,
+	wnd_speed_height_correction=TRUE, verbose=FALSE, 
+	enable_download=FALSE, local_files, preconvert=TRUE, 
+	output_basename="climstats_data", proj, zvalue)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -76,7 +79,7 @@ If preconvert=TRUE (default), raw data will be preconverted to format=raster bef
 A string representing the output files.  Note that most formats have their own defaults which will override this.
 }
   \item{proj}{
-proj = a PROJ string which will be used for climate_source="generic".
+A PROJ string which will be used for climate_source="generic".
 }
   \item{zvalue}{
 The zvalue applied to the output raster (only used with climate_source="generic"). This should be a character string of dates for each of the output layers.  If zvalue="months" and the output is exactly 12 bands, the zvalue will be set to dates corresponding to the first of each month.
@@ -115,20 +118,23 @@ Jonathan A. Greenberg
 
 \examples{
 \dontrun{
-# Download and decompress PRISM monthly precipitation data but do not post-process it.
-ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), standardize=FALSE,
-	enable_download=TRUE)
+# Download and decompress PRISM monthly precipitation data 
+# but do not post-process it.
+ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"),
+	standardize=FALSE,	enable_download=TRUE)
 # Note the raw, decompressed downloaded data.
 dir()
-# Download and post-process PRISM monthly precipitation data (note that as long as overwrite=FALSE, it will not
-#	redownload the files, just post-process the files already acquired during the previous step.
-ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), standardize=TRUE, 
-	enable_download=TRUE, overwrite=TRUE)
-# Note the raw raster format files (*_raw.grd), and the corrected raster format data (*_climstats.grd).
+# Download and post-process PRISM monthly precipitation data 
+# (note that as long as overwrite=FALSE, it will not redownload the files, 
+# just post-process the files already acquired during the previous step.
+ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"),
+	standardize=TRUE, enable_download=TRUE, overwrite=TRUE)
+# Note the raw raster format files (*_raw.grd), and the corrected raster 
+# format data (*_climstats.grd).
 dir()
 summary(ppt)
 ppt@zvalue
 }
 }
 
-\keyword{ spatial }
+\keyword{climate}

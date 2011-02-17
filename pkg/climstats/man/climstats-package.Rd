@@ -49,5 +49,5 @@ Maintainer: Jonathan Asher Greenberg <climstats@estarcion.net>
 }
 
 
-\keyword{ package }
+\keyword{package}
 

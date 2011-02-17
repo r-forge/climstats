@@ -59,8 +59,11 @@ Jonathan A. Greenberg
 require(R.utils) #Can't be loaded after raster
 require(climstats)
 load(system.file("extdata/elevTahoe.RData",package="climstats"))
-ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"), standardize=TRUE, 
+
+ppt=get_climate_data("PRISM-4km-ppt", 
+		date_range=c("1999/1/1","1999/12/31"), standardize=TRUE, 
 		enable_download=TRUE, overwrite=TRUE)
+		
 pptTahoe99=spatial_sync_raster(ppt,elevTahoe,method="bilinear")
 pptTahoe99
 ppt99jan<-raster(pptTahoe99,layer=1)
@@ -69,5 +72,5 @@ plot(ppt99jan)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{brick/stack}
+\keyword{calculate}

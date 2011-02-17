@@ -47,6 +47,4 @@ windvectors_to_wind(uwnd, vwnd, wnd_height)
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
-
-
-\keyword{ spatial }
+\keyword{climate}
