@@ -75,8 +75,6 @@ Jonathan Greenberg
 }
 
 \examples{
-x = 1:10
-x * 2
 }
 
 \keyword{calculate}

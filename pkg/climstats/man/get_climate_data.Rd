@@ -48,8 +48,8 @@ The final directory to store the preprocessed grd files.
   \item{standardize}{
 standardize=TRUE converts the downloaded dataset to standard units used by climstats 
 \itemize{
-	\item precipitation: mm H20 per day
-	\item temperature: deg C
+	\item precipitation: mm H20 per day (using ppt/100 and by dividing each layer by the numbers of days in the month)
+	\item temperature: deg C (using temp/100)
 }
 }
   \item{snow_nthreads}{

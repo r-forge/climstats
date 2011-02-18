@@ -18,7 +18,7 @@ A Raster object to be aligned to the reference raster.
 A Raster object to be used as the reference for syncing.  Syncing will use the reference's projection, resolution, and extent.
 }
   \item{method}{
-method used to compute values for the new RasterLayer. Either 'ngb' (nearest neighbor) or 'bilinear' (bilinear interpolation).
+Method used to compute values for the new RasterLayer. Either 'ngb' (nearest neighbor) or 'bilinear' (bilinear interpolation).
 }
   \item{verbose}{
 verbose=TRUE gives feedback on the process (UNSUPPORTED AT PRESENT).
@@ -30,14 +30,10 @@ verbose=TRUE gives feedback on the process (UNSUPPORTED AT PRESENT).
 
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Uses bilinear or nearest neighbor resampling to align a raster to the extent and projection of a reference raster and match the resolution of the reference raster.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Returns a RasterLayer, RasterBrick or RasterStack object synced to the reference raster object.
 }
 \references{
 %% ~put references to the literature/web site here ~

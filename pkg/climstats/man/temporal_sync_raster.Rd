@@ -15,7 +15,7 @@ temporal_sync_raster(unsynced,reference,synctype="by.month",
 A raster object or a string pointing to a raster on disk to be temporally synced to a reference file. 
 }
   \item{reference}{
-A raster object with reference zvalue dates.
+A raster object with reference zvalue dates specific to the month and year.
 }
   \item{synctype}{
 Type of temporal sync; options are "by.month" or "by.year.month".
@@ -31,7 +31,9 @@ verbose=TRUE will print process information.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Matches the temporal resolution and extent of the unsynced raster object to the reference raster object.  
+Files with 12 layers (1/month) are expanded to multiple years using "by.month".
+Files with unique entries per month per year are reduced to the temporal range of the reference object using "by.year.month".     
 }
 \value{
 Returns a RasterLayer, RasterBrick or RasterStack object.

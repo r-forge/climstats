@@ -13,7 +13,7 @@ water_balance_save(ppt, eto, model="stephenson",
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{ppt}{
-A time series of precipitation amounts (mm H20 per day) in raster format.
+A time series of precipitation amounts (mm H2O per day) in raster format.
 }
   \item{eto}{
 Evapotranspiration raster

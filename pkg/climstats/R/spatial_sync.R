@@ -22,7 +22,7 @@ spatial_sync_raster <- function(unsynced,reference,method="ngb",verbose=FALSE)
 			pr <- projectRaster(unsynced, pr_extent,method=method)
 		} else
 		{
-			pr <- resample(unsynced, pr_extent,method=method)
+			pr <- raster::resample(unsynced, pr_extent,method=method)
 		}
 	}
 	
