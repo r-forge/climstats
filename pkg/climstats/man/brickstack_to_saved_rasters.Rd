@@ -40,7 +40,8 @@ Jonathan A. Greenberg
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[raster]{stack}},\code{\link[raster]{brick}} 
+\code{\link[raster]{stack}}, 
+\code{\link[raster]{brick}} 
 }
 \examples{
 \dontrun{r <- raster(nrows=10,ncols=10)

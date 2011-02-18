@@ -59,41 +59,63 @@ Jonathan A. Greenberg
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{which.min.simple}}
+\code{\link[climstats]{get_climate_data}}, 
+\code{\link[climstats]{eto}}, 
+\code{\link{which.min.simple}}, 
 \code{\link{which.max.simple}}
 }
 \examples{
-#Use example file for Tahoe, California, USA
+# Use example file for Tahoe, California, USA
 require(R.utils)
 require(climstats)
 
 load(system.file("extdata/pptTahoe.RData",package="climstats"))
-#View dates of precipitation file
+# View dates of precipitation file
 pptTahoe@zvalue
+
+# View summary
+#	(this layer was standardized; units are average mm H2O per day)
+pptTahoe
 
 ##Summarize precipitation
 
-#Total precipitation for 1992
+# Total precipitation for 1992
 date_range_92=c("1992-01-01","1992-12-31")
-ppt_92=climate_summaries(climate_data=pptTahoe,date_range=date_range_92,
-	summary_type="sum",summary_interval="yearly")
-date_range_9293=c("1992-01-01","1993-12-31")
-ppt_9293=climate_summaries(climate_data=pptTahoe,date_range=date_range_9293,
-	summary_type="sum",summary_interval="yearly")
-ppt_9293
-#Total precipitation was lower in 1992 than in 1993
+ppt_92_perday=climate_summaries(climate_data=pptTahoe,date_range=date_range_92,
+	summary_type="mean",summary_interval="yearly")
+# Convert from average mm H2O/day to total mm H2O/day
+ppt_92=ppt_92_perday*365
 
-#Now get average annual precipitation totals
-ppt_mean_all=climate_summaries(climate_data=ppt_9293,
-	date_range=date_range_9293,summary_type="mean",summary_interval="all")	
+# View both 1992 and 1993 precipitation
+date_range_9293=c("1992-01-01","1993-12-31")
+ppt_9293_perday=climate_summaries(climate_data=pptTahoe,date_range=date_range_9293,
+	summary_type="mean",summary_interval="yearly")
+ppt_9293=ppt_9293_perday*365
+ppt_9293
+# Total precipitation was lower in 1992 than in 1993
+
+#Now get average annual precipitation for the period 1992-1993
+ppt_mean_perday=climate_summaries(climate_data=pptTahoe,
+	date_range=date_range_9293,summary_type="mean",summary_interval="all")
+ppt_mean_all=ppt_mean_perday*365	
 
 \dontrun{
 # Download and post-process PRISM monthly precipitation data
-		ppt = get_climate_data("PRISM-4km-ppt", date_range = c("1999/1/1", 
+		ppt_perday = get_climate_data("PRISM-4km-ppt", date_range = c("1999/1/1", 
 			"2000/12/31"),standardize = TRUE, overwrite = FALSE, 
 			enable_download = T, verbose = T)
+		summary(ppt_perday)
+		ppt_perday@zvalue
+		#This file can be used for ETO or other calculations requiring daily averages 
+
+		ppt = get_climate_data("PRISM-4km-ppt", date_range = c("1999/1/1", 
+			"2000/12/31"),standardize = FALSE, overwrite = FALSE, 
+			enable_download = T, verbose = T)
 		summary(ppt)
-		ppt@zvalue
+		#Convert PRISM data to total mm H2O/month
+		ppt=apply_gains_offsets(pptTahoe,gains=(1/100),
+			divide_by_days_in_month=FALSE)
+		#This file can be used to calculate total precipitation
 
 # Annual Precipitation		
 		date_range=c("1999-01-01","2000-12-31")

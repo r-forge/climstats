@@ -42,7 +42,8 @@ Jonathan A. Greenberg, Alison R. Mynsberge
 \seealso{
 \code{\link[base]{which.max}}, 
 \code{\link[base]{which}}, 
-\code{\link[base]{max}}
+\code{\link[base]{max}}, 
+\code{\link[climstats]{index_raster_to_mask}}
 }
 \examples{
 x<-c(2:4,1,1,NA)

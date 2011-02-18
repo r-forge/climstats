@@ -59,10 +59,10 @@ verbose=TRUE will print progress information on the processing.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Calculates evapotranspiration (mm/day) for a reference surface approximating actively growing green grass.
 }
 \value{
-eto_raster returns a RasterStack object of the ETO calculations.  It also saves the ETO calculations to disk, one file per interval.  
+eto_raster returns a RasterStack object of the ETO calculations (in mm/day).  It also saves the ETO calculations to disk, one file per interval.  
 }
 \references{
 Allen, R.G., L.S. Pereira, D. Raes, and M. Smith. 1998. Crop evapotranspiration: guidelines for computing crop water requirements. Food and Agriculture Organization of the United Nations, Rome, Italy.
@@ -78,9 +78,10 @@ Jonathan A. Greenberg
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{get_climate_data}}
-\code{\link{spatial_sync_raster}}
-\code{\link{temporal_sync_raster}}
+\code{\link{get_climate_data}}, 
+\code{\link{spatial_sync_raster}}, 
+\code{\link{temporal_sync_raster}}, 
+\code{\link{eto}}
 }
 \examples{
 \dontrun{

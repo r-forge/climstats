@@ -60,7 +60,8 @@ overwrite=TRUE will overwrite raster if already present.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link[climstats]{get_climate_data}}, 
+\code{\link[climstats]{eto}}
 }
 \examples{
 }

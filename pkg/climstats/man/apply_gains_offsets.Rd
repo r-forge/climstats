@@ -49,9 +49,9 @@ Jonathan A. Greenberg
 \code{\link[climstats]{get_climate_data}}
 }
 \examples{
-#Divide all precipitation values by 100
+#Divide all precipitation values by 10 to get cm H2O
 load(system.file("extdata/pptTahoe.RData",package="climstats"))
-ppt_standardized=apply_gains_offsets(pptTahoe,gains=(1/100),
+ppt_cm=apply_gains_offsets(pptTahoe,gains=(1/10),
 	divide_by_days_in_month=FALSE)
 }
 \keyword{calculate}

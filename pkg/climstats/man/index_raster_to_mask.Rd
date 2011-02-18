@@ -1,9 +1,9 @@
 \name{index_raster_to_mask}
 \alias{index_raster_to_mask}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ the title }
+\title{ Internal function }
 \description{
-TBD
+Internal function
 }
 \usage{
 index_raster_to_mask(index_raster,nlayers)
@@ -18,7 +18,6 @@ index_raster_to_mask(index_raster,nlayers)
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
 %%  ~Describe the value returned
@@ -40,7 +39,8 @@ index_raster_to_mask(index_raster,nlayers)
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link[base]{which.min}}, 
+\code{\link[base]{which.max}} 
 }
 \examples{
 }

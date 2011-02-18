@@ -42,7 +42,8 @@ Jonathan A. Greenberg, Alison R. Mynsberge
 \seealso{
 \code{\link[base]{which.min}}, 
 \code{\link[base]{which}}, 
-\code{\link[base]{min}}
+\code{\link[base]{min}}, 
+\code{\link[climstats]{index_raster_to_mask}}
 }
 \examples{
 x<-c(4,1:3,NA,4)

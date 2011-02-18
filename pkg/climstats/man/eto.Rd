@@ -42,14 +42,10 @@ Evapotranspiration model to use:
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Calculates evapotranspiration (mm/day) for a reference surface approximating actively growing green grass.  
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Returns a raster object of reference evapotranspiration (mm/day). 
 }
 \references{
 Allen, R.G., L.S. Pereira, D. Raes, and M. Smith. 1998. Crop evapotranspiration: guidelines for computing crop water requirements. Food and Agriculture Organization of the United Nations, Rome, Italy.
@@ -65,7 +61,10 @@ Allen, R.G., L.S. Pereira, D. Raes, and M. Smith. 1998. Crop evapotranspiration:
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{get_climate_data}}, 
+\code{\link{spatial_sync_raster}}, 
+\code{\link{temporal_sync_raster}}, 
+\code{\link{eto_save}}
 }
 \examples{
 \dontrun{

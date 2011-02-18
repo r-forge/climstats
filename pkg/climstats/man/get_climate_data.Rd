@@ -46,10 +46,10 @@ The target download directory of the raw data.
 The final directory to store the preprocessed grd files.
 }
   \item{standardize}{
-standardize=TRUE converts the downloaded dataset to standard units used by climstats 
+standardize=TRUE converts the downloaded dataset to standard units used by eto and water balance 
 \itemize{
-	\item precipitation: mm H20 per day (using ppt/100 and by dividing each layer by the numbers of days in the month)
-	\item temperature: deg C (using temp/100)
+	\item precipitation: average mm H20 per day
+	\item temperature: deg C
 }
 }
   \item{snow_nthreads}{
@@ -113,7 +113,8 @@ Jonathan A. Greenberg
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link[climstats]{eto}}, 
+\code{\link[climstats]{climate_summaries}}
 }
 
 \examples{
