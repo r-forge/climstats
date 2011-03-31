@@ -24,7 +24,8 @@ climate_summaries(climate_data,date_range,summary_type,
 		"min","max","sum","mean","sd","cv","spi","quantile").
 }
   \item{summary_interval}{
-	The interval over which values are returned (options are "all", "monthly", "yearly")
+	The interval over which values are returned (options are "all", "monthly", 
+	\cr "yearly")
 }
   \item{apply_maxmin}{
 	A climate data raster containing values to be summarized and returned if 
@@ -34,7 +35,8 @@ climate_summaries(climate_data,date_range,summary_type,
 	verbose=TRUE will print process information.
 }
   \item{probs}{
-	Numeric vector of probabilities with values in [0,1] used by summary_type=quantile.
+	Numeric vector of probabilities with values in [0,1] used by 
+	\cr summary_type=quantile.
 }
   \item{tie_value}{
 	Controls how non-unique extreme values are accommodated by the summary method when summary_type is which.min.simple or which.max.simple.
@@ -81,15 +83,17 @@ pptTahoe
 
 # Total precipitation for 1992
 date_range_92=c("1992-01-01","1992-12-31")
-ppt_92_perday=climate_summaries(climate_data=pptTahoe,date_range=date_range_92,
-	summary_type="mean",summary_interval="yearly")
+ppt_92_perday=climate_summaries(climate_data=pptTahoe,
+	date_range=date_range_92,summary_type="mean",
+	summary_interval="yearly")
 # Convert from average mm H2O/day to total mm H2O/day
 ppt_92=ppt_92_perday*365
 
 # View both 1992 and 1993 precipitation
 date_range_9293=c("1992-01-01","1993-12-31")
-ppt_9293_perday=climate_summaries(climate_data=pptTahoe,date_range=date_range_9293,
-	summary_type="mean",summary_interval="yearly")
+ppt_9293_perday=climate_summaries(climate_data=pptTahoe,
+	date_range=date_range_9293,summary_type="mean",
+	summary_interval="yearly")
 ppt_9293=ppt_9293_perday*365
 ppt_9293
 # Total precipitation was lower in 1992 than in 1993
@@ -101,12 +105,13 @@ ppt_mean_all=ppt_mean_perday*365
 
 \dontrun{
 # Download and post-process PRISM monthly precipitation data
-		ppt_perday = get_climate_data("PRISM-4km-ppt", date_range = c("1999/1/1", 
-			"2000/12/31"),standardize = TRUE, overwrite = FALSE, 
-			enable_download = T, verbose = T)
+		ppt_perday = get_climate_data("PRISM-4km-ppt", 
+			date_range = c("1999/1/1","2000/12/31"),standardize = TRUE, 
+			overwrite = FALSE,enable_download = T, verbose = T)
 		summary(ppt_perday)
 		ppt_perday@zvalue
-		#This file can be used for ETO or other calculations requiring daily averages 
+		#This file can be used for ETO or other calculations 
+		#	requiring daily averages 
 
 		ppt = get_climate_data("PRISM-4km-ppt", date_range = c("1999/1/1", 
 			"2000/12/31"),standardize = FALSE, overwrite = FALSE, 
@@ -130,17 +135,20 @@ ppt_mean_all=ppt_mean_perday*365
 		
 # Precipitation of Wettest Month
 		monthly_date_range=c("9999-01-01","9999-12-31")
-		ppt_of_max_ppt_mean_monthly=climate_summaries(climate_data=ppt_mean_monthly,
+		ppt_of_max_ppt_mean_monthly=
+			climate_summaries(climate_data=ppt_mean_monthly,
 			date_range=monthly_date_range,summary_type="which.max.simple",
 			summary_interval="all",apply_maxmin=ppt_mean_monthly)
 		
 # Precipitation of Driest Month			
-		ppt_of_min_ppt_mean_monthly=climate_summaries(climate_data=ppt_mean_monthly,
+		ppt_of_min_ppt_mean_monthly=
+			climate_summaries(climate_data=ppt_mean_monthly,
 			date_range=monthly_date_range,summary_type="which.min.simple",
 			summary_interval="all",apply_maxmin=ppt_mean_monthly)
 		
 # Precipitation Seasonality (Coefficient of Variation)
-		ppt_mean_monthly_cv_all=climate_summaries(climate_data=ppt_mean_monthly,
+		ppt_mean_monthly_cv_all=
+			climate_summaries(climate_data=ppt_mean_monthly,
 			date_range=monthly_date_range,summary_type="cv",summary_interval="all")
 	
 # Min standard precipitation index (SPI)

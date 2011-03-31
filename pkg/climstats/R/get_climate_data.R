@@ -562,7 +562,15 @@ get_climate_data <- function(
 						return()
 					}
 					raster_object_from_files@zvalue=as.character(seq.Date(as.Date("9999-01-01"),as.Date("9999-12-31"),by="month"))
-				} else
+				}else if(zvalue=="monthsyears"){
+					if(missing(dates))
+					{
+						startdate=as.Date(date_range[1])
+						enddate=as.Date(date_range[2])
+						dates=seq.Date(startdate,enddate,by="month")
+					}
+					raster_object_from_files@zvalue=as.character(dates)
+				}else
 				{
 					raster_object_from_files@zvalue=zvalue	
 				}

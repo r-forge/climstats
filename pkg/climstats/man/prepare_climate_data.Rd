@@ -24,17 +24,24 @@ proj)
  the source of the climate/affiliated data.  Currently supports:
 		\itemize{	
 			\item "prism_dem" (PRISM digital elevation model
-			\cr \url{ftp://prism.oregonstate.edu//pub/prism/us/grids/us_25m_dem.asc.gz})
+			\cr \url{ftp://prism.oregonstate.edu//pub/prism/us/grids/
+				\cr us_25m_dem.asc.gz})
 			\item "prism_4km" (PRISM 4km gridded climate products) 
 				\itemize{
-				\item precipitation (\url{ftp://prism.oregonstate.edu//pub/prism/us/grids/ppt/})
-				\item minimum temperature (\url{ftp://prism.oregonstate.edu//pub/prism/us/grids/tmin/})
-				\item maximum temperature (\url{ftp://prism.oregonstate.edu//pub/prism/us/grids/tmax/})
-				\item dewpoint temperature (\url{ftp://prism.oregonstate.edu//pub/prism/us/grids/tdmean/})
-				\item standardized precipitation index (\url{ftp://prism.oregonstate.edu//pub/prism/us/grids/spi/}, untested)
+				\item precipitation (\url{ftp://prism.oregonstate.edu//
+					\cr pub/prism/us/grids/ppt/})
+				\item minimum temperature (\url{ftp://prism.oregonstate.edu//
+					\cr pub/prism/us/grids/tmin/})
+				\item maximum temperature (\url{ftp://prism.oregonstate.edu//
+					\cr pub/prism/us/grids/tmax/})
+				\item dewpoint temperature (\url{ftp://prism.oregonstate.edu//
+					\cr pub/prism/us/grids/tdmean/})
+				\item standardized precipitation index (\url{ftp://prism.oregonstate.edu//
+					\cr pub/prism/us/grids/spi/}, untested)
 				}
 			\item "narr" (North American Regional Reanalysis NetCDF files 
-			\cr \url{http://www.esrl.noaa.gov/psd/data/gridded/data.narr.html})
+			\cr \url{http://www.esrl.noaa.gov/psd/data/gridded/
+				\cr data.narr.html})
 			\item "generic": function attempts to figure it out.  This will, in all likelihood, fail.  If using generic, you should
 				probably assign the zname,zvalue, and proj.}}
   \item{zname}{

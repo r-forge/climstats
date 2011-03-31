@@ -26,7 +26,8 @@ A datasource to fetch climate data from.  The following datasources are currentl
 	\item "PRISM-4km-spi":		PRISM 4km monthly standardized precipitation index grids
 	\item "PRISM-4km-tdmean":	PRISM 4km monthly dewpoint grids
 	\item "PRISM-4km-elev":	PRISM 4km elevation data
-	\item "NARR-monthlymean-wnd":	North American Regional Reanalysis monthly mean wind velocity
+	\item "NARR-monthlymean-wnd":	North American Regional Reanalysis 
+		\cr monthly mean wind velocity
 	\item "NARR-longtermmonthlymean-wnd":	North American Regional Reanalysis long-term monthly mean wind velocity
 	\item "generic": arbitrary local files.  local_files must be set if this is used.
 }
@@ -82,7 +83,8 @@ A string representing the output files.  Note that most formats have their own d
 A PROJ string which will be used for climate_source="generic".
 }
   \item{zvalue}{
-The zvalue applied to the output raster (only used with climate_source="generic"). This should be a character string of dates for each of the output layers.  If zvalue="months" and the output is exactly 12 bands, the zvalue will be set to dates corresponding to the first of each month.
+The zvalue applied to the output raster (only used with climate_source=
+	\cr "generic"). This should be a character string of dates for each of the output layers.  If zvalue="months" and the output is exactly 12 bands, the zvalue will be set to dates corresponding to the first of each month.
 }
 
 }
@@ -99,8 +101,10 @@ Returns a RasterLayer, RasterBrick or RasterStack object, as well as saving the 
 \item	PRISM metadata: \url{http://www.prism.oregonstate.edu/docs/meta}
 }
 \itemize{ 
-\item NCEP North American Regional Reanalysis: \url{http://www.esrl.noaa.gov/psd/data/gridded/data.narr.html}
-\item 	NCEP NARR Data Description: \url{ftp://ftp.cdc.noaa.gov/Datasets/NARR/README} 
+\item NCEP North American Regional Reanalysis: \url{http://www.esrl.noaa.gov/psd/
+	\cr data/gridded/data.narr.html}
+\item 	NCEP NARR Data Description: \url{ftp://ftp.cdc.noaa.gov/Datasets/
+	\cr NARR/README} 
 }
 }
 \author{
@@ -121,14 +125,16 @@ Jonathan A. Greenberg
 \dontrun{
 # Download and decompress PRISM monthly precipitation data 
 # but do not post-process it.
-ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"),
+ppt=get_climate_data("PRISM-4km-ppt", 
+	date_range=c("1999/1/1","1999/12/31"),
 	standardize=FALSE,	enable_download=TRUE)
 # Note the raw, decompressed downloaded data.
 dir()
 # Download and post-process PRISM monthly precipitation data 
 # (note that as long as overwrite=FALSE, it will not redownload the files, 
 # just post-process the files already acquired during the previous step.
-ppt=get_climate_data("PRISM-4km-ppt", date_range=c("1999/1/1","1999/12/31"),
+ppt=get_climate_data("PRISM-4km-ppt", 
+	date_range=c("1999/1/1","1999/12/31"),
 	standardize=TRUE, enable_download=TRUE, overwrite=TRUE)
 # Note the raw raster format files (*_raw.grd), and the corrected raster 
 # format data (*_climstats.grd).
