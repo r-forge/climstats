@@ -24,6 +24,9 @@ spatial_sync_raster <- function(unsynced,reference,method="ngb",verbose=FALSE)
 		{
 			pr <- raster::resample(unsynced, pr_extent,method=method)
 		}
+	} else
+	{
+		pr=unsynced
 	}
 	
 	expanded_raster=expand(pr,reference)
