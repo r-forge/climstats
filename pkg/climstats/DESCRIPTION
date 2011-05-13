@@ -1,7 +1,7 @@
 Package: climstats
 Type: Package
 Title: R functions for working with station and gridded climate data. 
-Version: 0.7
+Version: 0.8
 Date: 2011-02-17
 Author: Jonathan Asher Greenberg, Alison Mynsberge, Solomon Z. Dobrowski, Quinn Hart, Robert J. Hijmans 
 Maintainer: Jonathan Asher Greenberg <climstats@estarcion.net>
