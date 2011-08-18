@@ -13,7 +13,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	# This works on rasters only.
 	
 	climate_data_dates_idx=1:nlayers(climate_data)
-	
+	print(date_range)
 	if(!missing(date_range))
 	{
 		climate_data_dates=as.Date(climate_data@zvalue)
