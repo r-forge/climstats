@@ -5,8 +5,8 @@ Version: 0.9
 Date: 2011-08-18
 Author: Jonathan Asher Greenberg, Alison Mynsberge, Solomon Z. Dobrowski, Quinn Hart, Robert J. Hijmans 
 Maintainer: Jonathan Asher Greenberg <climstats@estarcion.net>
-Depends: R, raster, rgdal, chron, zoo, sp, ncdf 
-Suggests: snow, R.utils, lmom
+Depends: R, raster, rgdal, chron, zoo, sp, ncdf, R.utils
+Suggests: snow,  lmom
 Description: R functions for working with station and gridded climate data.
 License: GPL (>= 2)
 LazyLoad: yes
