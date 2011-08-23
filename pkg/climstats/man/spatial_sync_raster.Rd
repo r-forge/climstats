@@ -41,9 +41,6 @@ Returns a RasterLayer, RasterBrick or RasterStack object synced to the reference
 \author{
 Jonathan A. Greenberg
 }
-\note{
-%%  ~~further notes~~
-}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

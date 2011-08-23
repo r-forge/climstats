@@ -17,25 +17,9 @@ index_raster_to_mask(index_raster,nlayers)
 %%     ~~Describe \code{brickstack} here~~
 }
 }
-\details{
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg
 }
-\note{
-%%  ~~further notes~~
-}
-
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{

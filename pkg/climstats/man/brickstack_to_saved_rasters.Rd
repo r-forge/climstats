@@ -22,20 +22,13 @@ If TRUE, filenames (from disk) are appended to output_basename to designate indi
 If FALSE, layers are distinguished on disk based on their order in the RasterBrick or RasterStack.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
-Saves rasters to the working directory.}
-\references{
-%% ~put references to the literature/web site here ~
+Saves rasters to the working directory.
 }
 \author{
 Jonathan A. Greenberg
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

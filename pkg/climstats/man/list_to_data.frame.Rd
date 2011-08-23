@@ -14,21 +14,15 @@ list_to_data.frame(x)
 a list of vectors of equal length
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 A data frame with listed vectors as rows.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Jonathan A. Greenberg, Alison R. Mynsberge
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

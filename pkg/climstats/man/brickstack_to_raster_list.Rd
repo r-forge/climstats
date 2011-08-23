@@ -14,20 +14,8 @@ brickstack_to_raster_list(brickstack)
 A raster brick or raster stack object.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-Returns a list of raster layers from the stack or brick
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Jonathan A. Greenberg, Alison R. Mynsberge
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

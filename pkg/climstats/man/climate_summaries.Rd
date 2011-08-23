@@ -42,21 +42,15 @@ climate_summaries(climate_data,date_range,summary_type,
 	Controls how non-unique extreme values are accommodated by the summary method when summary_type is which.min.simple or which.max.simple.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 	Returns a raster layer.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Jonathan A. Greenberg
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

@@ -38,15 +38,11 @@ Files with unique entries per month per year are reduced to the temporal range o
 \value{
 Returns a RasterLayer, RasterBrick or RasterStack object.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Jonathan A. Greenberg
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

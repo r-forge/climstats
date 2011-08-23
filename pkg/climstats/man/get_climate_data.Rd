@@ -88,9 +88,7 @@ The zvalue applied to the output raster (only used with climate_source=
 }
 
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 Returns a RasterLayer, RasterBrick or RasterStack object, as well as saving the objects to disk.
 }
@@ -110,9 +108,7 @@ Returns a RasterLayer, RasterBrick or RasterStack object, as well as saving the 
 \author{
 Jonathan A. Greenberg
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

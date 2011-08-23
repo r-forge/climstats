@@ -22,20 +22,11 @@ The length of the output string.
 A number to base the length of the output string on.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
 A character vector.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Jonathan A. Greenberg
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

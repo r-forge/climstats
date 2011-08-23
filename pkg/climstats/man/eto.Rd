@@ -52,11 +52,9 @@ Allen, R.G., L.S. Pereira, D. Raes, and M. Smith. 1998. Crop evapotranspiration:
 \url{http://www.fao.org/docrep/x0490e/x0490e00.htm}
 }
 \author{
-%%  ~~who you are~~
+Jonathan A. Greenberg
 }
-\note{
-%%  ~~further notes~~
-}
+
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

@@ -64,8 +64,6 @@ proj)
 no details
 }
 
-\value{
-}
 
 \references{
 }

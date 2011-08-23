@@ -23,18 +23,14 @@ each column.
 a logical indicating whether missing values should be removed.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
   \item{spi}{returns the SPI value for a precipitation vector.}
   \item{spi.matrix}{returns a vector of
 standardized precipitation indices for a precipitation matrix or the SPI value for
 a precipitation vector.}
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Jonathan A. Greenberg, Alison R. Mynsberge
 }

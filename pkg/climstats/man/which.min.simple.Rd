@@ -20,21 +20,14 @@ a logical indicating whether missing values should be removed.
 A character indicating how to deal with ties.  Can be "NA" (returns an NA if a tie is found) or "random" (returns a single randomly chosen member of the ties if a tie is found).
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 An integer of length 1 giving the index of the minimum of x 
 or NA if the minimum of x is not unique, x has no non-NAs, or na.rm=F.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
 Jonathan A. Greenberg, Alison R. Mynsberge
-}
-\note{
-%%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
