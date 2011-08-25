@@ -1,9 +1,47 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
-
+#' Temporally Sync Rasters
+#' 
+#' Aligns ("syncs") a Raster to a reference Raster.
+#' 
+#' Matches the temporal resolution and extent of the unsynced raster object to
+#' the reference raster object.  Files with 12 layers (1/month) are expanded to
+#' multiple years using "by.month". Files with unique entries per month per
+#' year are reduced to the temporal range of the reference object using
+#' "by.year.month".
+#' 
+#' @param unsynced A raster object or a string pointing to a raster on disk to
+#' be temporally synced to a reference file.
+#' @param reference A raster object with reference zvalue dates specific to the
+#' month and year.
+#' @param synctype Type of temporal sync; options are "by.month" or
+#' "by.year.month".
+#' @param unsynced_dates Required if unsynced@zvalue does not provide dates for
+#' unsynced raster.
+#' @param reference_dates Required if reference@zvalue does not provide
+#' reference dates for reference raster.
+#' @param verbose verbose=TRUE will print process information.
+#' @return Returns a RasterLayer, RasterBrick or RasterStack object.
+#' @author Jonathan A. Greenberg
+#' @seealso \code{\link[climstats]{spatial_sync_raster}}
+#' @keywords calculate brick/stack
+#' @examples
+#' 
+#' \dontrun{
+#' require(climstats)
+#' 
+#' load(system.file("extdata/pptTahoe.RData",package="climstats"))
+#' pptTahoe@zvalue
+#' 
+#' #Download and standardize 2 large monthly wind vector files
+#' wnd=get_climate_data("NARR-monthlymean-wnd",
+#' 		date_range=c("1992-01-01","1993-12-31"),
+#' 		standardize=TRUE,enable_download=TRUE,verbose=TRUE)
+#' wnd@zvalue
+#' 
+#' wnd_synced=temporal_sync_raster(wnd,pptTahoe,synctype="by.year.month",
+#' 	verbose=TRUE)
+#' wnd_synced@zvalue
+#' }
+#' 
 temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced_dates,reference_dates,verbose=FALSE)
 {
 	# TODO: Check to make sure zvalues are assigned

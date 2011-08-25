@@ -1,9 +1,15 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
-
+#' Create Raster from NCDF
+#' 
+#' Creates a raster from an NCDF file
+#' 
+#' 
+#' @param ncdf_gaussian_grid_fname %% ~~Describe \code{brickstack} here~~
+#' @param reference %% ~~Describe \code{brickstack} here~~
+#' @author Jonathan A. Greenberg
+#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+#' @keywords format brick/stack
+#' 
+#' 
 ncdf_gaussian_grid_to_raster=function(ncdf_gaussian_grid_fname,reference)
 {
 	ncopen=open.ncdf(ncdf_gaussian_grid_fname)

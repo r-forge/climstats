@@ -1,9 +1,22 @@
-# TODO: Add comment
-# 
-# Author: jonathan, alison
-###############################################################################
-
-
+#' Add Leading Zeroes to a Numeric Vector
+#' 
+#' Appends leading zeroes to a vector of numbers based on a string length or a
+#' maximum number.
+#' 
+#' 
+#' @param number A numeric vector.
+#' @param number_length The length of the output string.
+#' @param max_number A number to base the length of the output string on.
+#' @return A character vector.
+#' @author Jonathan A. Greenberg
+#' @seealso \code{\link[climstats]{brickstack_to_saved_rasters}}
+#' @keywords format
+#' @examples
+#' 
+#' x=c(1:10)
+#' add_leading_zeroes(x,number_length=4)
+#' add_leading_zeroes(x,max_number=10000)
+#' 
 add_leading_zeroes=function(number,number_length,max_number)
 {
 	if(!missing(max_number))

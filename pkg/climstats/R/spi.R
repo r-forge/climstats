@@ -1,9 +1,3 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
-
 spi.matrix <- function(ppt,na.rm=TRUE)
 {
 #	print(ppt)
@@ -18,6 +12,22 @@ spi.matrix <- function(ppt,na.rm=TRUE)
 	return(spi_output)
 }
 
+
+
+#' Calculates the Standardized Precipitation Index (SPI)
+#' 
+#' Calculates the standardized precipitation index (SPI).
+#' 
+#' 
+#' @aliases spi.matrix spi
+#' @param ppt A time series of precipitation amounts in a vector or a matrix
+#' with precipitation time series in each column.
+#' @param na.rm a logical indicating whether missing values should be removed.
+#' @return \item{spi}{returns the SPI value for a precipitation vector.}
+#' \item{spi.matrix}{returns a vector of standardized precipitation indices for
+#' a precipitation matrix or the SPI value for a precipitation vector.}
+#' @author Jonathan A. Greenberg, Alison R. Mynsberge
+#' @keywords climate
 spi <- function(ppt,na.rm=TRUE)
 {
 #	print(na.rm)

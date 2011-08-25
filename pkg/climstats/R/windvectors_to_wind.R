@@ -1,9 +1,15 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
-
+#' Calculate Wind Speed
+#' 
+#' Takes two wind vectors and returns wind speed, correcting to 2m above the
+#' terrain if requested.
+#' 
+#' 
+#' @param uwnd %% ~~Describe \code{uwnd} here~~
+#' @param vwnd %% ~~Describe \code{vwnd} here~~
+#' @param wnd_height %% ~~Describe \code{wnd_height} here~~
+#' @author Jonathan A. Greenberg
+#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+#' @keywords climate
 windvectors_to_wind=function(uwnd,vwnd,wnd_height)
 {
 	require(raster)

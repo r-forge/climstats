@@ -1,8 +1,31 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
+#' Apply Gains and Offsets
+#' 
+#' Applies linear gains and offsets to input data following output = gains * x
+#' + offset.
+#' 
+#' 
+#' @param x An input, such as a numeric vector (UNSUPPORTED) or a raster
+#' object.
+#' @param gains The gain to apply to the input.  gain should be either a
+#' numeric vector equal to the nlayers(x) (if x is a raster) or a single value
+#' which will be applied to all layers.
+#' @param offsets The offset to apply to the input.  gain should be either a
+#' numeric vector equal to the nlayers(x) (if x is a raster) or a single value
+#' which will be applied to all layers.
+#' @param divide_by_days_in_month IF x is a raster, and has a Date-coercible
+#' zvalue set, setting \cr divide_by_days_in_month=TRUE will divide a layer by
+#' the numbers of days in the month.
+#' @param snow_nthreads UNUSED AT PRESENT.
+#' @author Jonathan A. Greenberg
+#' @seealso \code{\link[climstats]{get_climate_data}}
+#' @keywords calculate format
+#' @examples
+#' 
+#' #Divide all precipitation values by 10 to get cm H2O
+#' load(system.file("extdata/pptTahoe.RData",package="climstats"))
+#' ppt_cm=apply_gains_offsets(pptTahoe,gains=(1/10),
+#' 	divide_by_days_in_month=FALSE)
+#' 
 apply_gains_offsets=function(x,gains,offsets,divide_by_days_in_month=FALSE,snow_nthreads=1)
 {
 	require("chron")

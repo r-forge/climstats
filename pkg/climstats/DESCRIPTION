@@ -1,12 +1,41 @@
 Package: climstats
 Type: Package
-Title: R functions for working with station and gridded climate data. 
+Title: R functions for working with station and gridded
+    climate data.
 Version: 0.9
 Date: 2011-08-18
-Author: Jonathan Asher Greenberg, Alison Mynsberge, Solomon Z. Dobrowski, Quinn Hart, Robert J. Hijmans 
-Maintainer: Jonathan Asher Greenberg <climstats@estarcion.net>
-Depends: R, raster, rgdal, chron, zoo, sp, ncdf, R.utils
-Suggests: snow,  lmom
-Description: R functions for working with station and gridded climate data.
+Author: Jonathan Asher Greenberg, Alison Mynsberge, Solomon
+    Z. Dobrowski, Quinn Hart, Robert J. Hijmans
+Maintainer: Jonathan Asher Greenberg
+    <climstats@estarcion.net>
+Depends:
+    R,
+    raster,
+    rgdal,
+    chron,
+    zoo,
+    sp,
+    ncdf,
+    R.utils
+Suggests:
+    snow,
+    lmom
+Description: R functions for working with station and
+    gridded climate data.
 License: GPL (>= 2)
 LazyLoad: yes
+Collate:
+    'add_leading_zeroes.R'
+    'apply_gains_offsets.R'
+    'brickstack_to_saved_rasters.R'
+    'climate_summaries.R'
+    'get_climate_data.R'
+    'index_raster_to_mask.R'
+    'list_to_data.frame.R'
+    'ncdf_gaussian_grid_to_raster.R'
+    'prepare_climate_data.R'
+    'spatial_sync_raster.R'
+    'spi.R'
+    'temporal_sync.R'
+    'which.simple.R'
+    'windvectors_to_wind.R'
