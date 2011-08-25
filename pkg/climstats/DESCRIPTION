@@ -9,7 +9,7 @@ Author: Jonathan Asher Greenberg, Alison Mynsberge, Solomon
 Maintainer: Jonathan Asher Greenberg
     <climstats@estarcion.net>
 Depends:
-    R,
+    R (>= 2.13),
     raster,
     rgdal,
     chron,
