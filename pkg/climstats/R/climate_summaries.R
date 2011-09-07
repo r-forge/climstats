@@ -152,6 +152,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	} else
 	{
 		climate_data_dates_idx_subset=climate_data_dates_idx
+		climate_data_dates=as.Date(climate_data@zvalue)
 		climate_data_dates_subset=climate_data_dates
 		climate_data_subset=climate_data
 	}	
