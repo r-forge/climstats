@@ -3,10 +3,10 @@
 #' Creates a raster from an NCDF file
 #' 
 #' 
-#' @param ncdf_gaussian_grid_fname %% ~~Describe \code{brickstack} here~~
-#' @param reference %% ~~Describe \code{brickstack} here~~
+#' @param ncdf_gaussian_grid_fname TODO
+#' @param reference TODO
 #' @author Jonathan A. Greenberg
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+#' @seealso TODO
 #' @keywords format brick/stack
 #' 
 #' 
@@ -28,6 +28,8 @@ ncdf_gaussian_grid_to_raster=function(ncdf_gaussian_grid_fname,reference)
 	i=1
 	temp_single_layer=as.vector(data[,,i])
 	
-	interpolated_raster = pointsToRaster(reference,sp,values=temp_single_layer,fun=mean)
+#	interpolated_raster = pointsToRaster(reference,sp,values=temp_single_layer,fun=mean)
+	# This has not been tested yet, but should work.
+	interpolated_raster = rasterize(sp,reference,field=temp_single_layer,fun=mean)
 	
 }

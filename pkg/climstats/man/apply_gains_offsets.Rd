@@ -3,7 +3,7 @@
 \title{Apply Gains and Offsets}
 \usage{
   apply_gains_offsets(x, gains, offsets,
-  divide_by_days_in_month = FALSE, snow_nthreads = 1)
+    divide_by_days_in_month = FALSE, snow_nthreads = 1)
 }
 \arguments{
   \item{x}{An input, such as a numeric vector (UNSUPPORTED)
@@ -31,10 +31,13 @@
   output = gains * x + offset.
 }
 \examples{
+\dontrun{
+
 #Divide all precipitation values by 10 to get cm H2O
 load(system.file("extdata/pptTahoe.RData",package="climstats"))
 ppt_cm=apply_gains_offsets(pptTahoe,gains=(1/10),
-divide_by_days_in_month=FALSE)
+	divide_by_days_in_month=FALSE)
+}
 }
 \author{
   Jonathan A. Greenberg

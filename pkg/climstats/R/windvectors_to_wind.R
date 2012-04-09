@@ -4,11 +4,11 @@
 #' terrain if requested.
 #' 
 #' 
-#' @param uwnd %% ~~Describe \code{uwnd} here~~
-#' @param vwnd %% ~~Describe \code{vwnd} here~~
-#' @param wnd_height %% ~~Describe \code{wnd_height} here~~
+#' @param uwnd TODO
+#' @param vwnd TODO
+#' @param wnd_height TODO
 #' @author Jonathan A. Greenberg
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+#' @seealso TODO
 #' @keywords climate
 windvectors_to_wind=function(uwnd,vwnd,wnd_height)
 {

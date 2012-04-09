@@ -12,6 +12,8 @@
   individual RasterLayers.
 }
 \examples{
+\dontrun{
+
 r <- raster(nrows=10,ncols=10)
 r <- setValues(r,1:ncell(r))
 #Stack
@@ -20,6 +22,7 @@ brickstack_to_raster_list(temp_stack)
 #Brick
 temp_brick <- brick(r, r/2, r*10)
 brickstack_to_raster_list(temp_brick)
+}
 }
 \author{
   Jonathan A. Greenberg, Alison R. Mynsberge

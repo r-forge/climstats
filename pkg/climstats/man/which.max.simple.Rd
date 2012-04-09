@@ -24,6 +24,8 @@
   Locates the largest value of the input object.
 }
 \examples{
+\dontrun{
+
 x<-c(2:4,1,1,NA)
 y<-c(4,1:3,NA,4)
 ## The index is only calculated for a unique maximum
@@ -31,6 +33,7 @@ which.max.simple(x)
 which.max.simple(y)
 which.max.simple(y,na.rm=FALSE)
 which.max.simple(x,na.rm=FALSE)
+}
 }
 \author{
   Jonathan A. Greenberg, Alison R. Mynsberge

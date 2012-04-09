@@ -11,12 +11,12 @@
 #' @author Jonathan A. Greenberg
 #' @seealso \code{\link[climstats]{brickstack_to_saved_rasters}}
 #' @keywords format
-#' @examples
-#' 
+#' @examples \dontrun{
 #' x=c(1:10)
 #' add_leading_zeroes(x,number_length=4)
 #' add_leading_zeroes(x,max_number=10000)
-#' 
+#' }
+
 add_leading_zeroes=function(number,number_length,max_number)
 {
 	if(!missing(max_number))

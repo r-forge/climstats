@@ -14,9 +14,9 @@
 #' month and year.
 #' @param synctype Type of temporal sync; options are "by.month" or
 #' "by.year.month".
-#' @param unsynced_dates Required if unsynced@zvalue does not provide dates for
+#' @param unsynced_dates Required if getZ(unsynced) does not provide dates for
 #' unsynced raster.
-#' @param reference_dates Required if reference@zvalue does not provide
+#' @param reference_dates Required if getZ(reference) does not provide
 #' reference dates for reference raster.
 #' @param verbose verbose=TRUE will print process information.
 #' @return Returns a RasterLayer, RasterBrick or RasterStack object.
@@ -29,17 +29,17 @@
 #' require(climstats)
 #' 
 #' load(system.file("extdata/pptTahoe.RData",package="climstats"))
-#' pptTahoe@zvalue
+#' getZ(pptTahoe)
 #' 
 #' #Download and standardize 2 large monthly wind vector files
 #' wnd=get_climate_data("NARR-monthlymean-wnd",
 #' 		date_range=c("1992-01-01","1993-12-31"),
 #' 		standardize=TRUE,enable_download=TRUE,verbose=TRUE)
-#' wnd@zvalue
+#' getZ(wnd)
 #' 
 #' wnd_synced=temporal_sync_raster(wnd,pptTahoe,synctype="by.year.month",
 #' 	verbose=TRUE)
-#' wnd_synced@zvalue
+#' getZ(wnd_synced)
 #' }
 #' 
 temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced_dates,reference_dates,verbose=FALSE)
@@ -55,7 +55,7 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 	
 	if(missing(unsynced_dates))
 	{
-		unsynced_dates=as.Date(unsynced_stack@zvalue)
+		unsynced_dates=as.Date(getZ(unsynced_stack))
 	} else
 	{
 		unsynced_dates=as.Date(unsynced_dates)
@@ -63,7 +63,7 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 	
 	if(missing(reference_dates))
 	{
-		reference_dates=as.Date(reference@zvalue)
+		reference_dates=as.Date(getZ(reference))
 	} else
 	{
 		reference_dates=as.Date(reference_dates)
@@ -104,7 +104,7 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 		# If unsynced is a raster* object
 			unsynced_stack_list=brickstack_to_raster_list(unsynced_stack)
 			synced_stack=stack(unsynced_stack_list[reference_unsynced_idx])
-			synced_stack@zvalue=reference@zvalue
+			setZ(synced_stack,getZ(reference))
 			return(synced_stack)
 	}
 	
@@ -141,7 +141,7 @@ temporal_sync_raster <- function(unsynced,reference,synctype="by.month",unsynced
 		# If unsynced is a raster* object
 			unsynced_stack_list=brickstack_to_raster_list(unsynced_stack)
 			synced_stack=stack(unsynced_stack_list[reference_unsynced_idx])
-			synced_stack@zvalue=reference@zvalue
+			setZ(synced_stack,getZ(reference))
 			return(synced_stack)
 		
 	}

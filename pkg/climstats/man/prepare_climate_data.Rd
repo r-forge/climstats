@@ -3,7 +3,7 @@
 \title{Preprocess Climate Data}
 \usage{
   prepare_climate_data(raster_files, raster_source, zname,
-  zvalue, proj)
+    zvalue, proj)
 }
 \arguments{
   \item{raster_files}{needs to be a properly formatted

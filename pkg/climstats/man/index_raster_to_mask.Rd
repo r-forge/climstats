@@ -5,10 +5,9 @@
   index_raster_to_mask(index_raster, nlayers)
 }
 \arguments{
-  \item{index_raster}{%% ~~Describe \code{brickstack}
-  here~~}
+  \item{index_raster}{TODO}
 
-  \item{nlayers}{%% ~~Describe \code{brickstack} here~~}
+  \item{nlayers}{TODO}
 }
 \description{
   Internal function

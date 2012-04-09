@@ -24,6 +24,8 @@
   Locates the smallest value of the input object.
 }
 \examples{
+\dontrun{
+
 x<-c(4,1:3,NA,4)
 y<-c(2:4,1,1,NA)
 ## The index is only calculated for a unique minimum
@@ -31,6 +33,7 @@ which.min.simple(x)
 which.min.simple(y)
 which.min.simple(y,na.rm=FALSE)
 which.min.simple(x,na.rm=FALSE)
+}
 }
 \author{
   Jonathan A. Greenberg, Alison R. Mynsberge

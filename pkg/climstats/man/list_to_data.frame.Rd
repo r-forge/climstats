@@ -15,16 +15,16 @@
   frame.
 }
 \examples{
+\dontrun{
+
 x<-c(4,1:3,NA,4)
 y<-c(2:4,1,1,NA)
 length(x)==length(y)
 list_to_data.frame(list(x,y))
 }
+}
 \author{
   Jonathan A. Greenberg, Alison R. Mynsberge
-}
-\seealso{
-  %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \keyword{format}
 

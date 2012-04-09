@@ -3,13 +3,12 @@
 \title{Create Raster from NCDF}
 \usage{
   ncdf_gaussian_grid_to_raster(ncdf_gaussian_grid_fname,
-  reference)
+    reference)
 }
 \arguments{
-  \item{ncdf_gaussian_grid_fname}{%% ~~Describe
-  \code{brickstack} here~~}
+  \item{ncdf_gaussian_grid_fname}{TODO}
 
-  \item{reference}{%% ~~Describe \code{brickstack} here~~}
+  \item{reference}{TODO}
 }
 \description{
   Creates a raster from an NCDF file
@@ -18,7 +17,7 @@
   Jonathan A. Greenberg
 }
 \seealso{
-  %% ~~objects to See Also as \code{\link{help}}, ~~~
+  TODO
 }
 \keyword{brick/stack}
 \keyword{format}

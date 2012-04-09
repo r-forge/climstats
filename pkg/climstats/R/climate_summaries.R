@@ -25,11 +25,11 @@
 #' which.max.simple.
 #' @return Returns a raster layer.
 #' @author Jonathan A. Greenberg
-#' @seealso \code{\link[climstats]{get_climate_data}},
-#' \code{\link[climstats]{eto}}, \code{\link{which.min.simple}},
-#' \code{\link{which.max.simple}}
+# @seealso \code{\link[climstats]{get_climate_data}},
+# \code{\link[climstats]{eto}}, \code{\link{which.min.simple}},
+# \code{\link{which.max.simple}}
 #' @keywords climate
-#' @examples
+#' @examples \dontrun{
 #' 
 #' # Use example file for Tahoe, California, USA
 #' require(R.utils)
@@ -37,7 +37,7 @@
 #' 
 #' load(system.file("extdata/pptTahoe.RData",package="climstats"))
 #' # View dates of precipitation file
-#' pptTahoe@zvalue
+#' getZ(pptTahoe)
 #' 
 #' # View summary
 #' #	(this layer was standardized; units are average mm H2O per day)
@@ -67,13 +67,12 @@
 #' 	date_range=date_range_9293,summary_type="mean",summary_interval="all")
 #' ppt_mean_all=ppt_mean_perday*365	
 #' 
-#' \dontrun{
 #' # Download and post-process PRISM monthly precipitation data
 #' 		ppt_perday = get_climate_data("PRISM-4km-ppt", 
 #' 			date_range = c("1999/1/1","2000/12/31"),standardize = TRUE, 
 #' 			overwrite = FALSE,enable_download = T, verbose = T)
 #' 		summary(ppt_perday)
-#' 		ppt_perday@zvalue
+#' 		getZ(ppt_perday)
 #' 		#This file can be used for ETO or other calculations 
 #' 		#	requiring daily averages 
 #' 
@@ -118,7 +117,7 @@
 #' # Min standard precipitation index (SPI)
 #' 		ppt_spi_all=climate_summaries(climate_data=ppt,date_range=date_range,
 #' 			summary_type="spi",summary_interval="all")
-#' 		ppt_spi_all@zvalue=ref@zvalue
+#' 		setZ(ppt_spi_all,getZ(ref),name='time')
 #' 		ppt_spi_all_min=climate_summaries(climate_data=ppt_spi_all,
 #' 			date_range=date_range,summary_type="min",summary_interval="all")
 #' 		
@@ -139,7 +138,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	print(date_range)
 	if(!missing(date_range))
 	{
-		climate_data_dates=as.Date(climate_data@zvalue)
+		climate_data_dates=as.Date(getZ(climate_data))
 		if(length(date_range)==2)
 		{
 			startdate=as.Date(date_range[1])
@@ -152,7 +151,7 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 	} else
 	{
 		climate_data_dates_idx_subset=climate_data_dates_idx
-		climate_data_dates=as.Date(climate_data@zvalue)
+		climate_data_dates=as.Date(getZ(climate_data))
 		climate_data_dates_subset=climate_data_dates
 		climate_data_subset=climate_data
 	}	
@@ -251,6 +250,6 @@ climate_summaries <- function(climate_data,date_range,summary_type,summary_inter
 		climate_summary=stackApply(climate_data_subset, summary_interval_idx, quantile_function)
 	}
 	
-	climate_summary@zvalue=zvalue_final
+	setZ(climate_summary,zvalue_final)
 	return(climate_summary)
 }

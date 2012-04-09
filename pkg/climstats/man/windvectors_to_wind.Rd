@@ -5,11 +5,11 @@
   windvectors_to_wind(uwnd, vwnd, wnd_height)
 }
 \arguments{
-  \item{uwnd}{%% ~~Describe \code{uwnd} here~~}
+  \item{uwnd}{TODO}
 
-  \item{vwnd}{%% ~~Describe \code{vwnd} here~~}
+  \item{vwnd}{TODO}
 
-  \item{wnd_height}{%% ~~Describe \code{wnd_height} here~~}
+  \item{wnd_height}{TODO}
 }
 \description{
   Takes two wind vectors and returns wind speed, correcting
@@ -19,7 +19,7 @@
   Jonathan A. Greenberg
 }
 \seealso{
-  %% ~~objects to See Also as \code{\link{help}}, ~~~
+  TODO
 }
 \keyword{climate}
 

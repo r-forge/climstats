@@ -3,7 +3,7 @@
 \title{Save a RasterStack or RasterBrick}
 \usage{
   brickstack_to_saved_rasters(brickstack, output_basename,
-  use_layernames = FALSE)
+    use_layernames = FALSE)
 }
 \arguments{
   \item{brickstack}{A raster brick or raster stack object.}

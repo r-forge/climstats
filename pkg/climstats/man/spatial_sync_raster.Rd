@@ -3,7 +3,7 @@
 \title{Spatially Sync Rasters}
 \usage{
   spatial_sync_raster(unsynced, reference, method = "ngb",
-  verbose = FALSE)
+    verbose = FALSE)
 }
 \arguments{
   \item{unsynced}{A Raster object to be aligned to the
@@ -39,8 +39,8 @@ require(climstats)
 load(system.file("extdata/elevTahoe.RData",package="climstats"))
 
 ppt=get_climate_data("PRISM-4km-ppt",
-date_range=c("1999/1/1","1999/12/31"), standardize=TRUE,
-enable_download=TRUE, overwrite=TRUE)
+		date_range=c("1999/1/1","1999/12/31"), standardize=TRUE,
+		enable_download=TRUE, overwrite=TRUE)
 
 pptTahoe99=spatial_sync_raster(ppt,elevTahoe,method="bilinear")
 pptTahoe99

@@ -19,13 +19,13 @@
 #' @author Jonathan A. Greenberg
 #' @seealso \code{\link[climstats]{get_climate_data}}
 #' @keywords calculate format
-#' @examples
+#' @examples \dontrun{
 #' 
 #' #Divide all precipitation values by 10 to get cm H2O
 #' load(system.file("extdata/pptTahoe.RData",package="climstats"))
 #' ppt_cm=apply_gains_offsets(pptTahoe,gains=(1/10),
 #' 	divide_by_days_in_month=FALSE)
-#' 
+#' }
 apply_gains_offsets=function(x,gains,offsets,divide_by_days_in_month=FALSE,snow_nthreads=1)
 {
 	require("chron")

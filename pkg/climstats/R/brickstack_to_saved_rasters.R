@@ -8,7 +8,7 @@
 #' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
 #' \code{\link[raster]{stack}}, \code{\link[raster]{brick}}
 #' @keywords brick/stack
-#' @examples
+#' @examples \dontrun{
 #' 
 #' r <- raster(nrows=10,ncols=10)
 #' r <- setValues(r,1:ncell(r))
@@ -18,7 +18,7 @@
 #' #Brick
 #' temp_brick <- brick(r, r/2, r*10)
 #' brickstack_to_raster_list(temp_brick)
-#' 
+#' }
 brickstack_to_raster_list=function(brickstack)
 {
 	if((class(brickstack)!="RasterStack") & (class(brickstack)!="RasterBrick"))

@@ -3,8 +3,8 @@
 #' Internal function
 #' 
 #' 
-#' @param index_raster %% ~~Describe \code{brickstack} here~~
-#' @param nlayers %% ~~Describe \code{brickstack} here~~
+#' @param index_raster TODO
+#' @param nlayers TODO
 #' @author Jonathan A. Greenberg
 #' @seealso \code{\link[base]{which.min}}, \code{\link[base]{which.max}}
 #' @keywords format brick/stack

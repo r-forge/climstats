@@ -14,7 +14,7 @@
 #' @seealso \code{\link[base]{which.max}}, \code{\link[base]{which}},
 #' \code{\link[base]{max}}, \code{\link[climstats]{index_raster_to_mask}}
 #' @keywords calculate
-#' @examples
+#' @examples \dontrun{
 #' 
 #' x<-c(2:4,1,1,NA)
 #' y<-c(4,1:3,NA,4)
@@ -23,7 +23,7 @@
 #' which.max.simple(y)
 #' which.max.simple(y,na.rm=FALSE)
 #' which.max.simple(x,na.rm=FALSE)
-#' 
+#' }
 which.max.simple=function(x,na.rm=TRUE,tie_value="random")
 {
 	if(na.rm)
@@ -77,7 +77,7 @@ which.max.simple=function(x,na.rm=TRUE,tie_value="random")
 #' @seealso \code{\link[base]{which.min}}, \code{\link[base]{which}},
 #' \code{\link[base]{min}}, \code{\link[climstats]{index_raster_to_mask}}
 #' @keywords calculate
-#' @examples
+#' @examples \dontrun{
 #' 
 #' x<-c(4,1:3,NA,4)
 #' y<-c(2:4,1,1,NA)
@@ -86,7 +86,7 @@ which.max.simple=function(x,na.rm=TRUE,tie_value="random")
 #' which.min.simple(y)
 #' which.min.simple(y,na.rm=FALSE)
 #' which.min.simple(x,na.rm=FALSE)
-#' 
+#' }
 which.min.simple=function(x,na.rm=TRUE,tie_value="random")
 {
 	if(na.rm)
